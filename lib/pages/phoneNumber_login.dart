@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class PhoneLogin extends StatefulWidget {
   @override
@@ -70,12 +69,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Center(
-                          child: FormBuilderTextField(
+                          child: TextFormField(
                             initialValue: '',
-                            name: 'CountryID',
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                            ]),
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               contentPadding:
@@ -98,12 +93,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Center(
-                            child: FormBuilderTextField(
+                            child: TextFormField(
                               initialValue: "",
-                              name: 'phoneNumber',
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                              ]),
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(

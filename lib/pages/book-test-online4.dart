@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 
@@ -13,6 +11,8 @@ class BookTestsOnlineFourthStep extends StatefulWidget {
 class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
   User currentUser = new User.init().getCurrentUser();
   Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+  final namecontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -216,19 +216,14 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                             borderRadius: BorderRadius.circular(12.0),
                             color: Colors.grey[200].withOpacity(0.6),
                           ),
-                          child: FormBuilderTextField(
-                            name: "Full Name",
+                          child: TextFormField(
+                            controller: namecontroller,
                             initialValue: '', //for testing
                             decoration: InputDecoration(
                               hintText: "Name",
                               hintStyle: TextStyle(fontFamily: 'Poppins'),
                               border: InputBorder.none,
                             ),
-
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.max(context, 70),
-                              FormBuilderValidators.required(context),
-                            ]),
                           ),
                         ),
                         Container(
@@ -242,19 +237,14 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                             borderRadius: BorderRadius.circular(12.0),
                             color: Colors.grey[200].withOpacity(0.6),
                           ),
-                          child: FormBuilderTextField(
-                            name: "Email",
+                          child: TextFormField(
+                            controller: namecontroller,
                             initialValue: '', //for testing
                             decoration: InputDecoration(
                               hintText: "E-mail",
                               hintStyle: TextStyle(fontFamily: 'Poppins'),
                               border: InputBorder.none,
                             ),
-
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.max(context, 70),
-                              FormBuilderValidators.required(context),
-                            ]),
                           ),
                         ),
                         Container(
@@ -268,8 +258,8 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                             borderRadius: BorderRadius.circular(12.0),
                             color: Colors.grey[200].withOpacity(0.6),
                           ),
-                          child: FormBuilderTextField(
-                            name: "phone Number",
+                          child: TextFormField(
+                            controller: namecontroller,
                             initialValue: '', //for testing
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -278,9 +268,6 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                               prefixText: "+",
                             ),
                             keyboardType: TextInputType.number,
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                            ]),
                           ),
                         ),
                         Row(
@@ -297,8 +284,8 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.grey[200].withOpacity(0.6),
                               ),
-                              child: FormBuilderTextField(
-                                name: "Age",
+                              child: TextFormField(
+                                controller: namecontroller,
                                 initialValue: '', //for testing
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -306,12 +293,6 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                                   hintStyle: TextStyle(fontFamily: 'Poppins'),
                                 ),
                                 keyboardType: TextInputType.number,
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.numeric(context),
-
-                                  // FormBuilderValidators.max(context, 70),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             SizedBox(
@@ -329,8 +310,8 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.grey[200].withOpacity(0.6),
                               ),
-                              child: FormBuilderTextField(
-                                name: "Years",
+                              child: TextFormField(
+                                controller: namecontroller,
                                 initialValue: '', //for testing
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -338,10 +319,6 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                                   hintStyle: TextStyle(fontFamily: 'Poppins'),
                                 ),
                                 keyboardType: TextInputType.number,
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.numeric(context),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                           ],

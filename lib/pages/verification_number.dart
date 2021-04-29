@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:medico/models/user.dart';
 //import 'package:flutter/services.dart';
 
@@ -185,10 +184,8 @@ class _VerificationNumberState extends State<VerificationNumber> {
         color: Colors.black,
       ))),
       child: Center(
-        child: new FormBuilderTextField(
+        child: new TextFormField(
           initialValue: "",
-          name: 'Country code',
-          validator: FormBuilderValidators.compose([]),
           inputFormatters: [
             LengthLimitingTextInputFormatter(1),
           ],

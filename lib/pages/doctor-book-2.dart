@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 
@@ -188,19 +187,13 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.grey[100].withOpacity(0.4),
                               ),
-                              child: FormBuilderTextField(
-                                name: "Full Name",
-                                initialValue: '', //for testing
+                              child: TextFormField(
+                                initialValue: 'Full Name', //for testing
                                 decoration: InputDecoration(
                                   hintText: "Name",
                                   hintStyle: TextStyle(fontFamily: 'Poppins'),
                                   border: InputBorder.none,
                                 ),
-
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.max(context, 70),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             Container(
@@ -214,19 +207,13 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.grey[100].withOpacity(0.4),
                               ),
-                              child: FormBuilderTextField(
-                                name: "Email",
-                                initialValue: '', //for testing
+                              child: TextFormField(
+                                initialValue: 'Email', //for testing
                                 decoration: InputDecoration(
                                   hintText: "E-mail",
                                   hintStyle: TextStyle(fontFamily: 'Poppins'),
                                   border: InputBorder.none,
                                 ),
-
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.max(context, 70),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             Container(
@@ -240,9 +227,8 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.grey[100].withOpacity(0.4),
                               ),
-                              child: FormBuilderTextField(
-                                name: "phone Number",
-                                initialValue: '', //for testing
+                              child: TextFormField(
+                                initialValue: 'Phone No.', //for testing
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Phone Number",
@@ -250,9 +236,6 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                   prefixText: "+",
                                 ),
                                 keyboardType: TextInputType.number,
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                           ],

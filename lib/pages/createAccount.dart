@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:medico/models/user.dart';
 
 class CreateAcount extends StatefulWidget {
@@ -13,7 +12,7 @@ class _CreateAcountState extends State<CreateAcount> {
   var _phoneNumberController = new TextEditingController();
   User currentUser = new User.init().getCurrentUser();
 
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  final _fbKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +46,8 @@ class _CreateAcountState extends State<CreateAcount> {
                   padding: EdgeInsets.all(12.0),
                   child: Column(
                     children: <Widget>[
-                      FormBuilder(
+                      Form(
                         key: _fbKey,
-                        initialValue: {},
                         autovalidateMode: AutovalidateMode.always,
                         child: Column(
                           children: <Widget>[
@@ -63,20 +61,14 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderTextField(
-                                name: "Full Name",
-                                initialValue: 'raoufsmari', //for testing
+                              child: TextFormField(
                                 controller: _fullNameController,
+                                initialValue: 'raoufsmari', //for testing
                                 decoration: InputDecoration(
                                   hintText: "Full Name",
                                   hintStyle: TextStyle(fontFamily: 'Poppins'),
                                   border: InputBorder.none,
                                 ),
-
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.max(context, 70),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             Container(
@@ -89,42 +81,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderDropdown(
-                                initialValue: 'New York', //for testing
-                                name: "city",
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "City",
-                                    hintStyle:
-                                        TextStyle(fontFamily: 'Poppins')),
-                                hint: Text('Select your city',
-                                    style: TextStyle(fontFamily: 'Poppins')),
-
-                                items: [
-                                  'New York',
-                                  'California',
-                                  'Los Angelos',
-                                  'las Vigas',
-                                  'Wachinton'
-                                ]
-                                    .map((country) => DropdownMenuItem(
-                                        value: country,
-                                        child: Text("$country")))
-                                    .toList(),
-                              ),
-                            ),
-                            Container(
-                              height: 50.0,
-                              margin: const EdgeInsets.only(top: 12.0),
-                              padding: const EdgeInsets.only(
-                                  left: 12.0, right: 12.0),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderTextField(
-                                name: "phone Number",
+                              child: TextFormField(
                                 initialValue: '213796113384', //for testing
                                 controller: _phoneNumberController,
                                 decoration: InputDecoration(
@@ -134,10 +91,6 @@ class _CreateAcountState extends State<CreateAcount> {
                                   prefixText: "+",
                                 ),
                                 keyboardType: TextInputType.number,
-
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             Container(
@@ -150,9 +103,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderDateTimePicker(
-                                name: "Birth Day",
-                                inputType: InputType.date,
+                              child: TextFormField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Birth Day",
@@ -170,19 +121,13 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderDropdown(
-                                name: "gender",
+                              child: TextFormField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Gender",
                                     hintStyle:
                                         TextStyle(fontFamily: 'Poppins')),
                                 initialValue: 'Male',
-                                hint: Text('Select Gender'),
-                                items: ['Male', 'Female', 'Other']
-                                    .map((gender) => DropdownMenuItem(
-                                        value: gender, child: Text("$gender")))
-                                    .toList(),
                               ),
                             ),
                             Container(
@@ -195,8 +140,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderTextField(
-                                name: "Weight",
+                              child: TextFormField(
                                 initialValue: '25', //for testing
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
@@ -204,10 +148,6 @@ class _CreateAcountState extends State<CreateAcount> {
                                     hintText: "Weight",
                                     hintStyle: TextStyle(fontFamily: 'Poppins'),
                                     suffixText: 'KG'),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.numeric(context),
-                                  FormBuilderValidators.required(context),
-                                ]),
                               ),
                             ),
                             Container(
@@ -220,8 +160,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                       width: 1.5, color: Colors.grey),
                                   borderRadius: BorderRadius.circular(12.0),
                                   color: Colors.grey.withOpacity(0.4)),
-                              child: FormBuilderTextField(
-                                name: "Height",
+                              child: TextFormField(
                                 initialValue: '62', //for testing
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
@@ -229,14 +168,6 @@ class _CreateAcountState extends State<CreateAcount> {
                                     hintText: "Height",
                                     hintStyle: TextStyle(fontFamily: 'Poppins'),
                                     suffixText: 'CM'),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.numeric(
-                                    (context),
-                                  ),
-                                  FormBuilderValidators.required(
-                                    (context),
-                                  ),
-                                ]),
                               ),
                             ),
                           ],
@@ -264,13 +195,10 @@ class _CreateAcountState extends State<CreateAcount> {
                       fontFamily: "Poppins"),
                 ),
                 onPressed: () {
-                  if (_fbKey.currentState.saveAndValidate()) {
-                    print(_fbKey.currentState.value);
-                    Navigator.of(context).pushNamed('/home', arguments: [
-                      _fullNameController.text,
-                      _phoneNumberController.text.toString()
-                    ]);
-                  }
+                  Navigator.of(context).pushNamed('/home', arguments: [
+                    _fullNameController.text,
+                    _phoneNumberController.text.toString()
+                  ]);
                 },
               ),
               MaterialButton(
