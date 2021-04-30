@@ -13,10 +13,7 @@ class _Journal extends State<Journal> {
       appBar: AppBar(
         title: Text('Add Journal '),
         backgroundColor: Colors.blue[900],
-<<<<<<< HEAD
         
-=======
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

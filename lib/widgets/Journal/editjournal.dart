@@ -81,7 +81,6 @@ class EditJournalState extends State<EditJournal> {
               ),
               child: TextFormField(
                 controller: textcontroller,
-<<<<<<< HEAD
                 style: TextStyle(color: Colors.green),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
@@ -91,17 +90,6 @@ class EditJournalState extends State<EditJournal> {
                         borderSide: BorderSide(color: Colors.green)),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.green),
-=======
-                style: TextStyle(color: Colors.blue[900]),
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
-                    labelText: "Diary",
-                    labelStyle: TextStyle(color: Colors.blue[900]),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue[900])),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue[900]),
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                       borderRadius: BorderRadius.circular(21.0),
                     )),
                 validator: (value) {
@@ -131,18 +119,10 @@ class EditJournalState extends State<EditJournal> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
-<<<<<<< HEAD
               gradient: RadialGradient(
                 center: Alignment(-0.88, -1.0),
                 radius: 1.35,
                 colors: [const Color(0xff7be495), const Color(0xff329d9c)],
-=======
-              gradient: new LinearGradient(
-                colors: [
-                  Color.fromRGBO(18, 11, 232, 1.0),
-                  Color.fromRGBO(107, 164, 249, 1.0)
-                ],
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                 stops: [0.0, 1.0],
               ),
               boxShadow: [
@@ -164,11 +144,6 @@ class EditJournalState extends State<EditJournal> {
                     // If the form is valid, display a Snackbar.
                     UpdateJournal(this.diary, textcontroller, titlecontroller);
                   }
-<<<<<<< HEAD
-=======
-                  Navigator.of(context).pop();
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ViewJournals()),

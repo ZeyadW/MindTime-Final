@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import 'dart:convert';
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import 'dart:io';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,10 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,10 +15,6 @@ import 'package:path/path.dart' as p;
 import 'package:medico/models/video_info.dart';
 import 'package:medico/widgets/player.dart';
 import 'package:timeago/timeago.dart' as timeago;
-<<<<<<< HEAD
-=======
-import 'package:http/http.dart' as http;
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 
 class VideoUpload extends StatefulWidget {
   VideoUpload({Key key, this.title}) : super(key: key);
@@ -173,10 +161,6 @@ class _VideoUploadState extends State<VideoUpload> {
     final videoName = 'video$rand';
     final mp4 = '.mp4';
     final videoNameF = '$videoName$mp4';
-<<<<<<< HEAD
-=======
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
     final StorageReference ref =
         FirebaseStorage.instance.ref().child('RawVideos').child(videoNameF);
     StorageUploadTask uploadTask = ref.putFile(rawVideoFile);
@@ -240,30 +224,6 @@ class _VideoUploadState extends State<VideoUpload> {
       _progress = 0.0;
       _processing = false;
     });
-<<<<<<< HEAD
-=======
-
-    Future<VideoInfo> sendVidToRestAPI(String vidName) async {
-      print('REST API');
-      final response = await http.post(
-        Uri.https('http://127.0.0.1:5000/', 'Hamada2'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'VideoName': vidName,
-        }),
-      );
-      if (response.statusCode == 201) {
-        print('responsefromAPI');
-        return VideoInfo.fromJson(jsonDecode(response.body));
-      } else {
-        throw Exception('Failed to create album.');
-      }
-    }
-
-    sendVidToRestAPI(videoNameF);
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   }
 
   void _takeVideo() async {
@@ -295,38 +255,6 @@ class _VideoUploadState extends State<VideoUpload> {
     }
   }
 
-<<<<<<< HEAD
-=======
-  void _takeVideoCamera() async {
-    var videoFile;
-    if (_debugMode) {
-      videoFile = File(
-          '/storage/emulated/0/Android/data/com.learningsomethingnew.fluttervideo.flutter_video_sharing/files/Pictures/ebbafabc-dcbe-433b-93dd-80e7777ee4704451355941378265171.mp4');
-    } else {
-      if (_imagePickerActive) return;
-
-      _imagePickerActive = true;
-      videoFile = await ImagePicker.pickVideo(source: ImageSource.camera);
-      _imagePickerActive = false;
-
-      if (videoFile == null) return;
-    }
-    setState(() {
-      _processing = true;
-    });
-
-    try {
-      await _processVideo(videoFile);
-    } catch (e) {
-      print('${e.toString()}');
-    } finally {
-      setState(() {
-        _processing = false;
-      });
-    }
-  }
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   _getListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(8),
@@ -344,11 +272,6 @@ class _VideoUploadState extends State<VideoUpload> {
             ),
             title: GestureDetector(
               onTap: () {
-<<<<<<< HEAD
-=======
-                Navigator.of(context).pop();
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -435,7 +358,6 @@ class _VideoUploadState extends State<VideoUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -448,47 +370,5 @@ class _VideoUploadState extends State<VideoUpload> {
               : Icon(Icons.add),
           onPressed: _takeVideo),
     );
-=======
-        appBar: AppBar(
-          title: Text(widget.title),
-          backgroundColor: Colors.blue[900],
-        ),
-        body: Center(child: _processing ? _getProgressBar() : _getListView()),
-        floatingActionButton: SpeedDial(
-          animatedIcon: AnimatedIcons.add_event,
-          animatedIconTheme: IconThemeData(size: 22),
-          backgroundColor: Colors.blue[900],
-          visible: true,
-          curve: Curves.bounceIn,
-          children: [
-            // FAB 1
-            SpeedDialChild(
-                child: Icon(Icons.photo_album),
-                backgroundColor: Colors.blue[900],
-                onTap: () {
-                  _takeVideo();
-                },
-                label: 'Gallery',
-                labelStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16.0),
-                labelBackgroundColor: Colors.blue[900]),
-            // FAB 2
-            SpeedDialChild(
-                child: Icon(Icons.camera_alt_outlined),
-                backgroundColor: Colors.blue[900],
-                onTap: () {
-                  _takeVideoCamera();
-                },
-                label: 'Camera',
-                labelStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16.0),
-                labelBackgroundColor: Colors.blue[900])
-          ],
-        ));
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   }
 }

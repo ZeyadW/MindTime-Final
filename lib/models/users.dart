@@ -92,10 +92,7 @@ class Users {
       if (passworduser == password) {
         this.username = variable.get("username");
         this.phone = variable.get("emergencyphone");
-<<<<<<< HEAD
         print("username in user model"+ this.username);
-=======
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('username', this.username);
         prefs.setString('email', email);

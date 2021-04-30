@@ -17,11 +17,6 @@ class ChooseDiary extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.blue, // splash color
               onTap: () {
-<<<<<<< HEAD
-=======
-                Navigator.of(context).pop();
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -59,11 +54,6 @@ class ChooseDiary extends StatelessWidget {
                   child: InkWell(
                     splashColor: Colors.blue, // splash color
                     onTap: () {
-<<<<<<< HEAD
-=======
-                      Navigator.of(context).pop();
-
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Journal()),

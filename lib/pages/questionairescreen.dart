@@ -15,11 +15,7 @@ class _QuestioaniresState extends State<Questioanires> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-<<<<<<< HEAD
           'Data input Statistics:',
-=======
-          'Assesments:',
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),

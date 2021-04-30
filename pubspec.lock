@@ -216,16 +216,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.11"
-<<<<<<< HEAD
-=======
-  flutter_speed_dial:
-    dependency: "direct main"
-    description:
-      name: flutter_speed_dial
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.5"
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   flutter_svg:
     dependency: "direct main"
     description:
@@ -389,11 +379,7 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "2.4.0"
-=======
     version: "3.1.0"
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   phone_number:
     dependency: "direct main"
     description:

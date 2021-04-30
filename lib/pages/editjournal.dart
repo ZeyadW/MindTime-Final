@@ -18,15 +18,9 @@ class _EditJournal extends State<EditJournalM> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Journal '),
-<<<<<<< HEAD
         backgroundColor: const Color(0xff68b2a0),
       ),
       backgroundColor: const Color(0xffe0ecde),
-=======
-        backgroundColor: Colors.blue[900],
-      ),
-      backgroundColor: Colors.blue[900],
->>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
       body: SafeArea(
         child: Container(
           child: new SingleChildScrollView(
