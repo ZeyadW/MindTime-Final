@@ -49,6 +49,11 @@ Widget build(BuildContext context) {
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () {
+<<<<<<< HEAD
+=======
+              Navigator.of(context).pop();
+
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
               Navigator.push(
                 context,
                 MaterialPageRoute(

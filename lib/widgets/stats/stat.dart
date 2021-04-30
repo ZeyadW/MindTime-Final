@@ -39,7 +39,11 @@ class _StatState extends State<Stat> {
   Widget build(BuildContext context) {
     List<_PieData> pieData = [
       _PieData('Text', 35, 'Text'),
+<<<<<<< HEAD
       _PieData('Video', 20, 'Video'),
+=======
+      _PieData('Video', 25, 'Video'),
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
       _PieData('Audio', 34, 'Audio'),
     ];
 
@@ -53,7 +57,11 @@ class _StatState extends State<Stat> {
             tooltipBehavior: TooltipBehavior(
               enable: true,
             ),
+<<<<<<< HEAD
             title: ChartTitle(text: 'Data count for each Data type'),
+=======
+            title: ChartTitle(text: 'Data count for each type of Diaries'),
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
             legend: Legend(isVisible: true),
             series: <RadialBarSeries<_PieData, String>>[
               RadialBarSeries<_PieData, String>(

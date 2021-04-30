@@ -162,10 +162,14 @@ class LoginFormState extends State<JournalForm> {
                     // If the form is valid, display a Snackbar.
                     createDiary(textcontroller, titlecontroller);
                   }
+<<<<<<< HEAD
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ViewJournals()),
                   );
+=======
+                  Navigator.of(context).pop();
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                 },
                 child: Text('Submit'),
               ),

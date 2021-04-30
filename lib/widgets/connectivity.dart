@@ -1,9 +1,14 @@
 //import 'package:connectivity/connectivity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/home.dart';
 
+=======
+import 'package:medico/Home.dart';
+import 'package:medico/pages/welcomescreen%20(1).dart';
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import 'package:shared_preferences/shared_preferences.dart';
 
 /*
@@ -103,10 +108,17 @@ class _AutoLogin extends State<AutoLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
         body: !isLoggedIn
             ? Welcome()
             : Home() // HomePage.username(username: userId, email: email, phone: phone),
         );
+=======
+      body: !isLoggedIn
+          ? WelcomeScreen()
+          : HomePage.username(username: userId, email: email, phone: phone),
+    );
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
   }
 
   @override

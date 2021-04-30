@@ -1,8 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:medico/pages/Welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:medico/models/users.dart';
+=======
+import 'package:medico/pages/viewjournals.dart';
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 
 class Home extends StatefulWidget {
   final String value;
@@ -110,7 +114,11 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/medecines');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ViewJournals()),
+                          );
                         },
                         child: ball("images/pill.png",
                             Theme.of(context).scaffoldBackgroundColor),

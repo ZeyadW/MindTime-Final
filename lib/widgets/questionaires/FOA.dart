@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:medico/pages/Home.dart';
+=======
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import 'package:medico/pages/questionairescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:group_radio_button/group_radio_button.dart';
@@ -193,6 +196,11 @@ class _FoaState extends State<Foa> {
                           print(_choiceValue);
                           if (i == 9) {
                             addfoascore(_foascore(_choiceValue));
+<<<<<<< HEAD
+=======
+                            Navigator.of(context).pop();
+
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+<<<<<<< HEAD
 import '../widgets/Addemergencycontact/AddemergencycontactForm.dart';
+=======
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import 'package:medico/widgets/Addemergencycontact/AddemergencycontactForm.dart';
 
 class Addemergencycontactscreen extends StatelessWidget {

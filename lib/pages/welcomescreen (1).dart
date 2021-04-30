@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:medico/pages/home.dart';
 import 'Signup.dart';
 import 'Loginn.dart';
+=======
+import 'Signup.dart';
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
 import '../widgets/welcomescreen/welcometitlewidget.dart';
 import '../widgets/welcomescreen/welcomesubtitletext.dart';
 import '../widgets/welcomescreen/welcomeimage.dart';
@@ -126,10 +130,19 @@ class Signinbutton extends StatelessWidget {
           ),
           child: FlatButton(
             onPressed: () {
+<<<<<<< HEAD
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
+=======
+              Navigator.of(context).pop();
+
+              /*   Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );*/
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
             },
             child: Text("Log in",
                 style: TextStyle(
@@ -162,10 +175,19 @@ class Signuptext extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
+<<<<<<< HEAD
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Home()),
               );
+=======
+              Navigator.of(context).pop();
+
+              /* Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupPage()),
+              );*/
+>>>>>>> 11a3a2f5c2c50bfc6ef2791fb328644dfb29b473
             },
             child: Text(
               "Sign Up",
