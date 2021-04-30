@@ -22,9 +22,7 @@ class _DoctorsListState extends State<DoctorsList> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color:Theme.of(context).primaryColor )
-              
-             
+          icon: Icon(Icons.arrow_back, color:Theme.of(context).primaryColor )  
          ,
           onPressed: (){
             Navigator.of(context).pushNamed('/home', arguments:[widget.currentUser.name,widget.currentUser.phoneNumber]);

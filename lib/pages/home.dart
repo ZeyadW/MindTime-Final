@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:medico/pages/Welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:medico/models/users.dart';
 
 class Home extends StatefulWidget {
   final String value;
@@ -9,7 +12,28 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+var username;
+var email;
+
 class _HomeState extends State<Home> {
+  Future<bool> getUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    username = prefs.getString('username');
+    email = prefs.getString('email');
+    print("username in get user" + username);
+  }
+
+  _HomeState() {
+    getUser();
+  }
+
+  Future<Null> logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('username', null);
+    prefs.setString('email', null);
+    prefs.setBool('isLoggedIn', false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +57,14 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
+                          TextButton(
+                            child: Text('Logout'),
+                            onPressed: () {
+                              logout();
+                              Navigator.of(context).push(new MaterialPageRoute(
+                                  builder: (context) => Welcome()));
+                            },
+                          ),
                           Text(
                             'Medico',
                             style: TextStyle(
@@ -44,14 +76,14 @@ class _HomeState extends State<Home> {
                                   .withOpacity(0.8),
                             ),
                           ),
-                          Text(
-                            "${widget.value}",
+                          /* Text(
+                            "$username",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 16.0,
                               color: Theme.of(context).primaryColor,
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ],

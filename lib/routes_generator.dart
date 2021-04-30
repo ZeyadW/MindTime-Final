@@ -12,10 +12,11 @@ import 'package:medico/pages/createAccount.dart';
 import 'package:medico/pages/docotr_acount.dart';
 import 'package:medico/pages/doctors.dart';
 
-import 'package:medico/pages/phoneNumber_login.dart';
+import 'package:medico/pages/login.dart';
 import 'package:medico/pages/signup.dart';
 import 'package:medico/pages/tabs.dart';
 import 'package:medico/pages/verification_number.dart';
+import 'package:medico/pages/viewjournals.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -27,7 +28,7 @@ class RouteGenerator {
       case '/signup':
         return MaterialPageRoute(builder: (_) => SignUp());
       case '/phone':
-        return MaterialPageRoute(builder: (_) => PhoneLogin());
+        return MaterialPageRoute(builder: (_) => LoginPage());
       case '/verification':
         return MaterialPageRoute(
             builder: (_) => VerificationNumber(data: args));
@@ -46,6 +47,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => DoctorAcount());
       case '/firstDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookFirstStep());
+      case '/medecines':
+        return MaterialPageRoute(builder: (_) => ViewJournals());
       case '/secondeDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookSecondeStep());
       case '/thirdBookTest':

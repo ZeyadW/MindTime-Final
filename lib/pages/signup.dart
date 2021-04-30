@@ -60,7 +60,7 @@ class _SignUpState extends State<SignUp> {
                             image: AssetImage('images/cellphone-line.png'),
                         ),
                         Text(
-                          ' Phone Number', 
+                          ' Login', 
                           style:  TextStyle(
                             fontSize: 16.0, 
                             color: Theme.of(context).focusColor,
