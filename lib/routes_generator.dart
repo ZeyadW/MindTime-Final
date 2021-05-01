@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/pages/appointment.dart';
 import 'package:medico/pages/book-test-online3.dart';
 import 'package:medico/pages/book-test-online4.dart';
+import 'package:medico/pages/choosediary.dart';
 import 'package:medico/pages/doctor-book-1.dart';
 import 'package:medico/pages/doctor-book-2.dart';
 import 'package:medico/pages/health.dart';
@@ -48,7 +49,7 @@ class RouteGenerator {
       case '/firstDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookFirstStep());
       case '/medecines':
-        return MaterialPageRoute(builder: (_) => ViewJournals());
+        return MaterialPageRoute(builder: (_) => ChooseDiary());
       case '/secondeDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookSecondeStep());
       case '/thirdBookTest':

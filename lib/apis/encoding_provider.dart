@@ -44,7 +44,7 @@ class EncodingProvider {
     assert(File(videoPath).existsSync());
 
     // final Directory extDir = await getApplicationDocumentsDirectory();
-    
+
     final outPath = '$outDirPath/thumb.jpg';
     // final String outPath = '$videoPath.jpg';
     final List<String> arguments = [

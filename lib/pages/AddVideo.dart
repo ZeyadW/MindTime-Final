@@ -26,8 +26,6 @@ class VideoUpload extends StatefulWidget {
 }
 
 class _VideoUploadState extends State<VideoUpload> {
-  var email;
-
   final thumbWidth = 100;
   final thumbHeight = 150;
   List<VideoInfo> _videos = <VideoInfo>[];
@@ -38,7 +36,7 @@ class _VideoUploadState extends State<VideoUpload> {
   int _videoDuration = 0;
   String _processPhase = '';
   final bool _debugMode = false;
-
+  String FolderN = '';
   @override
   void initState() {
     FirebaseProvider.listenToVideos((newVideos) {
@@ -90,6 +88,7 @@ class _VideoUploadState extends State<VideoUpload> {
   Future<String> _uploadFile(filePath, folderName) async {
     final file = new File(filePath);
     final basename = p.basename(filePath);
+    FolderN = folderName;
 
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final StorageReference ref = FirebaseStorage.instance
@@ -113,12 +112,13 @@ class _VideoUploadState extends State<VideoUpload> {
 
   void _updatePlaylistUrls(File file, String videoName) {
     final lines = file.readAsLinesSync();
+    var userUID = FirebaseAuth.instance.currentUser.uid;
     var updatedLines = List<String>();
 
     for (final String line in lines) {
       var updatedLine = line;
       if (line.contains('.ts') || line.contains('.m3u8')) {
-        updatedLine = '$videoName%2F$line?alt=media';
+        updatedLine = '$userUID%2F$videoName%2F$line?alt=media';
       }
       updatedLines.add(updatedLine);
     }
@@ -159,12 +159,6 @@ class _VideoUploadState extends State<VideoUpload> {
   Future<void> _processVideo(File rawVideoFile) async {
     final String rand = '${new Random().nextInt(10000)}';
     final videoName = 'video$rand';
-    final mp4 = '.mp4';
-    final videoNameF = '$videoName$mp4';
-    final StorageReference ref =
-        FirebaseStorage.instance.ref().child('RawVideos').child(videoNameF);
-    StorageUploadTask uploadTask = ref.putFile(rawVideoFile);
-    uploadTask.events.listen(_onUploadProgress);
     final Directory extDir = await getApplicationDocumentsDirectory();
     final outDirPath = '${extDir.path}/Videos/$videoName';
     final videosDir = new Directory(outDirPath);
