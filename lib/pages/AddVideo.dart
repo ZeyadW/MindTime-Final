@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,6 +16,30 @@ import 'package:path/path.dart' as p;
 import 'package:medico/models/video_info.dart';
 import 'package:medico/widgets/player.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:http/http.dart' as http;
+
+class Video {
+  final int id;
+  final String VideoName;
+
+  Video({this.id, this.VideoName});
+
+  factory Video.fromJson(Map<String, dynamic> json) {
+    return Video(
+      id: json['id'],
+      VideoName: json['VideoName'],
+    );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 class VideoUpload extends StatefulWidget {
   VideoUpload({Key key, this.title}) : super(key: key);
@@ -26,8 +51,6 @@ class VideoUpload extends StatefulWidget {
 }
 
 class _VideoUploadState extends State<VideoUpload> {
-  var email;
-
   final thumbWidth = 100;
   final thumbHeight = 150;
   List<VideoInfo> _videos = <VideoInfo>[];
@@ -38,7 +61,8 @@ class _VideoUploadState extends State<VideoUpload> {
   int _videoDuration = 0;
   String _processPhase = '';
   final bool _debugMode = false;
-
+  String FolderN = '';
+  Future<Video> SendVidName;
   @override
   void initState() {
     FirebaseProvider.listenToVideos((newVideos) {
@@ -75,6 +99,8 @@ class _VideoUploadState extends State<VideoUpload> {
   }
 
   Future<bool> deleteVideo(id) async {
+    var userUID = FirebaseAuth.instance.currentUser.uid;
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
     await FirebaseFirestore.instance
@@ -83,13 +109,14 @@ class _VideoUploadState extends State<VideoUpload> {
         .collection('videos')
         .doc(id)
         .delete();
-
+    await FirebaseStorage.instance.ref().child('$userUID/$FolderN').delete();
     return true;
   }
 
   Future<String> _uploadFile(filePath, folderName) async {
     final file = new File(filePath);
     final basename = p.basename(filePath);
+    FolderN = folderName;
 
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final StorageReference ref = FirebaseStorage.instance
@@ -113,12 +140,13 @@ class _VideoUploadState extends State<VideoUpload> {
 
   void _updatePlaylistUrls(File file, String videoName) {
     final lines = file.readAsLinesSync();
+    var userUID = FirebaseAuth.instance.currentUser.uid;
     var updatedLines = List<String>();
 
     for (final String line in lines) {
       var updatedLine = line;
       if (line.contains('.ts') || line.contains('.m3u8')) {
-        updatedLine = '$videoName%2F$line?alt=media';
+        updatedLine = '$userUID%2F$videoName%2F$line?alt=media';
       }
       updatedLines.add(updatedLine);
     }
@@ -161,6 +189,7 @@ class _VideoUploadState extends State<VideoUpload> {
     final videoName = 'video$rand';
     final mp4 = '.mp4';
     final videoNameF = '$videoName$mp4';
+
     final StorageReference ref =
         FirebaseStorage.instance.ref().child('RawVideos').child(videoNameF);
     StorageUploadTask uploadTask = ref.putFile(rawVideoFile);
@@ -176,7 +205,6 @@ class _VideoUploadState extends State<VideoUpload> {
 
     final info = await EncodingProvider.getMediaInformation(copyPath);
     final aspectRatio = EncodingProvider.getAspectRatio(info);
-
     setState(() {
       _processPhase = 'Generating thumbnail';
       _videoDuration = EncodingProvider.getDuration(info);
@@ -224,6 +252,23 @@ class _VideoUploadState extends State<VideoUpload> {
       _progress = 0.0;
       _processing = false;
     });
+    Future<VideoInfo> sendVidToRestAPI(String vidName) async {
+      var VideoEnc = jsonEncode(<String, String>{
+        'Video Name': vidName,
+      });
+      print('REST API: ' + VideoEnc);
+
+      final response =
+          await http.post(Uri.http('143.198.113.232', '' + VideoEnc));
+      if (response.statusCode == 200) {
+        Video.fromJson(jsonDecode(response.body));
+      } else {
+        // return Album.fromJson(jsonDecode(response.body));
+        throw Exception(response.body);
+      }
+    }
+
+    sendVidToRestAPI(videoNameF);
   }
 
   void _takeVideo() async {

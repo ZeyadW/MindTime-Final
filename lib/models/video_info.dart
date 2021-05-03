@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 class VideoInfo {
   String videoUrl;
   String thumbUrl;
@@ -6,6 +8,7 @@ class VideoInfo {
   int uploadedAt;
   String videoName;
   String id;
+  Response sendAPI;
 
   VideoInfo(
       {this.videoUrl,
@@ -14,5 +17,6 @@ class VideoInfo {
       this.aspectRatio,
       this.uploadedAt,
       this.id,
+      this.sendAPI,
       this.videoName});
 }

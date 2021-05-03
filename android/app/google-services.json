@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "279640005461",
+    "firebase_url": "https://medicalme-9ea87-default-rtdb.firebaseio.com",
+    "project_id": "medicalme-9ea87",
+    "storage_bucket": "medicalme-9ea87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279640005461:android:ac2530f0a7875a5387eddc",
+        "android_client_info": {
+          "package_name": "com.example.medico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279640005461-6mt9gn8qhmbbevtggurtnifpso9ca6k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr-KqNQrnBLdNFEuxSMs5tLtc3Il2kYVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279640005461-6mt9gn8qhmbbevtggurtnifpso9ca6k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279640005461:android:f0b85b9cb9aeb98687eddc",
+        "android_client_info": {
+          "package_name": "com.example.project_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279640005461-6mt9gn8qhmbbevtggurtnifpso9ca6k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr-KqNQrnBLdNFEuxSMs5tLtc3Il2kYVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279640005461-6mt9gn8qhmbbevtggurtnifpso9ca6k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
