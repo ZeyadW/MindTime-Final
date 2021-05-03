@@ -57,7 +57,6 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                         
                           Text(
                             'Medico',
                             style: TextStyle(
@@ -103,7 +102,7 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/medecines');
+                          Navigator.of(context).pushNamed('/journals');
                         },
                         child: ball("images/pill.png",
                             Theme.of(context).scaffoldBackgroundColor),
@@ -164,7 +163,7 @@ class _HomeState extends State<Home> {
                   Column(
                     children: <Widget>[
                       Text(
-                        "Medicines",
+                        "Journals",
                         style: TextStyle(
                           fontSize: 12.0,
                           fontFamily: 'Poppins',
