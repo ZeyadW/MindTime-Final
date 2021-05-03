@@ -25,7 +25,7 @@ class _DoctorsListState extends State<DoctorsList> {
           icon: Icon(Icons.arrow_back, color:Theme.of(context).primaryColor )  
          ,
           onPressed: (){
-            Navigator.of(context).pushNamed('/home', arguments:[widget.currentUser.name,widget.currentUser.phoneNumber]);
+            Navigator.of(context).pushNamed('/home', arguments:[widget.currentUser.name]);
           },
         ),
         backgroundColor: Theme.of(context).accentColor,

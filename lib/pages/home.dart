@@ -57,14 +57,7 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          TextButton(
-                            child: Text('Logout'),
-                            onPressed: () {
-                              logout();
-                              Navigator.of(context).push(new MaterialPageRoute(
-                                  builder: (context) => Welcome()));
-                            },
-                          ),
+                         
                           Text(
                             'Medico',
                             style: TextStyle(
@@ -90,8 +83,8 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 80.0),
-                  padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                  margin: const EdgeInsets.only(top: 100.0),
+                  padding: const EdgeInsets.only(left: 15.0, right: 5.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -120,7 +113,17 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/bookTest');
+                          Navigator.of(context).pushNamed('/analysis');
+                        },
+                        child: ball("images/microscope.png",
+                            Theme.of(context).scaffoldBackgroundColor),
+                      ),
+                      FlatButton(
+                        padding: EdgeInsets.all(0),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(150)),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/tests');
                         },
                         child: ball("images/microscope.png",
                             Theme.of(context).scaffoldBackgroundColor),
@@ -132,7 +135,7 @@ class _HomeState extends State<Home> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 6.0, bottom: 6.0),
-              padding: const EdgeInsets.only(left: 30.0, right: 35.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,7 +193,27 @@ class _HomeState extends State<Home> {
                             color: Theme.of(context).focusColor),
                       ),
                       Text(
-                        "Book test",
+                        "view analysis",
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontFamily: 'Poppins',
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        "Tests",
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).focusColor),
+                      ),
+                      Text(
+                        "Answer tests",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',

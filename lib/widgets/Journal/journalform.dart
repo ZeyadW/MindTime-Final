@@ -61,15 +61,23 @@ class LoginFormState extends State<JournalForm> {
             ),
             child: TextFormField(
               controller: titlecontroller,
-              style: TextStyle(color: Colors.blue[900]),
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
+              ),
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
                   labelText: 'Enter Journal Title',
-                  labelStyle: TextStyle(color: Colors.blue[900]),
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue[900])),
+                      borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  )),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue[900]),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
                     borderRadius: BorderRadius.circular(21.0),
                   )),
               validator: (value) {
@@ -96,15 +104,23 @@ class LoginFormState extends State<JournalForm> {
               ),
               child: TextFormField(
                 controller: textcontroller,
-                style: TextStyle(color: Colors.blue[900]),
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                ),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
                     labelText: 'Enter Journal',
-                    labelStyle: TextStyle(color: Colors.blue[900]),
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).accentColor,
+                    ),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue[900])),
+                        borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    )),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue[900]),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).accentColor,
+                      ),
                       borderRadius: BorderRadius.circular(21.0),
                     )),
                 validator: (value) {
@@ -136,8 +152,8 @@ class LoginFormState extends State<JournalForm> {
               borderRadius: BorderRadius.circular(21.0),
               gradient: new LinearGradient(
                   colors: [
-                    Color.fromRGBO(18, 11, 232, 1.0),
-                    Color.fromRGBO(107, 164, 249, 1.0)
+                    Theme.of(context).accentColor,
+                    Theme.of(context).accentColor,
                   ],
                   begin: const FractionalOffset(0.1, 1.0),
                   end: const FractionalOffset(0.8, 0.5),

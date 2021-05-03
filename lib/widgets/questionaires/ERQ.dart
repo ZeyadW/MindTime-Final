@@ -79,7 +79,7 @@ class _ErqState extends State<Erq> {
                       bottomRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(30.0),
                       topLeft: Radius.circular(30.0)),
-                  color: Colors.blue[900],
+                  color: Theme.of(context).accentColor,
                 ),
                 child: Column(
                   children: [

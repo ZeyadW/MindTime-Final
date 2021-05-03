@@ -13,9 +13,9 @@ class ChooseDiary extends StatelessWidget {
         size: Size(80, 80), // button width and height
         child: ClipOval(
           child: Material(
-            color: Colors.blue[900], // button color
+            color: Theme.of(context).accentColor, // button color
             child: InkWell(
-              splashColor: Colors.blue, // splash color
+              splashColor: Theme.of(context).accentColor, // splash color
               onTap: () {
                 Navigator.push(
                   context,
@@ -50,7 +50,7 @@ class ChooseDiary extends StatelessWidget {
               size: Size(80, 80), // button width and height
               child: ClipOval(
                 child: Material(
-                  color: Colors.blue[900], // button color
+                  color: Theme.of(context).accentColor, // button color
                   child: InkWell(
                     splashColor: Colors.blue, // splash color
                     onTap: () {
@@ -84,7 +84,7 @@ class ChooseDiary extends StatelessWidget {
               size: Size(80, 80), // button width and height
               child: ClipOval(
                 child: Material(
-                  color: Colors.blue[900], // button color
+                  color: Theme.of(context).accentColor, // button color
                   child: InkWell(
                     splashColor: Colors.blue, // splash color
                     onTap: () {}, // button pressed
@@ -114,7 +114,7 @@ class ChooseDiary extends StatelessWidget {
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Theme.of(context).accentColor,
 
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),

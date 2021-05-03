@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:medico/pages/EditProfile.dart';
 import 'package:medico/pages/appointment.dart';
 import 'package:medico/pages/book-test-online3.dart';
 import 'package:medico/pages/book-test-online4.dart';
 import 'package:medico/pages/doctor-book-1.dart';
 import 'package:medico/pages/doctor-book-2.dart';
+import 'package:medico/pages/emergencycontact.dart';
 import 'package:medico/pages/health.dart';
 import 'package:medico/pages/my-doctors.dart';
 import 'package:medico/pages/Welcome.dart';
@@ -13,10 +15,13 @@ import 'package:medico/pages/docotr_acount.dart';
 import 'package:medico/pages/doctors.dart';
 
 import 'package:medico/pages/login.dart';
+import 'package:medico/pages/questionairescreen.dart';
 import 'package:medico/pages/signup.dart';
+import 'package:medico/pages/statsscreen.dart';
 import 'package:medico/pages/tabs.dart';
 import 'package:medico/pages/verification_number.dart';
 import 'package:medico/pages/viewjournals.dart';
+import 'package:medico/widgets/stats/stat.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -37,7 +42,7 @@ class RouteGenerator {
       case '/home':
         return MaterialPageRoute(
             builder: (_) => TabsWidget(
-                  acountInfos: args,
+                //acountInfos: args,
                 ));
       case '/chat':
         return MaterialPageRoute(builder: (_) => ChatWidget());
@@ -62,6 +67,18 @@ class RouteGenerator {
       case '/health':
         return MaterialPageRoute(builder: (_) => HealthTips());
 
+      case '/analysis':
+        return MaterialPageRoute(builder: (_) => Statscreen());
+      case '/tests':
+        return MaterialPageRoute(builder: (_) => Questioanires());
+
+      case '/logout':
+        return MaterialPageRoute(builder: (context) => Welcome());
+      case '/emerge':
+        return MaterialPageRoute(
+            builder: (context) => ViewEmergencyContactscreen());
+      case '/editprofile':
+        return MaterialPageRoute(builder: (context) => EditProfilePage());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

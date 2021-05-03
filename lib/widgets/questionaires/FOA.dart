@@ -135,7 +135,7 @@ class _FoaState extends State<Foa> {
                             bottomRight: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0),
                             topLeft: Radius.circular(30.0)),
-                        color: Colors.blue[900],
+                        color: Theme.of(context).accentColor,
                       ),
                       child: Center(
                         child: Text(questions[i].toString(),

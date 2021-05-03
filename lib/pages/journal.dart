@@ -12,8 +12,7 @@ class _Journal extends State<Journal> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Journal '),
-        backgroundColor: Colors.blue[900],
-        
+        backgroundColor: Theme.of(context).accentColor,
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

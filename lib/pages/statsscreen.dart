@@ -14,12 +14,19 @@ class _StatscreenState extends State<Statscreen> {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/home');
+          },
+        ),
+
         title: Text(
           'Data input Statistics:',
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Theme.of(context).accentColor,
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
       body: Stat(),

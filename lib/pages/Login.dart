@@ -21,14 +21,11 @@ class LoginPage extends StatelessWidget {
       children: [
         Text(
           'Enter your login details to access your account',
-          style: TextStyle(fontSize: 15, color: Colors.blue[900]),
+          style: TextStyle(fontSize: 15, color: Colors.grey),
         ),
       ],
     );
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-      ),
       body: Center(
           child: Container(
               child: new SingleChildScrollView(

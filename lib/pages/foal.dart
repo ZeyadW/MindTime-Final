@@ -20,7 +20,7 @@ class _FoalState extends State<Foal> {
           style: TextStyle(
               fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Theme.of(context).accentColor,
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
       body: SingleChildScrollView(child: Center(child: Foa())),

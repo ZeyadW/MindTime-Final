@@ -10,7 +10,7 @@ class Addjournalbutton extends StatelessWidget {
     return Container(
       width: 850,
       height: 70,
-      color: Colors.blue[900],
+      color: Theme.of(context).accentColor,
       margin: EdgeInsets.only(left: 0.0, top: 0.0, right: 20.0, bottom: 0.0),
       child: Row(children: [
         Padding(

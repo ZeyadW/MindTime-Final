@@ -51,8 +51,8 @@ class EditJournalState extends State<EditJournal> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(padding: EdgeInsets.fromLTRB(30, 20, 30, 0)),
           Container(
+            height: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
               color: const Color(0xffffffff),
@@ -64,41 +64,29 @@ class EditJournalState extends State<EditJournal> {
                 ),
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(21.0),
-                color: const Color(0xffffffff),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x21329d9c),
-                    offset: Offset(0, 13),
-                    blurRadius: 34,
-                  ),
-                ],
+            child: TextFormField(
+              controller: textcontroller,
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
               ),
-              child: TextFormField(
-                controller: textcontroller,
-                style: TextStyle(color: Colors.green),
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
-                    labelText: "Diary",
-                    labelStyle: TextStyle(color: Colors.green),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green)),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green),
-                      borderRadius: BorderRadius.circular(21.0),
-                    )),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
+              decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  )),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(21.0),
+                  )),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -115,41 +103,45 @@ class EditJournalState extends State<EditJournal> {
               ],
             ),
           ),
-          Padding(padding: const EdgeInsets.symmetric(vertical: 5.0)),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              gradient: RadialGradient(
-                center: Alignment(-0.88, -1.0),
-                radius: 1.35,
-                colors: [const Color(0xff7be495), const Color(0xff329d9c)],
-                stops: [0.0, 1.0],
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x36329d9c),
-                  offset: Offset(15, 15),
-                  blurRadius: 40,
+          Padding(padding: const EdgeInsets.symmetric(vertical: 25.0)),
+          Center(
+            child: Container(
+              width: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(21.0),
+                gradient: RadialGradient(
+                  center: Alignment(-0.88, -1.0),
+                  radius: 1.35,
+                  colors: [Colors.white, Colors.white],
+                  stops: [0.0, 1.0],
                 ),
-              ],
-            ),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: FlatButton(
-                onPressed: () {
-                  // Validate returns true if the form is valid, or false
-                  // otherwise.
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0x36329d9c),
+                    offset: Offset(15, 15),
+                    blurRadius: 40,
+                  ),
+                ],
+              ),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: FlatButton(
+                  onPressed: () {
+                    // Validate returns true if the form is valid, or false
+                    // otherwise.
 
-                  if (_formKey.currentState.validate()) {
-                    // If the form is valid, display a Snackbar.
-                    UpdateJournal(this.diary, textcontroller, titlecontroller);
-                  }
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ViewJournals()),
-                  );
-                },
-                child: Text('Update'),
+                    if (_formKey.currentState.validate()) {
+                      // If the form is valid, display a Snackbar.
+                      UpdateJournal(
+                          this.diary, textcontroller, titlecontroller);
+                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ViewJournals()),
+                    );
+                  },
+                  child: Text('Update'),
+                ),
               ),
             ),
           )
@@ -165,7 +157,7 @@ class EditJournalState extends State<EditJournal> {
         child: new SingleChildScrollView(
       child: Container(
         width: 385.1,
-        height: 475.2,
+        height: 375.2,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(34.0),
@@ -173,7 +165,7 @@ class EditJournalState extends State<EditJournal> {
             bottomRight: Radius.circular(34.0),
             bottomLeft: Radius.circular(34.0),
           ),
-          color: Colors.white,
+          color: Theme.of(context).accentColor,
         ),
         child: UpdateForm(),
       ),

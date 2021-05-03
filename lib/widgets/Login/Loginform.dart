@@ -107,11 +107,13 @@ class LoginFormState extends State<LoginForm> {
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.perm_identity),
                     labelText: 'Enter your Email',
-                    labelStyle: TextStyle(color: Colors.blue[900]),
+                    labelStyle: TextStyle(color: Theme.of(context).accentColor),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue[900])),
+                        borderSide:
+                            BorderSide(color: Theme.of(context).accentColor)),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue[900]),
+                      borderSide:
+                          BorderSide(color: Theme.of(context).accentColor),
                       borderRadius: BorderRadius.circular(21.0),
                     )),
                 validator: (value) {
@@ -144,7 +146,7 @@ class LoginFormState extends State<LoginForm> {
               controller: passwordcontroller,
               focusNode: myFocusNode,
               obscureText: !_passwordVisible,
-              style: TextStyle(color: Colors.blue[900]),
+              style: TextStyle(color: Theme.of(context).accentColor),
               decoration: InputDecoration(
                   prefixIcon: IconButton(
                     icon: Icon(
@@ -161,11 +163,13 @@ class LoginFormState extends State<LoginForm> {
                     },
                   ),
                   labelText: 'Enter your password',
-                  labelStyle: TextStyle(color: Colors.blue[900]),
+                  labelStyle: TextStyle(color: Theme.of(context).accentColor),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue[900])),
+                      borderSide:
+                          BorderSide(color: Theme.of(context).accentColor)),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue[900]),
+                    borderSide:
+                        BorderSide(color: Theme.of(context).accentColor),
                     borderRadius: BorderRadius.circular(21.0),
                   )),
               validator: (value) {
@@ -185,10 +189,7 @@ class LoginFormState extends State<LoginForm> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
               gradient: new LinearGradient(
-                  colors: [
-                    Color.fromRGBO(18, 11, 232, 1.0),
-                    Color.fromRGBO(107, 164, 249, 1.0)
-                  ],
+                  colors: [Colors.white, Colors.white],
                   begin: const FractionalOffset(0.1, 1.0),
                   end: const FractionalOffset(0.8, 0.5),
                   stops: [0.0, 1.0],
@@ -198,11 +199,8 @@ class LoginFormState extends State<LoginForm> {
                     color: const Color(0xff000000),
                     offset: Offset(0, 13),
                     blurRadius: 15,
-                    spreadRadius: -10.0),
+                    spreadRadius: -15.0),
               ],
-              border: Border.all(
-                color: Colors.black,
-              ),
             ),
             child: Align(
               alignment: Alignment.topCenter,

@@ -5,39 +5,40 @@ import 'package:medico/pages/conversations.dart' as prefix0;
 import 'home.dart';
 
 class TabsWidget extends StatefulWidget {
-
   final List<String> acountInfos;
-  
+
   const TabsWidget({Key key, this.acountInfos}) : super(key: key);
 
-  
   @override
   State<StatefulWidget> createState() {
     return _BubblesState();
   }
 }
 
-class _BubblesState extends State<TabsWidget> with SingleTickerProviderStateMixin {
+class _BubblesState extends State<TabsWidget>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   int _page = 0;
   String currentTitle = 'Home';
-  Widget _currentPage (int page){
-    switch (page){
-      case 0 :
+  Widget _currentPage(int page) {
+    switch (page) {
+      case 0:
         currentTitle = 'Home';
-        return Home(value: "${widget.acountInfos[0]}");
-      case 1 :
-        currentTitle = 'chat';  
+        return Home(//value: "${widget.acountInfos[0]}"
+            );
+      case 1:
+        currentTitle = 'chat';
         return prefix0.Conversation();
-      case 2 :
+      case 2:
         currentTitle = 'profile';
-        return AcountWidget(acountInfos: ["${widget.acountInfos[0]}","${widget.acountInfos[1]}"],);
+        return AcountWidget(
+            //acountInfos: ["${widget.acountInfos[0]}","${widget.acountInfos[1]}"],
+            );
       default:
         currentTitle = 'Home';
-        return Home(value: "${widget.acountInfos[0]}");
-
+        return Home(//value: "${widget.acountInfos[0]}"
+            );
     }
-    
   }
 
   @override
@@ -53,9 +54,21 @@ class _BubblesState extends State<TabsWidget> with SingleTickerProviderStateMixi
       bottomNavigationBar: CurvedNavigationBar(
         initialIndex: 0,
         items: <Widget>[
-          Icon(Icons.home, size: 25,color: Theme.of(context).primaryColor,),
-          Icon(Icons.chat, size: 25,color: Theme.of(context).primaryColor,),
-          Icon(Icons.perm_identity, size: 25,color: Theme.of(context).primaryColor,),
+          Icon(
+            Icons.home,
+            size: 25,
+            color: Theme.of(context).primaryColor,
+          ),
+          Icon(
+            Icons.chat,
+            size: 25,
+            color: Theme.of(context).primaryColor,
+          ),
+          Icon(
+            Icons.perm_identity,
+            size: 25,
+            color: Theme.of(context).primaryColor,
+          ),
         ],
         color: Theme.of(context).accentColor,
         buttonBackgroundColor: Theme.of(context).accentColor,
