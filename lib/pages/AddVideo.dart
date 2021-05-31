@@ -259,7 +259,7 @@ class _VideoUploadState extends State<VideoUpload> {
       print('REST API: ' + VideoEnc);
 
       final response =
-          await http.post(Uri.http('143.198.113.232', '' + VideoEnc));
+          await http.post(Uri.http('143.198.113.232', '' + vidName));
       if (response.statusCode == 200) {
         Video.fromJson(jsonDecode(response.body));
       } else {
