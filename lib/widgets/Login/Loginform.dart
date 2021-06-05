@@ -186,10 +186,11 @@ class LoginFormState extends State<LoginForm> {
           ),
           Padding(padding: const EdgeInsets.symmetric(vertical: 5.0)),
           Container(
+            //color: Theme.of(context).accentColor,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
               gradient: new LinearGradient(
-                  colors: [Colors.white, Colors.white],
+                  colors: [Theme.of(context).accentColor, Colors.blue[200]],
                   begin: const FractionalOffset(0.1, 1.0),
                   end: const FractionalOffset(0.8, 0.5),
                   stops: [0.0, 1.0],

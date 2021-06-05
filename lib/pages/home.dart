@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:medico/pages/Welcome.dart';
+//import 'package:medico/pages/Welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:medico/models/users.dart';
+//import 'package:medico/models/users.dart';
 
 class Home extends StatefulWidget {
   final String value;
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Medico',
+                            'MindTime',
                             style: TextStyle(
                               fontSize: 22.0,
                               fontFamily: 'Poppins',

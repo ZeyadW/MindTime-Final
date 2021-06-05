@@ -20,11 +20,6 @@ class Contact {
   Contact.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
-  /*List allcontacts() {
-    this.fromMap(snapshot.data(), reference: snapshot.reference);
-    snapshot.map((data) => _buildListItem(context, data)).toList();
-  }*/
-
   Future<bool> addcontact(phonecontroller, namecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');

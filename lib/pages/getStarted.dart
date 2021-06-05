@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class GetStarted extends StatefulWidget {
   @override
   _GetStartedState createState() => _GetStartedState();
@@ -11,9 +12,9 @@ class _GetStartedState extends State<GetStarted> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image:AssetImage('images/image-home.jpeg'),
+            image: AssetImage('images/image-home.jpeg'),
             fit: BoxFit.cover,
-            ),
+          ),
         ),
         child: Container(
           decoration: BoxDecoration(
@@ -26,14 +27,13 @@ class _GetStartedState extends State<GetStarted> {
                 Container(
                   margin: EdgeInsets.all(12.0),
                   child: Text(
-                    'Welcome To \n Medico',
+                    'Welcome To \n MindTime',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color:Theme.of(context).primaryColor.withOpacity(0.8),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                      fontFamily: "Poppins"
-                    ),
+                        color: Theme.of(context).primaryColor.withOpacity(0.8),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30.0,
+                        fontFamily: "Poppins"),
                   ),
                 ),
               ],

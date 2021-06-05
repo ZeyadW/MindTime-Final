@@ -33,13 +33,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Welcome());
       case '/signup':
         return MaterialPageRoute(builder: (_) => SignUp());
-      case '/phone':
+      case '/login':
         return MaterialPageRoute(builder: (_) => LoginPage());
       case '/verification':
         return MaterialPageRoute(
             builder: (_) => VerificationNumber(data: args));
-      case '/createAcount':
-        return MaterialPageRoute(builder: (_) => CreateAcount());
+      case '/createaccount':
+        return MaterialPageRoute(builder: (_) => SignupPage());
       case '/home':
         return MaterialPageRoute(
             builder: (_) => TabsWidget(

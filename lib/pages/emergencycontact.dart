@@ -25,8 +25,6 @@ class ViewEmergencyContactscreen extends StatelessWidget {
       body: Column(
         children: [
           Addemergencybutton(),
-          // Listemergencycontacts(),
-          //_buildListView(),
           Consumer<ContactProvider>(
               builder: (context, counter, child) => Listemergencycontacts())
         ],

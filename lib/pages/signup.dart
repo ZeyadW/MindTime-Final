@@ -7,6 +7,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  static const IconData account_circle_outlined =
+      IconData(0xee35, fontFamily: 'MaterialIcons');
   User currentUser = new User.init().getCurrentUser();
   @override
   Widget build(BuildContext context) {
@@ -37,20 +39,20 @@ class _SignUpState extends State<SignUp> {
           ),
           Container(
             margin: EdgeInsets.only(top: 50.0, right: 50.0, left: 50.0),
-            height: 40,
+            height: 50,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.10),
+                    color: Theme.of(context).focusColor.withOpacity(0.2),
                     offset: Offset(0, 4),
-                    blurRadius: 10)
+                    blurRadius: 20)
               ],
             ),
             child: RaisedButton(
               elevation: 0.2,
               color: Theme.of(context).primaryColor,
               onPressed: () {
-                Navigator.of(context).pushNamed('/phone');
+                Navigator.of(context).pushNamed('/login');
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
@@ -60,9 +62,7 @@ class _SignUpState extends State<SignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: AssetImage('images/cellphone-line.png'),
-                      ),
+                      Icon(Icons.login),
                       Text(
                         ' Login',
                         style: TextStyle(
@@ -80,11 +80,11 @@ class _SignUpState extends State<SignUp> {
           ),
           Container(
             margin: EdgeInsets.only(top: 20.0, right: 50.0, left: 50.0),
-            height: 40,
+            height: 50,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    color: Theme.of(context).focusColor.withOpacity(0.10),
+                    color: Theme.of(context).focusColor.withOpacity(0.2),
                     offset: Offset(0, 4),
                     blurRadius: 20)
               ],
@@ -94,8 +94,8 @@ class _SignUpState extends State<SignUp> {
               color: Theme.of(context).primaryColor,
               onPressed: () {
                 Navigator.of(context).pushNamed(
-                    "/home" //,arguments: [currentUser.name,currentUser.phoneNumber]
-                    );
+                  "/createaccount",
+                );
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
@@ -105,55 +105,9 @@ class _SignUpState extends State<SignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: AssetImage('images/facebook-fill.png'),
-                      ),
+                      Icon(Icons.create),
                       Text(
-                        ' Facebook',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Theme.of(context).focusColor,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20.0, right: 50.0, left: 50.0),
-            height: 40,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.10),
-                    offset: Offset(0, 4),
-                    blurRadius: 10)
-              ],
-            ),
-            child: RaisedButton(
-              elevation: 0.2,
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pushNamed("/home",
-                    arguments: [currentUser.name, currentUser.phoneNumber]);
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Container(
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('images/google-fill.png'),
-                      ),
-                      Text(
-                        ' Google',
+                        ' SignUp',
                         style: TextStyle(
                           fontSize: 16.0,
                           color: Theme.of(context).focusColor,
@@ -183,28 +137,6 @@ class _SignUpState extends State<SignUp> {
           SizedBox(
             height: 40,
           ),
-          /*Container(
-              child:Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children:[
-                  Container(
-                    height: 40.0,width: 70.0,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.transparent.withOpacity(0.10), offset: Offset(0,4), blurRadius: 10)
-                      ],
-                      borderRadius: BorderRadius.only(
-                        topLeft:Radius.circular(80.0),
-                        topRight: Radius.circular(0.0),
-                        bottomLeft: Radius.circular(0.0),
-                      ),
-                      color: Colors.transparent.withOpacity(0.1),
-                    ),
-                  ),
-                ],
-              ),   
-            ),*/
         ],
       ),
     );

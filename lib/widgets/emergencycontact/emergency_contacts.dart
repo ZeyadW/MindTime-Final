@@ -11,7 +11,6 @@ class Listemergencycontacts extends StatefulWidget {
 }
 
 class _Listemergencycontacts extends State<Listemergencycontacts> {
-  //EmergencyContact kk = new EmergencyContact();
   String email;
 
   Future<void> www() async {
