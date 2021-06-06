@@ -63,6 +63,9 @@ class LoginFormState extends State<LoginForm> {
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context, rootNavigator: true).pop();
+
         Navigator.of(context).pushNamed('/home', arguments: [this.username]);
 
 //        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => Home()));
@@ -75,8 +78,7 @@ class LoginFormState extends State<LoginForm> {
       ),
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context)
-            .push(new MaterialPageRoute(builder: (context) => LoginPage()));
+        // Navigator.of(context).push(new MaterialPageRoute(builder: (context) => LoginPage()));
       },
     );
     // Build a Form widget using the _formKey created above.

@@ -6,6 +6,7 @@ import 'package:medico/Service/FlutterFireauth.dart';
 
 import 'package:medico/Pages/home.dart';
 import 'package:date_field/date_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
@@ -35,12 +36,12 @@ class SignUpFormState extends State<SignUpForm> {
 
   static final validCharactersPassword = RegExp(r'^[a-zA-Z0-9_\-=@\.;{6,}+$]');
   static final validateDate = RegExp("[0-9/]");
-  Users u = new Users();
+  Users users = new Users();
+  User u = new User();
 
   final usernamecontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final emergencycontactnamecontroller = TextEditingController();
-  //final datecontroller = TextEditingController();
   final emergencycontactcontroller = TextEditingController();
   final emailcontroller = TextEditingController();
   DateTime selectedDate;
@@ -51,18 +52,24 @@ class SignUpFormState extends State<SignUpForm> {
         "Ok",
       ),
       onPressed: () async {
-        String shouldNavigate =
-            await register(emailcontroller.text, passwordcontroller.text);
-        print(shouldNavigate);
-        print(usernamecontroller.text);
-        print("datee to string before signup");
-        print(selectedDate.toString());
-        if (shouldNavigate == "S") {
-          Navigator.of(context, rootNavigator: true).pop();
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Home()
-                  /*.ut(
+        u = users.signup(
+            usernamecontroller.text,
+            passwordcontroller.text,
+            emergencycontactnamecontroller.text,
+            // datecontroller.text,
+            selectedDate.toString(),
+            emailcontroller.text,
+            emergencycontactcontroller.text);
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('username', usernamecontroller.text);
+        prefs.setString('email', emailcontroller.text);
+        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context).pushNamed('/home', arguments: [u.username]);
+/*
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Home()
+                /.ut(
                       u: u.signup(
                           usernamecontroller.text,
                           passwordcontroller.text,
@@ -71,19 +78,8 @@ class SignUpFormState extends State<SignUpForm> {
                           selectedDate.toString(),
                           emailcontroller.text,
                           emergencycontactcontroller.text))
-                          */
-                  ));
-        }
-        /*  Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context).push(new MaterialPageRoute(
-            builder: (context) => HomePage(
-                u: u.signup(
-                    usernamecontroller.text,
-                    passwordcontroller.text,
-                    emergencycontactnamecontroller.text,
-                    datecontroller.text,
-                    emailcontroller.text,
-                    emergencycontactcontroller.text))));*/
+                          /
+                ));*/
       },
     );
 
@@ -364,7 +360,7 @@ class SignUpFormState extends State<SignUpForm> {
                   if (_formKey.currentState.validate()) {
                     String shouldNavigate = await register(
                         emailcontroller.text, passwordcontroller.text);
-                    if (shouldNavigate != "S") {
+                    if (shouldNavigate != "Account Created Successfully") {
                       return showDialog(
                         context: context,
                         builder: (context) {

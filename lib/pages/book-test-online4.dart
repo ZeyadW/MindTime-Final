@@ -372,7 +372,7 @@ class _BookTestsOnlineFourthStepState extends State<BookTestsOnlineFourthStep> {
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
                     Navigator.of(context).pushNamed("/home",
-                        arguments: [currentUser.name, currentUser.phoneNumber]);
+                        arguments: [currentUser.name, currentUser.email]);
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),

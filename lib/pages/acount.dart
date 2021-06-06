@@ -58,7 +58,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "+ ${currentUser.phoneNumber}",
+                            "+ ${currentUser.email}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Poppins',

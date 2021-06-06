@@ -15,30 +15,25 @@ class EditProfileForm extends StatefulWidget {
 }
 
 class EditProfileFormState extends State<EditProfileForm> {
-  EditProfileFormState();
+  //EditProfileFormState();
   var email;
   var username;
   var _passwordVisible;
-  //var variable;
   FocusNode myFocusNode;
   @override
   void initState() {
     _passwordVisible = false;
     super.initState();
-    // getUser();
     myFocusNode = FocusNode();
   }
 
-  /*Future<bool> getUser() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    this.username = prefs.getString('username');
-    DocumentSnapshot variable =
-        await FirebaseFirestore.instance.collection('Users').doc(email).get();
-    print(variable);
+  void passwordicon() {
     setState(() {
-      email = prefs.getString('email');
+      print("new password set state");
+      _passwordVisible = !_passwordVisible;
     });
-  }*/
+    // _passwordVisible = !_passwordVisible;
+  }
 
   Future<bool> EditProfile(usernamecontroller, selectedDate, passwordcontroller,
       newpasswordcontroller) async {
@@ -114,11 +109,6 @@ class EditProfileFormState extends State<EditProfileForm> {
     return true;
   }
 
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
   static final validCharactersPassword = RegExp(r'^[a-zA-Z0-9_\-=@\.;{6,}+$]');
   String convertDateTimeDisplay(String date) {
@@ -132,21 +122,10 @@ class EditProfileFormState extends State<EditProfileForm> {
   @override
   Widget build(BuildContext context) {
     DateTime selectedDate;
-
-    //var username = variable.get("username");
-
-    /*   print('hamada');
-    print(variable.get("username"));
-    print('hamada');
-    var birthdate = variable.get("birthdate");
-    print(birthdate);
-    var finaldate = convertDateTimeDisplay(birthdate);*/
     final usernamecontroller = TextEditingController(); //text: username);
     final passwordcontroller = TextEditingController();
     final newpasswordcontroller = TextEditingController();
-    //final datecontroller = TextEditingController(text: finaldate);
 
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Column(
@@ -274,6 +253,45 @@ class EditProfileFormState extends State<EditProfileForm> {
             child: TextFormField(
               controller: passwordcontroller,
               obscureText: !_passwordVisible,
+              style: TextStyle(color: Colors.blue[900]),
+              decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        print("set state ");
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.blue[900]),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue[900])),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue[900]),
+                    borderRadius: BorderRadius.circular(21.0),
+                  )),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                if (!value.contains(validCharactersPassword)) {
+                  return 'Please enter the correct format';
+                }
+
+                return "";
+              },
+            ),
+
+            /*TextFormField(
+              controller: passwordcontroller,
+              obscureText: !_passwordVisible,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),
@@ -286,7 +304,6 @@ class EditProfileFormState extends State<EditProfileForm> {
                       color: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
                         _passwordVisible = !_passwordVisible;
                       });
@@ -312,7 +329,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 }
                 return null;
               },
-            ),
+            ),*/
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
           Container(
@@ -330,7 +347,7 @@ class EditProfileFormState extends State<EditProfileForm> {
             child: TextFormField(
               controller: newpasswordcontroller,
               obscureText: !_passwordVisible,
-              style: TextStyle(color: Colors.green),
+              style: TextStyle(color: Colors.blueAccent),
               decoration: InputDecoration(
                   prefixIcon: IconButton(
                     icon: Icon(
@@ -340,10 +357,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                       color: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
+                      passwordicon();
                     },
                   ),
                   labelText: 'New Password',
@@ -364,7 +378,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 if (!value.contains(validCharactersPassword)) {
                   return 'Please enter the correct format';
                 }
-                return null;
+                return "";
               },
             ),
           ),

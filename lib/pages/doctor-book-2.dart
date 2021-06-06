@@ -294,7 +294,7 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
                     Navigator.of(context).pushNamed("/home",
-                        arguments: [currentUser.name, currentUser.phoneNumber]);
+                        arguments: [currentUser.name, currentUser.email]);
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),

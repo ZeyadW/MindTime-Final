@@ -30,7 +30,7 @@ Future<String> register(String email, String password) async {
 
     print("fire auth");
     print(FirebaseAuth.instance.currentUser.uid);
-    return "S";
+    return "Account Created Successfully";
   } on FirebaseAuthException catch (e) {
     print("fire eerr");
     print(e);
@@ -39,6 +39,7 @@ Future<String> register(String email, String password) async {
     } else if (e.code == 'email-already-in-use') {
       return 'The account already exists for that email.';
     }
+    return "No Internet Connection";
   } catch (e) {
     print("fire auth   catch");
     print(e.toString());

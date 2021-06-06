@@ -1,23 +1,30 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class User {
   String id = UniqueKey().toString();
   String name;
-  String phoneNumber;
+  String email;
   String gender;
   DateTime dateOfBirth;
   String avatar;
 
   User.init();
 
-  User.basic(this.name, this.phoneNumber);
+  User.basic(this.name, this.email);
 
   User.advanced(
-      this.name, this.gender, this.dateOfBirth, this.avatar, this.phoneNumber);
+      this.name, this.gender, this.dateOfBirth, this.avatar, this.email);
+
+  Future<void> getUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.name = prefs.getString('username');
+    this.email = prefs.getString('email');
+  }
 
   User getCurrentUser() {
-    return User.advanced('Mathis Louise', 'Male', DateTime(1993, 12, 31),
-        'images/imageuser.png', "494899650012");
+    getUser();
+    return User.basic(this.name, this.email);
   }
 
   getDateOfBirth() {
