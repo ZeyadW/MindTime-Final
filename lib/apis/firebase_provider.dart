@@ -8,12 +8,12 @@ class FirebaseProvider {
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
-    await Firestore.instance
+    await FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
         .collection('videos')
         .doc()
-        .setData({
+        .set({
       'videoUrl': video.videoUrl,
       'thumbUrl': video.thumbUrl,
       'coverUrl': video.coverUrl,
@@ -26,7 +26,7 @@ class FirebaseProvider {
   static listenToVideos(callback) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
-    Firestore.instance
+    FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
         .collection('videos')
@@ -38,7 +38,7 @@ class FirebaseProvider {
   }
 
   static mapQueryToVideoInfo(QuerySnapshot qs) {
-    return qs.documents.map((DocumentSnapshot ds) {
+    return qs.docs.map((DocumentSnapshot ds) {
       return VideoInfo(
         videoUrl: ds.data()['videoUrl'],
         thumbUrl: ds.data()['thumbUrl'],
