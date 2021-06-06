@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'package:medico/models/emergencycontact.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,7 +49,7 @@ class Users {
     prefs.setString('username', username);
     prefs.setString('email', email);
 
-    await Firestore.instance.collection("Users").document(email).setData({
+    await FirebaseFirestore.instance.collection("Users").doc(email).set({
       'emergencyphone': emergencycontact,
       'emergencyname': emergencyname,
       'birthdate': date,
@@ -57,7 +57,7 @@ class Users {
       'username': username,
     });
 
-    await Firestore.instance
+    await FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
         .collection('EmergecyContacts')
@@ -92,7 +92,7 @@ class Users {
       if (passworduser == password) {
         this.username = variable.get("username");
         this.phone = variable.get("emergencyphone");
-        print("username in user model"+ this.username);
+        print("username in user model" + this.username);
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('username', this.username);
         prefs.setString('email', email);

@@ -51,13 +51,13 @@ class SignUpFormState extends State<SignUpForm> {
         "Ok",
       ),
       onPressed: () async {
-        bool shouldNavigate =
+        String shouldNavigate =
             await register(emailcontroller.text, passwordcontroller.text);
         print(shouldNavigate);
         print(usernamecontroller.text);
         print("datee to string before signup");
         print(selectedDate.toString());
-        if (shouldNavigate) {
+        if (shouldNavigate == "S") {
           Navigator.of(context, rootNavigator: true).pop();
           Navigator.push(
               context,
@@ -84,6 +84,16 @@ class SignUpFormState extends State<SignUpForm> {
                     datecontroller.text,
                     emailcontroller.text,
                     emergencycontactcontroller.text))));*/
+      },
+    );
+
+    /* Widget build(BuildContext context) {*/
+    Widget okButton2 = FlatButton(
+      child: Text(
+        "Ok",
+      ),
+      onPressed: () async {
+        Navigator.of(context, rootNavigator: true).pop();
       },
     );
     // Build a Form widget using the _formKey created above.
@@ -350,20 +360,31 @@ class SignUpFormState extends State<SignUpForm> {
             child: Align(
               alignment: Alignment.topCenter,
               child: FlatButton(
-                onPressed: () {
-                  // Validate returns true if the form is valid, or false
-                  // otherwise.
-
+                onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    return showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          content: Text("Account created successfully"),
-                          actions: [okButton],
-                        );
-                      },
-                    );
+                    String shouldNavigate = await register(
+                        emailcontroller.text, passwordcontroller.text);
+                    if (shouldNavigate != "S") {
+                      return showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text(shouldNavigate),
+                            actions: [okButton2],
+                          );
+                        },
+                      );
+                    } else {
+                      return showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text(shouldNavigate),
+                            actions: [okButton],
+                          );
+                        },
+                      );
+                    }
                   }
                 },
                 child: Text('Sign Up'),
