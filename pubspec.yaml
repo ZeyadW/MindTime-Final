@@ -12,7 +12,7 @@ description: Medico_APp
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
+publish_to: 'none'
 environment:
   sdk: ">=2.2.2 <3.0.0"
 
@@ -60,6 +60,10 @@ dependencies:
   syncfusion_flutter_charts: any
   firebase_storage: 4.0.0
   group_radio_button: ^1.0.1
+  flutter_zoom_plugin:
+      git:
+        url: git://github.com/decodedhealth/flutter_zoom_plugin.git
+        ref: 0.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter

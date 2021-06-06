@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(value: ContactProvider()),
         ],
         child: MaterialApp(
-          title: 'Ecommerce Flutter UI',
+          title: 'Mindtime',
           home: AutoLogin(),
           initialRoute: '/',
           onGenerateRoute: RouteGenerator.generateRoute,

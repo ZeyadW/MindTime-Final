@@ -189,6 +189,7 @@ class _VideoUploadState extends State<VideoUpload> {
     final videoName = 'video$rand';
     final mp4 = '.mp4';
     final videoNameF = '$videoName$mp4';
+    String email;
 
     final StorageReference ref =
         FirebaseStorage.instance.ref().child('RawVideos').child(videoNameF);
@@ -252,14 +253,18 @@ class _VideoUploadState extends State<VideoUpload> {
       _progress = 0.0;
       _processing = false;
     });
-    Future<VideoInfo> sendVidToRestAPI(String vidName) async {
+    Future<VideoInfo> sendVidToRestAPI(String vidName, String email) async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      email = prefs.getString('email');
+      print("Email in SendVidToRestAPI " + email);
+
       var VideoEnc = jsonEncode(<String, String>{
         'Video Name': vidName,
       });
       print('REST API: ' + VideoEnc);
 
-      final response =
-          await http.post(Uri.http('143.198.113.232', '' + vidName));
+      final response = await http
+          .post(Uri.http('143.198.113.232', '' + vidName + "-" + email));
       if (response.statusCode == 200) {
         Video.fromJson(jsonDecode(response.body));
       } else {
@@ -268,7 +273,7 @@ class _VideoUploadState extends State<VideoUpload> {
       }
     }
 
-    sendVidToRestAPI(videoNameF);
+    sendVidToRestAPI(videoName, email);
   }
 
   void _takeVideo() async {
