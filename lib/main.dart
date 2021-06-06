@@ -36,35 +36,35 @@ class MyApp extends StatelessWidget {
             focusColor: config.Colors().accentDarkColor(1),
             textTheme: TextTheme(
               button: TextStyle(color: Color(0xFF252525)),
-              headline: TextStyle(
+              headline5: TextStyle(
                   fontSize: 20.0, color: config.Colors().secondDarkColor(1)),
-              display1: TextStyle(
+              headline4: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondDarkColor(1)),
-              display2: TextStyle(
+              headline3: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondDarkColor(1)),
-              display3: TextStyle(
+              headline2: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w700,
                   color: config.Colors().mainDarkColor(1)),
-              display4: TextStyle(
+              headline1: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w300,
                   color: config.Colors().secondDarkColor(1)),
-              subhead: TextStyle(
+              subtitle1: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w500,
                   color: config.Colors().secondDarkColor(1)),
-              title: TextStyle(
+              headline6: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().mainDarkColor(1)),
-              body1: TextStyle(
+              bodyText2: TextStyle(
                   fontSize: 12.0, color: config.Colors().secondDarkColor(1)),
-              body2: TextStyle(
+              bodyText1: TextStyle(
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondDarkColor(1)),
@@ -81,35 +81,35 @@ class MyApp extends StatelessWidget {
             hintColor: config.Colors().secondColor(1),
             textTheme: TextTheme(
               button: TextStyle(color: Theme.of(context).primaryColor),
-              headline: TextStyle(
+              headline5: TextStyle(
                   fontSize: 20.0, color: config.Colors().secondColor(1)),
-              display1: TextStyle(
+              headline4: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondColor(1)),
-              display2: TextStyle(
+              headline3: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondColor(1)),
-              display3: TextStyle(
+              headline2: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w700,
                   color: config.Colors().mainColor(1)),
-              display4: TextStyle(
+              headline1: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w300,
                   color: config.Colors().secondColor(1)),
-              subhead: TextStyle(
+              subtitle1: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w500,
                   color: config.Colors().secondColor(1)),
-              title: TextStyle(
+              headline6: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().mainColor(1)),
-              body1: TextStyle(
+              bodyText2: TextStyle(
                   fontSize: 12.0, color: config.Colors().secondColor(1)),
-              body2: TextStyle(
+              bodyText1: TextStyle(
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
                   color: config.Colors().secondColor(1)),
