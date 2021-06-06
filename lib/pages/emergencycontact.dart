@@ -12,14 +12,14 @@ class ViewEmergencyContactscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.blue[900],
+      // backgroundColor: Color(accentColor),
       appBar: AppBar(
         title: Text(
           'Emergency Contacts:',
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Theme.of(context).accentColor,
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
       body: Column(

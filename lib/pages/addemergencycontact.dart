@@ -19,30 +19,28 @@ class Addemergencycontactscreen extends StatelessWidget {
           'Enter your emergency contact details',
           style: TextStyle(
               fontSize: 15,
-              color: Colors.blue[900],
+              color: Theme.of(context).accentColor,
               fontWeight: FontWeight.bold),
         ),
       ],
     );
-    var row3 = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image(
-          image: AssetImage('images/med.png'),
-          width: 140,
-          height: 140,
-        ),
-      ],
+    var row3 = Container(
+      //mainAxisSize: MainAxisSize.min,
+      child: Image(
+        image: AssetImage('images/gps.png'),
+        width: 140,
+        height: 140,
+      ),
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Theme.of(context).accentColor,
       ),
       body: Center(
           child: Container(
               child: new SingleChildScrollView(
         child: Column(
-          children: <Widget>[row3, row1, row2, AddemergencycontactForm()],
+          children: <Widget>[row3, row2, AddemergencycontactForm()],
         ),
       ))),
     );

@@ -159,20 +159,17 @@ class AddemergencycontactFormState extends State<AddemergencycontactForm> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
               gradient: new LinearGradient(
-                  colors: [
-                    Color.fromRGBO(18, 11, 232, 1.0),
-                    Color.fromRGBO(107, 164, 249, 1.0)
-                  ],
+                  colors: [Theme.of(context).accentColor, Colors.blue[200]],
                   begin: const FractionalOffset(0.1, 1.0),
                   end: const FractionalOffset(0.8, 0.5),
                   stops: [0.0, 1.0],
                   tileMode: TileMode.clamp),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0x36329d9c),
-                  offset: Offset(15, 15),
-                  blurRadius: 40,
-                ),
+                    color: const Color(0xff000000),
+                    offset: Offset(0, 13),
+                    blurRadius: 15,
+                    spreadRadius: -15.0),
               ],
             ),
             child: Align(

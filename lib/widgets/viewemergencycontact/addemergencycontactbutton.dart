@@ -25,7 +25,7 @@ Widget build(BuildContext context) {
     return Container(
       width: 850,
       height: 70,
-      color: const Color(0xffe0ecde),
+      color: Theme.of(context).accentColor,
       margin: EdgeInsets.only(left: 0.0, top: 10.0, right: 0.0, bottom: 0.0),
       child: Row(children: [
         Text(

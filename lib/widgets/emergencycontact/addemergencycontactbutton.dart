@@ -4,15 +4,17 @@ import 'package:medico/pages/addemergencycontact.dart';
 class Addemergencybutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Container(
-      width: 850,
+      width: queryData.size.width,
       height: 70,
-      color: Colors.blue[900],
+      // color: Theme.of(context).accentColor,
       margin: EdgeInsets.only(left: 20.0, top: 10.0, right: 0.0, bottom: 0.0),
       child: Row(children: [
         Padding(
           padding: const EdgeInsets.only(
-            left: 200.0,
+            left: 150,
             top: 10.0,
             right: 0.0,
             bottom: 0.0,
@@ -22,7 +24,7 @@ class Addemergencybutton extends StatelessWidget {
               '+ Emergency Contact',
               style: TextStyle(
                   fontSize: 15,
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () {

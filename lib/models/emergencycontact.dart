@@ -25,7 +25,7 @@ class Contact {
     var email = prefs.getString('email');
     print("emaiilll in addd contact ");
     print(email);
-    await Firestore.instance
+    await FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
         .collection('EmergecyContacts')
@@ -41,7 +41,7 @@ class Contact {
   Future<bool> deletecontact(contact) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
-    await Firestore.instance
+    await FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
         .collection('EmergecyContacts')
