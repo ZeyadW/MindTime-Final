@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/pages/editjournal.dart';
 import 'package:medico/models/diaries.dart' as d;
-import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
+//import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ListAllJournals extends StatefulWidget {

@@ -20,6 +20,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     setState(() {
       email = prefs.getString('email');
     });
+    return true;
   }
 
   Widget build(BuildContext context) {
