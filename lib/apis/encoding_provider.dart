@@ -55,7 +55,7 @@ class EncodingProvider {
       '1',
       '-an',
       '-s',
-      '${width}x${height}',
+      '${width}x$height',
       '-ss',
       '1',
       '$outPath',

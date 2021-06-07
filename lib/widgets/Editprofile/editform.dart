@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:medico/models/users.dart';
+//import 'package:medico/models/users.dart';
 import 'package:medico/pages/EditProfile.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+//import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EditProfileForm extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class EditProfileFormState extends State<EditProfileForm> {
     // _passwordVisible = !_passwordVisible;
   }
 
-  Future<bool> EditProfile(usernamecontroller, selectedDate, passwordcontroller,
+  Future<bool> editProfile(usernamecontroller, selectedDate, passwordcontroller,
       newpasswordcontroller) async {
     Widget okButtonwrong = FlatButton(
       child: Text(
@@ -170,7 +170,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
-                //return null;
+                return "";
               },
             ),
           ),
@@ -408,7 +408,7 @@ class EditProfileFormState extends State<EditProfileForm> {
               child: FlatButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    EditProfile(usernamecontroller, selectedDate,
+                    editProfile(usernamecontroller, selectedDate,
                         passwordcontroller, newpasswordcontroller);
                   }
                 },

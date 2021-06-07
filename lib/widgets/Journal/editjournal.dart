@@ -12,6 +12,7 @@ class EditJournal extends StatefulWidget {
   EditJournal(d.Diaries dd) {
     this.diary = dd;
   }
+
   @override
   EditJournalState createState() {
     return EditJournalState(this.diary);
@@ -25,7 +26,7 @@ class EditJournalState extends State<EditJournal> {
   var diary; //= d.Diaries();
   EditJournalState(this.diary);
 
-  Future<bool> UpdateJournal(diary, textcontroller, titlecontroller) async {
+  Future<bool> updateJournal(diary, textcontroller, titlecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
 
@@ -132,7 +133,7 @@ class EditJournalState extends State<EditJournal> {
 
                     if (_formKey.currentState.validate()) {
                       // If the form is valid, display a Snackbar.
-                      UpdateJournal(
+                      updateJournal(
                           this.diary, textcontroller, titlecontroller);
                     }
                     Navigator.push(

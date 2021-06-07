@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medico/pages/home.dart';
-import 'Signup.dart';
+//import 'Signup.dart';
 import 'Loginn.dart';
 import '../widgets/welcomescreen/welcometitlewidget.dart';
 import '../widgets/welcomescreen/welcomesubtitletext.dart';

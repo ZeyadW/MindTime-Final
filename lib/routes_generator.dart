@@ -22,7 +22,7 @@ import 'package:medico/pages/statsscreen.dart';
 import 'package:medico/pages/tabs.dart';
 import 'package:medico/pages/verification_number.dart';
 import 'package:medico/pages/viewjournals.dart';
-import 'package:medico/widgets/stats/stat.dart';
+//import 'package:medico/widgets/stats/stat.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

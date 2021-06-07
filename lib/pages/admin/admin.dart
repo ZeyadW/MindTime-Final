@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/pages/admin/admindoc.dart';
-import 'package:medico/widgets/admin/doctors.dart';
-import 'package:medico/widgets/viewjournal/listalljournals.dart';
+//import 'package:medico/widgets/admin/doctors.dart';
+//import 'package:medico/widgets/viewjournal/listalljournals.dart';
 
 class TabBarDemo extends StatelessWidget {
   @override
