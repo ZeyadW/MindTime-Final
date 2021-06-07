@@ -177,6 +177,15 @@ class _AcountWidgetState extends State<AcountWidget> {
                     context),
                 _dropDownListe(
                     Icon(
+                      Icons.card_giftcard,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    'Analysis',
+                    1,
+                    '/analysispage',
+                    context),
+                _dropDownListe(
+                    Icon(
                       Icons.payment,
                       color: Theme.of(context).accentColor,
                     ),

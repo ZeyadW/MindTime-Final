@@ -3,7 +3,7 @@ import 'package:medico/pages/EditProfile.dart';
 import 'package:medico/pages/appointment.dart';
 import 'package:medico/pages/book-test-online3.dart';
 import 'package:medico/pages/book-test-online4.dart';
-import 'package:medico/pages/choosediary.dart';
+//import 'package:medico/pages/choosediary.dart';
 import 'package:medico/pages/doctor-book-1.dart';
 import 'package:medico/pages/doctor-book-2.dart';
 import 'package:medico/pages/emergencycontact.dart';
@@ -22,6 +22,7 @@ import 'package:medico/pages/statsscreen.dart';
 import 'package:medico/pages/tabs.dart';
 import 'package:medico/pages/verification_number.dart';
 import 'package:medico/pages/viewjournals.dart';
+import 'package:medico/pages/AnalysisPage.dart';
 //import 'package:medico/widgets/stats/stat.dart';
 
 class RouteGenerator {
@@ -67,6 +68,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => AppointmentsList());
       case '/health':
         return MaterialPageRoute(builder: (_) => HealthTips());
+      case '/analysispage':
+        return MaterialPageRoute(builder: (_) => AnalysisPage());
 
       case '/analysis':
         return MaterialPageRoute(builder: (_) => Statscreen());
