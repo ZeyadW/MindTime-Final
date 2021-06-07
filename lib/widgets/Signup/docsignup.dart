@@ -365,4 +365,21 @@ class DocsignUpFormState extends State<DocsignUpForm> {
       ),
     );
   }
-}
+}/*
+  return AlertDialog(
+                          content: Text("Account created successfully"),
+                          actions: [okButton],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Text('Sign Up'),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}*/
