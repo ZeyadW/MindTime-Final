@@ -52,7 +52,7 @@ class Doctor {
         date: date,
         email: email,
         location: location);
-    //myusers.add(u);*/
+
     return dr;
   }
 }
@@ -102,10 +102,7 @@ class Doctors extends Doctor {
   }
 
   Doctors.fromMap(Map<String, dynamic> map, {this.reference})
-      : // assert(map['appointments'] != null),
-        //assert(map['user'] != null),
-        //assert(map['imagepath'] != null),
-        assert(map['name'] != null),
+      : assert(map['name'] != null),
         assert(map['email'] != null),
         assert(map['location'] != null),
         assert(map['description'] != null),
@@ -117,5 +114,5 @@ class Doctors extends Doctor {
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   @override
-  String toString() => "Record<:$appointments";
+  String toString() => "Record<:$appointments>";
 }
