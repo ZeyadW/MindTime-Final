@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:medico/pages/viewjournals.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+import 'package:medico/models/diaries.dart';
+
+class Journal {
+  final String title;
+  final String email;
+  final String DiaryContent;
+
+  Journal({this.title, this.email, this.DiaryContent});
+
+  factory Journal.fromJson(Map<String, dynamic> json) {
+    return Journal(
+      title: json['title'],
+      email: json['email'],
+      DiaryContent: json['DiaryContent'],
+    );
+  }
+}
 
 class JournalForm extends StatefulWidget {
   @override
@@ -10,11 +31,42 @@ class JournalForm extends StatefulWidget {
   }
 }
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 DateTime now = new DateTime.now();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
 class LoginFormState extends State<JournalForm> {
   var email;
+
+  Future<Diaries> sendDiaryToApi(
+      String DiaryContent, String email, String DiaryTitle) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('email');
+    print("Email in SendVidToRestAPI " + email);
+
+    var DiaryEnc = jsonEncode(<String, String>{
+      'Diary Content': DiaryContent,
+      'Email': email,
+    });
+    print('REST API: ' + DiaryEnc);
+
+    final response = await http.post(Uri.http(
+        '143.198.113.232', '' + DiaryContent + "-" + email + "-" + DiaryTitle));
+    if (response.statusCode == 200) {
+      Journal.fromJson(jsonDecode(response.body));
+    } else {
+      // return Album.fromJson(jsonDecode(response.body));
+      throw Exception(response.body);
+    }
+  }
 
   Future<bool> createDiary(textcontroller, titlecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -31,6 +83,7 @@ class LoginFormState extends State<JournalForm> {
       'text': textcontroller.text,
       'timestamp': date
     }); //setData take a map as input
+    sendDiaryToApi(textcontroller.text, email, titlecontroller.text);
     return true;
   }
 
