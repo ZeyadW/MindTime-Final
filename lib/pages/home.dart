@@ -237,24 +237,25 @@ class _HomeState extends State<Home> {
                       border: Border.all(
                           width: 1.0, color: Colors.grey.withOpacity(0.2)),
                       borderRadius: BorderRadius.circular(16.0),
-                      image: DecorationImage(
-                        image: AssetImage('images/doctor-productivity.jpg'),
+                      color: Colors.blueGrey[300],
+                      /* image: DecorationImage(
+                        //image: AssetImage('images/doctor-productivity.jpg'),
                         fit: BoxFit.cover,
-                      ),
+                      ),*/
                     ),
-                  ),
-                  Container(
-                    height: 200.0,
-                    margin: const EdgeInsets.only(left: 12.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 1.0, color: Colors.grey.withOpacity(0.2)),
-                      borderRadius: BorderRadius.circular(16.0),
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'images/13nov_resize.jpg',
+                    child: Center(
+                      child: TextButton(
+                        child: Text(
+                          "           Emotional \n    Regulation Test \n              ERQ",
+                          style: TextStyle(
+                              fontSize: 28.0,
+                              fontFamily: 'Poppins',
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
                         ),
-                        fit: BoxFit.cover,
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/erql');
+                        },
                       ),
                     ),
                   ),
@@ -265,13 +266,59 @@ class _HomeState extends State<Home> {
                       border: Border.all(
                           width: 1.0, color: Colors.grey.withOpacity(0.2)),
                       borderRadius: BorderRadius.circular(16.0),
-                      image: DecorationImage(
+                      color: Colors.greenAccent,
+
+                      /*image: DecorationImage(
+                        // image: AssetImage('images/13nov_resize.jpg',),
+                        fit: BoxFit.cover,
+                      ),*/
+                    ),
+                    child: Center(
+                      child: TextButton(
+                        child: Text(
+                          "        Brief Mood Introspection Scale \n            (BMIS)",
+                          style: TextStyle(
+                              fontSize: 28.0,
+                              fontFamily: 'Poppins',
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/bmis');
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 200.0,
+                    margin: const EdgeInsets.only(left: 12.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 1.0, color: Colors.grey.withOpacity(0.2)),
+                      borderRadius: BorderRadius.circular(16.0),
+                      color: Colors.blue[300],
+                    ),
+                    child: Center(
+                      child: TextButton(
+                        child: Text(
+                          "       Fear of \n  Abndonment \n          Test",
+                          style: TextStyle(
+                              fontSize: 28.0,
+                              fontFamily: 'Poppins',
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/foal');
+                        },
+                      ),
+                    ),
+                    /*   image: DecorationImage(
                         image: AssetImage(
                           'images/medical-lab-technician-85654102.jpg',
                         ),
                         fit: BoxFit.cover,
-                      ),
-                    ),
+                      ),*/
                   ),
                 ],
               ),
@@ -315,11 +362,8 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   card("images/drsalma.jpg", "Dr.SALMA ABDELBAKI",
                       "B.Sc DDVL Demilitologist", "4.2"),
-                  card(
-                      "images/dradly.png",
-                      "Dr.ADLY EL SHEIKH",
-                      "MBBCH, MSC, ABPSYCH PSYCHIATRIST AND PSYCHOTHERAPIST",
-                      "4.0"),
+                  card("images/dradly.png", "Dr.ADLY EL SHEIKH",
+                      "MBBCH, MSC, ABPSYCH PSYCHIATRIST ", "4.0"),
                   card("images/drhanadi.jpg", "Dr. HANADI ABDALLA",
                       "B.Sc DDVL Demilitologist ", "4.3"),
                 ],

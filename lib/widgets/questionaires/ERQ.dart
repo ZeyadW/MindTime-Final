@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 //import 'package:medico/pages/Home.dart';
-import 'package:medico/pages/questionairescreen.dart';
+//import 'package:medico/pages/questionairescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Erq extends StatefulWidget {
@@ -147,11 +147,12 @@ class _ErqState extends State<Erq> {
                           print(_sliderValue);
                           if (i == 9) {
                             adderqscore(_erqscore(_sliderValue));
-                            Navigator.push(
+                            Navigator.of(context, rootNavigator: true).pop();
+                            /* Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Questioanires()),
-                            );
+                            );*/
                           }
                           setState(() {
                             if (i == 8) {
@@ -162,7 +163,11 @@ class _ErqState extends State<Erq> {
                             i += 1;
                           });
                         },
-                        child: Text(button))
+                        child: Text(button,
+                            style: TextStyle(
+                              fontFamily: 'Lato-Bold',
+                              color: Colors.white,
+                            )))
                   ],
                 ),
               ),

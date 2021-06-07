@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medico/pages/erq.dart';
-import 'package:medico/pages/bmis.dart';
-import 'package:medico/pages/foal.dart';
+//import 'package:medico/pages/erq.dart';
+//import 'package:medico/pages/bmis.dart';
+//import 'package:medico/pages/foal.dart';
 
 class Questionairelist extends StatefulWidget {
   @override
@@ -19,10 +19,11 @@ class _QuestionairelistState extends State<Questionairelist> {
               title: Text('BMIS'),
               trailing: Icon(Icons.chevron_right_sharp),
               onTap: () {
-                Navigator.push(
+                Navigator.of(context).pushNamed('/bmis');
+                /*  Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Bmisl()),
-                );
+                );*/
               },
             ),
           ),
@@ -31,10 +32,11 @@ class _QuestionairelistState extends State<Questionairelist> {
               title: Text('Fear of abndonment measure'),
               trailing: Icon(Icons.chevron_right_sharp),
               onTap: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Foal()),
-                );
+                );*/
+                Navigator.of(context).pushNamed('/foal');
               },
             ),
           ),
@@ -43,10 +45,11 @@ class _QuestionairelistState extends State<Questionairelist> {
               title: Text('ERQ'),
               trailing: Icon(Icons.chevron_right_sharp),
               onTap: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Erql()),
-                );
+                );*/
+                Navigator.of(context).pushNamed('/erql');
               },
             ),
           ),

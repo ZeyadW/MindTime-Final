@@ -141,8 +141,8 @@ class _ListAllDoctorsState extends State<ListAllDoctors> {
                           final SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           print("after shared pref");
-                          var docemail =
-                              prefs.setString('doctoremail', doctor.email);
+                          // var docemail =
+                          prefs.setString('doctoremail', doctor.email);
                           getdoctordetails(doctor.email);
                           print('edit therapist');
                           Navigator.push(

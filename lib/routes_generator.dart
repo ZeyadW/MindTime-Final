@@ -24,6 +24,9 @@ import 'package:medico/pages/verification_number.dart';
 import 'package:medico/pages/viewjournals.dart';
 import 'package:medico/pages/AnalysisPage.dart';
 //import 'package:medico/widgets/stats/stat.dart';
+import 'package:medico/pages/erq.dart';
+import 'package:medico/pages/bmis.dart';
+import 'package:medico/pages/foal.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -75,6 +78,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Statscreen());
       case '/tests':
         return MaterialPageRoute(builder: (_) => Questioanires());
+      case '/bmis':
+        return MaterialPageRoute(builder: (_) => Bmisl());
+      case '/foal':
+        return MaterialPageRoute(builder: (_) => Foal());
+      case '/erql':
+        return MaterialPageRoute(builder: (_) => Erql());
 
       case '/logout':
         return MaterialPageRoute(builder: (context) => Welcome());

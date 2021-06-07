@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 //import 'package:medico/pages/Home.dart';
-import 'package:medico/pages/questionairescreen.dart';
+//import 'package:medico/pages/questionairescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
@@ -220,11 +220,12 @@ class _BmisState extends State<Bmis> {
                           print(_choiceValue);
                           if (i == 15) {
                             addbmisscore(_bmisscore(_choiceValue));
-                            Navigator.push(
+                            Navigator.of(context, rootNavigator: true).pop();
+                            /*  Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Questioanires()),
-                            );
+                            );*/
                           }
                           setState(() {
                             if (i == 14) {

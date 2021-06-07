@@ -22,7 +22,7 @@ class _QuestioaniresState extends State<Questioanires> {
         ),
 
         title: Text(
-          'Data input Statistics:',
+          'Assesment:',
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
