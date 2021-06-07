@@ -20,14 +20,14 @@ import 'package:http/http.dart' as http;
 
 class Video {
   final int id;
-  final String VideoName;
+  final String videoName;
 
-  Video({this.id, this.VideoName});
+  Video({this.id, this.videoName});
 
   factory Video.fromJson(Map<String, dynamic> json) {
     return Video(
       id: json['id'],
-      VideoName: json['VideoName'],
+      videoName: json['VideoName'],
     );
   }
 }
@@ -61,8 +61,8 @@ class _VideoUploadState extends State<VideoUpload> {
   int _videoDuration = 0;
   String _processPhase = '';
   final bool _debugMode = false;
-  String FolderN = '';
-  Future<Video> SendVidName;
+  String folderN = '';
+  Future<Video> sendVidName;
   @override
   void initState() {
     FirebaseProvider.listenToVideos((newVideos) {
@@ -109,14 +109,14 @@ class _VideoUploadState extends State<VideoUpload> {
         .collection('videos')
         .doc(id)
         .delete();
-    await FirebaseStorage.instance.ref().child('$userUID/$FolderN').delete();
+    await FirebaseStorage.instance.ref().child('$userUID/$folderN').delete();
     return true;
   }
 
   Future<String> _uploadFile(filePath, folderName) async {
     final file = new File(filePath);
     final basename = p.basename(filePath);
-    FolderN = folderName;
+    folderN = folderName;
 
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final StorageReference ref = FirebaseStorage.instance
