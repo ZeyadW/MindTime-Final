@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/pages/editjournal.dart';
 import 'package:medico/models/doctoss.dart' as d;
+import 'package:medico/widgets/admin/editdr.dart';
+import 'package:medico/widgets/admin/editdrform.dart';
 import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,6 +42,32 @@ class _ListAllDoctorsState extends State<ListAllDoctors> {
       email = prefs.getString('email');
     });
     return true;
+  }
+
+  Future<void> getdoctordetails(docemail) async {
+    try {
+      print("kkkkk");
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Therapists')
+          .doc(docemail)
+          .get();
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      print(email);
+      print(variable);
+      print(variable.data());
+      var docname = prefs.setString('doctorname', variable.get('name'));
+
+      var doclocation = prefs.setString('doctorloc', variable.get('location'));
+      var docdesc = prefs.setString('doctordesc', variable.get('description'));
+      var docpass = prefs.setString('doctorpass', variable.get('password'));
+
+      var name = variable.get("name");
+      print("variavle name" + name);
+    } catch (e) {
+      print("error in document snapshot "); //01061781950
+      print(e);
+    }
   }
 
   @override
@@ -107,11 +135,18 @@ class _ListAllDoctorsState extends State<ListAllDoctors> {
                       padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
                       child: FlatButton(
                         child: Text(doctor.email),
-                        onPressed: () {
-                          /* Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ),
-              );*/
+                        onPressed: () async {
+                          final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          print("after shared pref");
+                          var docemail =
+                              prefs.setString('doctoremail', doctor.email);
+                          getdoctordetails(doctor.email);
+                          print('edit therapist');
+                          Navigator.push(
+                            context, //*14# *888*4#
+                            MaterialPageRoute(builder: (context) => Editdr()),
+                          );
                         },
                       ),
                     ),

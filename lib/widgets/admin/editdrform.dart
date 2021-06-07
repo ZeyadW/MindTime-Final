@@ -1,51 +1,56 @@
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:medico/widgets/admin/editdr.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:medico/models/users.dart';
 import 'package:medico/pages/EditProfile.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-class EditProfileForm extends StatefulWidget {
+class EditdrForm extends StatefulWidget {
   @override
-  EditProfileFormState createState() {
-    return EditProfileFormState();
+  EditdrFormState createState() {
+    return EditdrFormState();
   }
 }
 
-class EditProfileFormState extends State<EditProfileForm> {
-  EditProfileFormState();
+//DocumentSnapshot variable;
+
+class EditdrFormState extends State<EditdrForm> {
+  String doctoremail;
   var name;
   var loc;
   var email;
   var desc;
   var pass;
+
   var username;
   var _passwordVisible;
-  //var variable;
   FocusNode myFocusNode;
+
+  void getdoctoremail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    doctoremail = prefs.getString('doctoremail');
+    print("in get doctor email function" + doctoremail);
+    name = prefs.getString('doctorname');
+    loc = prefs.getString('doctorloc');
+    desc = prefs.getString('doctordesc');
+    pass = prefs.getString('doctorpass');
+    print(name + "  " + loc + "  " + desc + "  " + pass);
+  }
+
   @override
   void initState() {
     _passwordVisible = false;
     super.initState();
-    // getUser();
+    //getdoctoremail();
+    //getdetails();
     myFocusNode = FocusNode();
   }
 
-  /*Future<bool> getUser() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    this.username = prefs.getString('username');
-    DocumentSnapshot variable =
-        await FirebaseFirestore.instance.collection('Users').doc(email).get();
-    print(variable);
-    setState(() {
-      email = prefs.getString('email');
-    });
-  }*/
-
-  Future<bool> EditProfile(usernamecontroller, selectedDate, passwordcontroller,
-      newpasswordcontroller) async {
+  Future<bool> EditProfile(namecontroller, locationcontoller,
+      descriptioncontroller, passwordcontroller, newpasswordcontroller) async {
     Widget okButtonwrong = FlatButton(
       child: Text(
         "Ok",
@@ -53,8 +58,8 @@ class EditProfileFormState extends State<EditProfileForm> {
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context).push(
-            new MaterialPageRoute(builder: (context) => EditProfilePage()));
+        Navigator.of(context)
+            .push(new MaterialPageRoute(builder: (context) => Editdr()));
       },
     );
     Widget okButton = FlatButton(
@@ -67,35 +72,41 @@ class EditProfileFormState extends State<EditProfileForm> {
       },
     );
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.getString('email');
-      name = prefs.getString('doctorname');
-     loc = prefs.getString('doctorloc');
-     desc = prefs.getString('doctordesc');
-     pass = prefs.getString('doctorpass');
-
-    DocumentSnapshot variable =
-        await FirebaseFirestore.instance.collection('Users').doc(email).get();
-
-    String passworduser = variable.get("password").toString();
-    print("passs");
-    print(passworduser);
-    print(passwordcontroller.text);
-    print("new    passs");
-    print(newpasswordcontroller.text);
-    if (passworduser == passwordcontroller.text) {
-      if (newpasswordcontroller.text == null) {
+   
+    getdoctoremail();
+    print("description:"+desc);
+    print("location:"+loc);
+    print("password:"+pass);
+    print("desc contoller =S" + descriptioncontroller.text);
+    if (descriptioncontroller.text == "") {
+      print(descriptioncontroller.text);
+      descriptioncontroller.text = desc;
+      print(" decription" + desc);
+      print("id fexc is null" + descriptioncontroller.text);
+    }
+    if (locationcontoller.text == "") {
+      locationcontoller.text = loc;
+    }
+    if (namecontroller.text == "") {
+      namecontroller.text = name;
+    }
+    if (pass == passwordcontroller.text) {
+      if (newpasswordcontroller.text == "") {
         print("new    passs");
         print(newpasswordcontroller.text);
         newpasswordcontroller.text = passwordcontroller.text;
       }
       try {
-        await FirebaseFirestore.instance.collection("Users").doc(email).update({
-          'birthdate': selectedDate,
+        await FirebaseFirestore.instance
+            .collection("Therapists")
+            .doc(doctoremail)
+            .update({
+          'location': locationcontoller.text,
+          'description': descriptioncontroller.text,
           'password': newpasswordcontroller.text,
-          'username': usernamecontroller.text,
+          'name': namecontroller.text,
         });
-        prefs.setString('username', usernamecontroller.text);
+        // prefs.setString('username', namecontroller.text);
 
         return showDialog(
           context: context,
@@ -106,7 +117,11 @@ class EditProfileFormState extends State<EditProfileForm> {
             );
           },
         );
+      } on FirebaseException catch (e) {
+        print("ffffffffffffff");
+        print(e);
       } catch (e) {
+        print("eeeeeeeeeee" + e);
         return showDialog(
           context: context,
           builder: (context) {
@@ -135,21 +150,12 @@ class EditProfileFormState extends State<EditProfileForm> {
   @override
   Widget build(BuildContext context) {
     DateTime selectedDate;
-
-    //var username = variable.get("username");
-
-    /*   print('hamada');
-    print(variable.get("username"));
-    print('hamada');
-    var birthdate = variable.get("birthdate");
-    print(birthdate);
-    var finaldate = convertDateTimeDisplay(birthdate);*/
-    final usernamecontroller = TextEditingController(); //text: username);
+    final namecontroller = TextEditingController();
+    final locationcontoller = TextEditingController();
+    final descriptioncontroller = TextEditingController();
     final passwordcontroller = TextEditingController();
     final newpasswordcontroller = TextEditingController();
-    //final datecontroller = TextEditingController(text: finaldate);
 
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Column(
@@ -169,15 +175,15 @@ class EditProfileFormState extends State<EditProfileForm> {
               ],
             ),
             child: TextFormField(
-              initialValue: name,
-              controller: usernamecontroller,
+              // initialValue: name,
+              controller: namecontroller,
               autofocus: true,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.perm_identity),
-                  labelText: 'Enter your Name',
+                  labelText: 'Enter therapist name',
                   labelStyle: TextStyle(
                     color: Theme.of(context).accentColor,
                   ),
@@ -191,12 +197,55 @@ class EditProfileFormState extends State<EditProfileForm> {
                     ),
                     borderRadius: BorderRadius.circular(21.0),
                   )),
-              validator: (value) {
+              /* validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+              },*/
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(top: 10.0)),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(21.0),
+              color: const Color(0xffffffff),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x21329d9c),
+                  offset: Offset(0, 13),
+                  blurRadius: 34,
+                ),
+              ],
+            ),
+            child: TextFormField(
+              // initialValue: variable.get("location"),
+              controller: locationcontoller,
+              autofocus: true,
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
+              ),
+              decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.perm_identity),
+                  labelText: 'new location',
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  )),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(21.0),
+                  )),
+              /*validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
                 //return null;
-              },
+              },*/
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -212,54 +261,43 @@ class EditProfileFormState extends State<EditProfileForm> {
                 ),
               ],
             ),
-            child: DateTimeFormField(
-              decoration: const InputDecoration(
-                hintStyle: TextStyle(color: Colors.blue),
-                errorStyle: TextStyle(color: Colors.redAccent),
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(
-                  Icons.event_note,
-                  color: Colors.blue,
+          ),
+          Padding(padding: EdgeInsets.only(top: 10.0)),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(21.0),
+              color: const Color(0xffffffff),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x21329d9c),
+                  offset: Offset(0, 13),
+                  blurRadius: 34,
                 ),
-                labelText: 'Birth-Date',
-                labelStyle: TextStyle(color: Colors.blue),
+              ],
+            ),
+            child: TextFormField(
+              // initialValue: variable.get("description"),
+              controller: descriptioncontroller,
+              autofocus: true,
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
               ),
-              mode: DateTimeFieldPickerMode.date,
-              autovalidateMode: AutovalidateMode.always,
-              validator: (e) =>
-                  (e?.day ?? 0) == null ? 'choose an aproprite date.' : null,
-              onDateSelected: (DateTime value) {
-                print(value);
-                selectedDate = value;
-              },
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x21329d9c),
-                  offset: Offset(0, 13),
-                  blurRadius: 34,
-                ),
-              ],
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x21329d9c),
-                  offset: Offset(0, 13),
-                  blurRadius: 34,
-                ),
-              ],
+              decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.perm_identity),
+                  labelText: 'Description',
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  )),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(21.0),
+                  )),
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -310,12 +348,12 @@ class EditProfileFormState extends State<EditProfileForm> {
                     ),
                     borderRadius: BorderRadius.circular(21.0),
                   )),
-              validator: (value) {
+              /* validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
                 return null;
-              },
+              },*/
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -334,7 +372,7 @@ class EditProfileFormState extends State<EditProfileForm> {
             child: TextFormField(
               controller: newpasswordcontroller,
               obscureText: !_passwordVisible,
-              style: TextStyle(color: Colors.green),
+              style: TextStyle(color: Colors.blue),
               decoration: InputDecoration(
                   prefixIcon: IconButton(
                     icon: Icon(
@@ -364,12 +402,12 @@ class EditProfileFormState extends State<EditProfileForm> {
                     ),
                     borderRadius: BorderRadius.circular(21.0),
                   )),
-              validator: (value) {
+              /*  validator: (value) {
                 if (!value.contains(validCharactersPassword)) {
                   return 'Please enter the correct format';
                 }
                 return null;
-              },
+              },*/
             ),
           ),
           Padding(padding: const EdgeInsets.symmetric(vertical: 5.0)),
@@ -397,9 +435,14 @@ class EditProfileFormState extends State<EditProfileForm> {
               alignment: Alignment.topCenter,
               child: FlatButton(
                 onPressed: () {
+                  //getdoctordetails();
                   if (_formKey.currentState.validate()) {
-                    EditProfile(usernamecontroller, selectedDate,
-                        passwordcontroller, newpasswordcontroller);
+                    EditProfile(
+                        namecontroller,
+                        locationcontoller,
+                        descriptioncontroller,
+                        passwordcontroller,
+                        newpasswordcontroller);
                   }
                 },
                 child: Text('Edit'),

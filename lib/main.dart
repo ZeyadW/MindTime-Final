@@ -1,5 +1,6 @@
 import 'package:medico/config/app_config.dart' as config;
 import 'package:flutter/material.dart';
+import 'package:medico/pages/admin/admin.dart';
 import 'package:medico/routes_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:medico/widgets/connectivity.dart';
@@ -9,7 +10,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(TabBarDemo());
 }
 
 class MyApp extends StatelessWidget {

@@ -12,7 +12,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
   List<String> nightList=["19.00","20.00","21.00","22.00","23.00","00.00"];
   String selectedChoice = "";
   User currentUser=new User.init().getCurrentUser();
-  Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
   @override
   Widget build(BuildContext context) {
    return Scaffold(
