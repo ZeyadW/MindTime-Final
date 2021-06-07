@@ -8,7 +8,7 @@ import 'package:medico/models/users.dart';
 //import 'package:medico/Pages/home.dart';
 import 'package:date_field/date_field.dart';
 import 'package:medico/pages/admin/admin.dart';
-
+/*
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
 
@@ -366,3 +366,4 @@ class DocsignUpFormState extends State<DocsignUpForm> {
     );
   }
 }
+*/
