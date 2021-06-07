@@ -313,11 +313,14 @@ class _HomeState extends State<Home> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  card("images/asset-1.png", "Dr.Alina james",
+                  card("images/drsalma.jpg", "Dr.SALMA ABDELBAKI",
                       "B.Sc DDVL Demilitologist", "4.2"),
-                  card("images/asset-2.png", "Dr.Steve Robert",
-                      "B.Sc DDVL Demilitologist", "3.6"),
-                  card("images/asset-3.png", "Dr. Senila Aaraf",
+                  card(
+                      "images/dradly.png",
+                      "Dr.ADLY EL SHEIKH",
+                      "MBBCH, MSC, ABPSYCH PSYCHIATRIST AND PSYCHOTHERAPIST",
+                      "4.0"),
+                  card("images/drhanadi.jpg", "Dr. HANADI ABDALLA",
                       "B.Sc DDVL Demilitologist ", "4.3"),
                 ],
               ),

@@ -27,7 +27,7 @@ class Addemergencycontactscreen extends StatelessWidget {
     var row3 = Container(
       //mainAxisSize: MainAxisSize.min,
       child: Image(
-        image: AssetImage('images/gps.png'),
+        image: AssetImage('images/MEDICAL.png'),
         width: 140,
         height: 140,
       ),
@@ -39,8 +39,30 @@ class Addemergencycontactscreen extends StatelessWidget {
       body: Center(
           child: Container(
               child: new SingleChildScrollView(
-        child: Column(
-          children: <Widget>[row3, row2, AddemergencycontactForm()],
+        child: Center(
+          child: Container(
+            margin: EdgeInsets.only(top: 100),
+            padding: EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black54,
+                  spreadRadius: 5,
+                  blurRadius: 20,
+                  offset: Offset(0, 0), // changes position of shadow
+                ),
+              ],
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                  topLeft: Radius.circular(30.0)),
+              color: Colors.white,
+            ),
+            child: Column(
+              children: <Widget>[row3, row2, AddemergencycontactForm()],
+            ),
+          ),
         ),
       ))),
     );
