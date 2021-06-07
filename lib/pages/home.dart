@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
     username = prefs.getString('username');
     email = prefs.getString('email');
     print("username in get user" + username);
+    return true;
   }
 
   _HomeState() {

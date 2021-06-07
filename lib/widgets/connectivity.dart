@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/home.dart';
+import 'package:medico/pages/tabs.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -105,7 +106,13 @@ class _AutoLogin extends State<AutoLogin> {
     return Scaffold(
         body: !isLoggedIn
             ? Welcome()
-            : Home() // HomePage.username(username: userId, email: email, phone: phone),
+            : TabsWidget(
+                //acountInfos: args,
+                )
+        /*Navigator.of(context).pushNamed('/home', arguments: [
+                name,
+                email
+              ])*/ // HomePage.username(username: userId, email: email, phone: phone),
         );
   }
 

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:medico/models/doctoss.dart';
 import 'package:medico/models/users.dart';
 
-import 'package:medico/Service/FlutterFireauth.dart';
+//import 'package:medico/Service/FlutterFireauth.dart';
 //import 'package:project_mobile/models/users.dart';
 
-import 'package:medico/Pages/home.dart';
+//import 'package:medico/Pages/home.dart';
 import 'package:date_field/date_field.dart';
 import 'package:medico/pages/admin/admin.dart';
 
@@ -21,17 +21,13 @@ class DocsignUpForm extends StatefulWidget {
 
 class DocsignUpFormState extends State<DocsignUpForm> {
   var _passwordVisible;
+
   @override
   void initState() {
     _passwordVisible = false;
     super.initState();
   }
 
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
   static final validCharacters = RegExp(r'^[a-zA-Z0-9]+$');
 
@@ -53,18 +49,11 @@ class DocsignUpFormState extends State<DocsignUpForm> {
         "Ok",
       ),
       onPressed: () async {
-        bool shouldNavigate =
-            await register(emailcontroller.text, passwordcontroller.text);
-        print(shouldNavigate);
-        print(namecontroller.text);
-        print("datee to string before signup");
-        print(selectedDate.toString());
-        if (shouldNavigate) {
-          Navigator.of(context, rootNavigator: true).pop();
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TabBarDemo()
-                  /*.ut(
+        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TabBarDemo()
+                /*.ut(
                       u: u.signup(
                           usernamecontroller.text,
                           passwordcontroller.text,
@@ -74,18 +63,7 @@ class DocsignUpFormState extends State<DocsignUpForm> {
                           emailcontroller.text,
                           emergencycontactcontroller.text))
                           */
-                  ));
-        }
-        /*  Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context).push(new MaterialPageRoute(
-            builder: (context) => HomePage(
-                u: u.signup(
-                    usernamecontroller.text,
-                    passwordcontroller.text,
-                    emergencycontactnamecontroller.text,
-                    datecontroller.text,
-                    emailcontroller.text,
-                    emergencycontactcontroller.text))));*/
+                ));
       },
     );
     // Build a Form widget using the _formKey created above.
@@ -387,4 +365,21 @@ class DocsignUpFormState extends State<DocsignUpForm> {
       ),
     );
   }
-}
+}/*
+  return AlertDialog(
+                          content: Text("Account created successfully"),
+                          actions: [okButton],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Text('Sign Up'),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}*/

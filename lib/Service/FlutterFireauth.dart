@@ -21,7 +21,7 @@ Future<bool> signIn(String email, String password) async {
   }
 }
 
-Future<bool> register(String email, String password) async {
+Future<String> register(String email, String password) async {
   try {
     print("fire Emaillll email" + email);
     await FirebaseAuth.instance
@@ -30,19 +30,19 @@ Future<bool> register(String email, String password) async {
 
     print("fire auth");
     print(FirebaseAuth.instance.currentUser.uid);
-    return true;
+    return "Account Created Successfully";
   } on FirebaseAuthException catch (e) {
     print("fire eerr");
     print(e);
     if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
+      return 'The password provided is too weak.';
     } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
+      return 'The account already exists for that email.';
     }
-    return false;
+    return "No Internet Connection";
   } catch (e) {
     print("fire auth   catch");
     print(e.toString());
-    return false;
+    return e.toString();
   }
 }

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:medico/models/users.dart';
+//import 'package:medico/models/users.dart';
 import 'package:medico/pages/EditProfile.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+//import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EditProfileForm extends StatefulWidget {
   @override
@@ -18,33 +18,29 @@ class EditProfileFormState extends State<EditProfileForm> {
   EditProfileFormState();
   var name;
   var loc;
+  //EditProfileFormState();
   var email;
   var desc;
   var pass;
   var username;
   var _passwordVisible;
-  //var variable;
   FocusNode myFocusNode;
   @override
   void initState() {
     _passwordVisible = false;
     super.initState();
-    // getUser();
     myFocusNode = FocusNode();
   }
 
-  /*Future<bool> getUser() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    this.username = prefs.getString('username');
-    DocumentSnapshot variable =
-        await FirebaseFirestore.instance.collection('Users').doc(email).get();
-    print(variable);
+  void passwordicon() {
     setState(() {
-      email = prefs.getString('email');
+      print("new password set state");
+      _passwordVisible = !_passwordVisible;
     });
-  }*/
+    // _passwordVisible = !_passwordVisible;
+  }
 
-  Future<bool> EditProfile(usernamecontroller, selectedDate, passwordcontroller,
+  Future<bool> editProfile(usernamecontroller, selectedDate, passwordcontroller,
       newpasswordcontroller) async {
     Widget okButtonwrong = FlatButton(
       child: Text(
@@ -135,21 +131,10 @@ class EditProfileFormState extends State<EditProfileForm> {
   @override
   Widget build(BuildContext context) {
     DateTime selectedDate;
-
-    //var username = variable.get("username");
-
-    /*   print('hamada');
-    print(variable.get("username"));
-    print('hamada');
-    var birthdate = variable.get("birthdate");
-    print(birthdate);
-    var finaldate = convertDateTimeDisplay(birthdate);*/
     final usernamecontroller = TextEditingController(); //text: username);
     final passwordcontroller = TextEditingController();
     final newpasswordcontroller = TextEditingController();
-    //final datecontroller = TextEditingController(text: finaldate);
 
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Column(
@@ -195,7 +180,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
-                //return null;
+                return "";
               },
             ),
           ),
@@ -278,6 +263,45 @@ class EditProfileFormState extends State<EditProfileForm> {
             child: TextFormField(
               controller: passwordcontroller,
               obscureText: !_passwordVisible,
+              style: TextStyle(color: Colors.blue[900]),
+              decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        print("set state ");
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.blue[900]),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue[900])),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue[900]),
+                    borderRadius: BorderRadius.circular(21.0),
+                  )),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                if (!value.contains(validCharactersPassword)) {
+                  return 'Please enter the correct format';
+                }
+
+                return "";
+              },
+            ),
+
+            /*TextFormField(
+              controller: passwordcontroller,
+              obscureText: !_passwordVisible,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),
@@ -290,7 +314,6 @@ class EditProfileFormState extends State<EditProfileForm> {
                       color: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
                         _passwordVisible = !_passwordVisible;
                       });
@@ -316,7 +339,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 }
                 return null;
               },
-            ),
+            ),*/
           ),
           Padding(padding: EdgeInsets.only(top: 10.0)),
           Container(
@@ -334,7 +357,7 @@ class EditProfileFormState extends State<EditProfileForm> {
             child: TextFormField(
               controller: newpasswordcontroller,
               obscureText: !_passwordVisible,
-              style: TextStyle(color: Colors.green),
+              style: TextStyle(color: Colors.blueAccent),
               decoration: InputDecoration(
                   prefixIcon: IconButton(
                     icon: Icon(
@@ -344,10 +367,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                       color: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
+                      passwordicon();
                     },
                   ),
                   labelText: 'New Password',
@@ -368,7 +388,7 @@ class EditProfileFormState extends State<EditProfileForm> {
                 if (!value.contains(validCharactersPassword)) {
                   return 'Please enter the correct format';
                 }
-                return null;
+                return "";
               },
             ),
           ),
@@ -398,7 +418,7 @@ class EditProfileFormState extends State<EditProfileForm> {
               child: FlatButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    EditProfile(usernamecontroller, selectedDate,
+                    editProfile(usernamecontroller, selectedDate,
                         passwordcontroller, newpasswordcontroller);
                   }
                 },

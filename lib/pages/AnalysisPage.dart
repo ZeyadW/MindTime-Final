@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/models/user.dart';
 
-class HealthTips extends StatefulWidget {
+class AnalysisPage extends StatefulWidget {
   @override
-  _HealthTipsState createState() => _HealthTipsState();
+  _AnalysisPageState createState() => _AnalysisPageState();
 }
 
-class _HealthTipsState extends State<HealthTips> {
+class _AnalysisPageState extends State<AnalysisPage> {
   User currentUser = new User.init().getCurrentUser();
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class _HealthTipsState extends State<HealthTips> {
         ),
         backgroundColor: Theme.of(context).accentColor,
         title: Text(
-          'Health Tips',
+          'Borderline Symptoms Analysis',
           style: TextStyle(
-            fontSize: 22.0,
+            fontSize: 20.0,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,
@@ -51,35 +51,10 @@ class _HealthTipsState extends State<HealthTips> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Monday 26th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                          Text(
-                            "Wednsday 28th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(height: 80),
                       Container(
                         child: Text(
-                          "Neurobics for your mind .",
+                          "Self Harm and Dangerous behavior. ",
                           style: TextStyle(
                               fontSize: 28.0,
                               fontFamily: 'Poppins',
@@ -87,14 +62,14 @@ class _HealthTipsState extends State<HealthTips> {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(height: 120),
+                      SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "",
+                            "hey ",
                             style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 28.0,
                               fontFamily: 'Poppins',
                               color: Theme.of(context)
                                   .primaryColor

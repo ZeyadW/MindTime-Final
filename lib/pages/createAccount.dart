@@ -8,7 +8,7 @@ final validatePhone = RegExp(pattern);
 class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var row1 = Row(
+    /*var row1 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(padding: EdgeInsets.only(top: 50.0)),
@@ -17,7 +17,7 @@ class SignupPage extends StatelessWidget {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ],
-    );
+    );*/
     var row2 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [

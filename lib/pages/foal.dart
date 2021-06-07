@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/widgets/questionaires/BMIS.dart';
+//import 'package:medico/widgets/questionaires/BMIS.dart';
 import 'package:medico/widgets/questionaires/FOA.dart';
 
 class Foal extends StatefulWidget {

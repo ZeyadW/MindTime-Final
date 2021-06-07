@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:medico/pages/Home.dart';
+//import 'package:medico/pages/Home.dart';
 import 'package:medico/pages/questionairescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:group_radio_button/group_radio_button.dart';
@@ -70,11 +70,11 @@ class _BmisState extends State<Bmis> {
 
   showAlertDialog(BuildContext context) {
     // set up the button
-    Widget okButton = FlatButton(
+    /*  Widget okButton = FlatButton(
       child: Text("OK"),
       onPressed: () {},
     );
-
+*/
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Alert"),

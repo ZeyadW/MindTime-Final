@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medico/pages/choosediary.dart';
-import 'package:medico/pages/journal.dart';
+//import 'package:medico/pages/journal.dart';
 //import 'package:project_mobile/widgets/viewjournal/listalljournals.dart' as l;
 //import 'package:cloud_firestore/cloud_firestore.dart';
 

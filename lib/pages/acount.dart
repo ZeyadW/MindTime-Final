@@ -58,7 +58,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "+ ${currentUser.phoneNumber}",
+                            "+ ${currentUser.email}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Poppins',
@@ -174,6 +174,15 @@ class _AcountWidgetState extends State<AcountWidget> {
                     'Health Interest',
                     1,
                     '/health',
+                    context),
+                _dropDownListe(
+                    Icon(
+                      Icons.card_giftcard,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    'Analysis',
+                    1,
+                    '/analysispage',
                     context),
                 _dropDownListe(
                     Icon(

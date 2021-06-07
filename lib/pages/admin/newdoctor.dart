@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medico/widgets/Signup/docsignup.dart';
-import 'package:medico/widgets/Signup/signupform.dart';
+//import 'package:medico/widgets/Signup/signupform.dart';
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
@@ -9,7 +9,7 @@ final validatePhone = RegExp(pattern);
 class Doctorsignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var row1 = Row(
+    /* var row1 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(padding: EdgeInsets.only(top: 50.0)),
@@ -18,7 +18,7 @@ class Doctorsignup extends StatelessWidget {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ],
-    );
+    );*/
     var row2 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [

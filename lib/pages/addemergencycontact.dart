@@ -6,12 +6,12 @@ import 'package:medico/widgets/Addemergencycontact/AddemergencycontactForm.dart'
 class Addemergencycontactscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var row1 = Row(
+    /*var row1 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(padding: EdgeInsets.only(top: 50.0)),
       ],
-    );
+    );*/
     var row2 = Row(
       mainAxisSize: MainAxisSize.min,
       children: [

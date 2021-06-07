@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:medico/models/video_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FirebaseProvider {
   static saveVideo(VideoInfo video) async {
-    var userUID = FirebaseAuth.instance.currentUser.uid;
+    //var userUID = FirebaseAuth.instance.currentUser.uid;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
     await FirebaseFirestore.instance
