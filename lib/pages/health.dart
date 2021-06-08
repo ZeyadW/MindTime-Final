@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/models/user.dart';
+import 'package:medico/widgets/line_chart_sample2.dart';
 
 class HealthTips extends StatefulWidget {
   @override
@@ -49,72 +51,10 @@ class _HealthTipsState extends State<HealthTips> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
-                  padding: EdgeInsets.all(12),
+                  padding: EdgeInsets.fromLTRB(10, 70, 10, 0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Monday 26th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                          Text(
-                            "Wednsday 28th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 80),
-                      Container(
-                        child: Text(
-                          "Neurobics for your mind .",
-                          style: TextStyle(
-                              fontSize: 28.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(height: 120),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                          Text(
-                            "Read more",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
+                      LineChartSample2(),
                     ],
                   ),
                 ),
