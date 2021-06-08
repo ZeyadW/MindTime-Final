@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/doctors');
+                          Navigator.of(context).pushNamed('/appointment');
                         },
                         child: ball("images/nurse.png",
                             Theme.of(context).scaffoldBackgroundColor),
