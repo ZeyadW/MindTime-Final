@@ -146,8 +146,8 @@ class _ErqState extends State<Erq> {
                         onPressed: () {
                           print(_sliderValue);
                           if (i == 9) {
-                            adderqscore(_erqscore(_sliderValue));
                             Navigator.of(context, rootNavigator: true).pop();
+                            adderqscore(_erqscore(_sliderValue));
                             /* Navigator.push(
                               context,
                               MaterialPageRoute(

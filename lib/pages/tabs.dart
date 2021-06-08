@@ -25,9 +25,9 @@ class _BubblesState extends State<TabsWidget>
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.name = prefs.getString('username');
     this.email = prefs.getString('email');
-    print(" in get  userr  in tabsss" + this.name);
+    // print(" in get  userr  in tabsss" + this.name);
     this.phone = prefs.getString("emergencynumber");
-    print(" in get  userr  in tabsss numbeerrrrrr" + this.phone);
+    //print(" in get  userr  in tabsss numbeerrrrrr" + this.phone);
   }
 
   AnimationController _controller;
