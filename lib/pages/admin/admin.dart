@@ -4,7 +4,7 @@ import 'package:medico/pages/admin/admindoc.dart';
 //import 'package:medico/widgets/admin/doctors.dart';
 //import 'package:medico/widgets/viewjournal/listalljournals.dart';
 
-class TabBarDemo extends StatelessWidget {
+class AdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/models/doctoss.dart';
+import 'package:medico/models/doctor.dart';
 import 'package:medico/models/users.dart';
 
 //import 'package:medico/Service/FlutterFireauth.dart';
@@ -51,19 +51,7 @@ class DocsignUpFormState extends State<DocsignUpForm> {
       onPressed: () async {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => TabBarDemo()
-                /*.ut(
-                      u: u.signup(
-                          usernamecontroller.text,
-                          passwordcontroller.text,
-                          emergencycontactnamecontroller.text,
-                          // datecontroller.text,
-                          selectedDate.toString(),
-                          emailcontroller.text,
-                          emergencycontactcontroller.text))
-                          */
-                ));
+            context, MaterialPageRoute(builder: (context) => AdminPage()));
       },
     );
     // Build a Form widget using the _formKey created above.
@@ -334,7 +322,7 @@ class DocsignUpFormState extends State<DocsignUpForm> {
               alignment: Alignment.topCenter,
               child: FlatButton(
                 onPressed: () {
-                  Doctor dr = new Doctor();
+                  DoctorsList dr = new DoctorsList();
                   dr.adddoctor(
                       emailcontroller.text,
                       passwordcontroller.text,
@@ -365,7 +353,7 @@ class DocsignUpFormState extends State<DocsignUpForm> {
       ),
     );
   }
-}/*
+} /*
   return AlertDialog(
                           content: Text("Account created successfully"),
                           actions: [okButton],

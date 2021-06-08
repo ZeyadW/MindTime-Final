@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:medico/pages/editjournal.dart';
-import 'package:medico/models/doctoss.dart' as d;
+import 'package:medico/models/doctor.dart' as d;
 import 'package:medico/widgets/admin/editdr.dart';
 import 'package:medico/widgets/admin/editdrform.dart';
 import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
@@ -114,7 +114,7 @@ class _ListAllDoctorsState extends State<ListAllDoctors> {
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final doctor = d.Doctors.fromSnapshot(data);
+    final doctor = d.Doctor.fromSnapshot(data);
     return Center(
         child: new SingleChildScrollView(
             child: Container(
