@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../widgets/appointments/appointmentlistview.dart';
-import '../widgets/appointments/appointmenttitle.dart';
+import 'package:medico/config/app_config.dart' as config;
 
 class _ViewAppointments extends State<ViewAppointments> {
   @override
@@ -9,24 +9,46 @@ class _ViewAppointments extends State<ViewAppointments> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16.0),
+                bottomRight: Radius.circular(16.0)),
+          ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
             onPressed: () {
-              Navigator.of(context).pushNamed('/home');
+              Navigator.of(context, rootNavigator: true).pop();
+              /*
+            Navigator.of(context).pushNamed('/home',
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
             },
           ),
-          title: Text('My Appointments '),
-          backgroundColor: Theme.of(context).accentColor,
-//            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
+          backgroundColor: config.Colors().mainDarkColor(1),
+          title: Text(
+            'Appointments',
+            style: TextStyle(
+              fontSize: 22.0,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ),
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Colors.white,
         body: new SingleChildScrollView(
           child: Column(
-            children: [
-              appointmentTitle(),
-              Padding(padding: EdgeInsets.only(top: 20.0)),
-              new SingleChildScrollView(
-                child: AppointmentListview(),
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.only(top: 40.0)),
+                  new SingleChildScrollView(
+                    child: AppointmentListview(),
+                  ),
+                ],
               ),
             ],
           ),
