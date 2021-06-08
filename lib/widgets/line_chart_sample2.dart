@@ -25,7 +25,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
 
   bool showAvg = false;
   List<FlSpot> points() {
-    List<FlSpot> arr = [];
+    List<FlSpot> arr = new List<FlSpot>();
     double y;
     for (int i = 0; i < arraysize; i++) {
       for (int j = 1; j <= 8; j++) {

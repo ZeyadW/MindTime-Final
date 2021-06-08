@@ -32,7 +32,7 @@ class _HealthTipsState extends State<HealthTips> {
         ),
         backgroundColor: Theme.of(context).accentColor,
         title: Text(
-          'Health Tips',
+          'Analysis',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',
@@ -51,9 +51,17 @@ class _HealthTipsState extends State<HealthTips> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(10, 70, 10, 0),
+                  padding: EdgeInsets.fromLTRB(10, 0, 10, 50),
                   child: Column(
                     children: <Widget>[
+                      Text(
+                        'Mood Analysis',
+                        style: TextStyle(
+                            fontSize: 28.0,
+                            fontFamily: 'Poppins',
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
                       LineChartSample2(),
                     ],
                   ),
