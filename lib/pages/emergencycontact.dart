@@ -14,6 +14,20 @@ class ViewEmergencyContactscreen extends StatelessWidget {
       key: _scaffoldKey,
       // backgroundColor: Color(accentColor),
       appBar: AppBar(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16.0),
+              bottomRight: Radius.circular(16.0)),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+            /*  Navigator.of(context).pushNamed('/home',
+                arguments: [currentUser.name, currentUser.email]);*/
+          },
+        ),
         title: Text(
           'Emergency Contacts:',
           style: TextStyle(

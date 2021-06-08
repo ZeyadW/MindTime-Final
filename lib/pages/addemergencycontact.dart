@@ -34,6 +34,18 @@ class Addemergencycontactscreen extends StatelessWidget {
     );
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16.0),
+              bottomRight: Radius.circular(16.0)),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+        ),
         backgroundColor: Theme.of(context).accentColor,
       ),
       body: Center(

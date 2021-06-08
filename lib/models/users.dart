@@ -96,6 +96,7 @@ class Users {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('username', this.username);
         prefs.setString('email', email);
+        prefs.setString('emergencynumber', this.phone);
         prefs.setBool('isLoggedIn', true);
         return true;
       } else {

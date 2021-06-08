@@ -49,6 +49,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16.0),
+              bottomRight: Radius.circular(16.0)),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+
+/*
+            Navigator.of(context).pushNamed('/home',
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
+          },
+        ),
         title: Text('Edit Profile '),
         backgroundColor: Theme.of(context).accentColor,
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/models/appointment.dart' as model;
+import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/appointmentsWidget.dart';
 
@@ -30,8 +30,11 @@ class _AppointmentsListState extends State<AppointmentsList> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+
+/*
             Navigator.of(context).pushNamed('/home',
-                arguments: [widget.currentUser.name, widget.currentUser.email]);
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
           },
         ),
         backgroundColor: Theme.of(context).accentColor,

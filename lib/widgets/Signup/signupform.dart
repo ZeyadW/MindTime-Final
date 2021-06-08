@@ -272,6 +272,10 @@ class SignUpFormState extends State<SignUpForm> {
                     borderRadius: BorderRadius.circular(21.0),
                   )),
               validator: (value) {
+                if (value.contains("@mindtime.com") ||
+                    emailcontroller.text.contains("@mindtimeteam.com")) {
+                  return 'Please enter the correct email format';
+                }
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }

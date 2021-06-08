@@ -4,6 +4,7 @@ import 'package:medico/pages/acount.dart';
 import 'package:medico/pages/conversations.dart' as prefix0;
 import 'home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TabsWidget extends StatefulWidget {
   final List<String> acountInfos;
@@ -25,11 +26,15 @@ class _BubblesState extends State<TabsWidget>
     this.name = prefs.getString('username');
     this.email = prefs.getString('email');
     print(" in get  userr  in tabsss" + this.name);
+    this.phone = prefs.getString("emergencynumber");
+    print(" in get  userr  in tabsss numbeerrrrrr" + this.phone);
   }
 
   AnimationController _controller;
   int _page = 0;
   String currentTitle = 'Home';
+  String phone;
+
   Widget _currentPage(int page) {
     getUser();
     switch (page) {
@@ -38,8 +43,18 @@ class _BubblesState extends State<TabsWidget>
         return Home(value: "${this.name}");
       //value: "${widget.acountInfos[0]}");
       case 1:
-        currentTitle = 'chat';
-        return prefix0.Conversation();
+      // return launch("tel://${this.phone}");
+      /* return FlatButton(
+          child: Text(
+            'SOS',
+            style: TextStyle(fontSize: 15, color: Colors.black),
+          ),
+          onPressed: () {
+            launch("tel://${this.phone}");
+          },
+        );*/
+      // currentTitle = 'chat';
+      //return prefix0.Conversation();
       case 2:
         currentTitle = 'profile';
         return AcountWidget(
@@ -70,11 +85,30 @@ class _BubblesState extends State<TabsWidget>
             size: 25,
             color: Theme.of(context).primaryColor,
           ),
-          Icon(
-            Icons.chat,
-            size: 25,
-            color: Theme.of(context).primaryColor,
+          FlatButton(
+            textColor: Colors.white,
+            color: Colors.transparent,
+            onPressed: () {
+              launch("tel://${this.phone}");
+            },
+            child: Text('SOS'),
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(50.0),
+            ),
           ),
+
+          /* IconButton(
+            onPressed: () {
+              launch("tel://${this.phone}");
+            },
+            
+            icon: Icon(
+              Icons.call,
+              size: 25,
+              color: Theme.of(context).primaryColor,
+            ),
+            //color: Colors.red,
+          ),*/
           Icon(
             Icons.perm_identity,
             size: 25,
