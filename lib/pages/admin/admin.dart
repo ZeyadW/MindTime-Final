@@ -9,7 +9,7 @@ class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
@@ -17,15 +17,31 @@ class AdminPage extends StatelessWidget {
                 Tab(text: "Doctors"),
                 Tab(text: "Assesments"),
                 Tab(text: "Knowledge Hub"),
+                Tab(
+                  text: "Log out",
+                  /* child: FlatButton(
+                      child: Text("LOG"),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/logout');
+                      },
+                    )*/
+                ),
               ],
             ),
-            title: Text('Tabs Demo'),
+            title: Text('Tabs '),
           ),
           body: TabBarView(
             children: [
               Admindoc(),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
+              IconButton(
+                onPressed: () async {
+                  Navigator.of(context).pushNamed('/logout');
+                },
+                icon: Icon(Icons.delete),
+                color: Colors.red,
+              ),
             ],
           ),
         ),

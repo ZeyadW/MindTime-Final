@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/pages/Welcome.dart';
+import 'package:medico/pages/admin/admin.dart';
 import 'package:medico/pages/home.dart';
 import 'package:medico/pages/tabs.dart';
 
@@ -93,7 +94,7 @@ class AutoLogin extends StatefulWidget {
 }
 
 class _AutoLogin extends State<AutoLogin> {
-  TextEditingController nameController = TextEditingController();
+  //TextEditingController nameController = TextEditingController();
 
   bool isLoggedIn = false;
   String name = '';
@@ -103,12 +104,7 @@ class _AutoLogin extends State<AutoLogin> {
   String userId;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: !isLoggedIn
-            ? Welcome()
-            : TabsWidget(
-                acountInfos: ["${this.userId}", "${this.email}"],
-              )
+    return Scaffold(body: !isLoggedIn ? Welcome() : navigate()
         /*Navigator.of(context).pushNamed('/home', arguments: [
                 name,
                 email
@@ -169,7 +165,7 @@ class _AutoLogin extends State<AutoLogin> {
       isLoggedIn = false;
     });
   }
-
+/*
   Future<Null> loginUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('username', nameController.text);
@@ -180,5 +176,16 @@ class _AutoLogin extends State<AutoLogin> {
     });
 
     nameController.clear();
+  }*/
+
+  Widget navigate() {
+    if (email.contains("@mindtime.com")) {
+    } else if (email.contains("@mindtimeteam.com")) {
+      return AdminPage();
+    } else {
+      return TabsWidget(
+        acountInfos: ["${this.userId}", "${this.email}"],
+      );
+    }
   }
 }

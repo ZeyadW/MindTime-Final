@@ -3,6 +3,7 @@ import 'package:medico/models/users.dart';
 //import 'package:medico/pages/Loginn.dart';
 //import 'package:medico/pages/Home.dart';
 import 'package:medico/Service/FlutterFireauth.dart';
+import 'package:medico/pages/admin/admin.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:medico/pages/home.dart';
 import 'package:medico/pages/tabs.dart';
@@ -66,10 +67,22 @@ class LoginFormState extends State<LoginForm> {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
+        if (emailcontroller.text.contains("@mindtime.com")) {
+        } else if (emailcontroller.text.contains("@mindtimeteam.com")) {
+          //  return AdminPage();
+          Navigator.of(context)
+              .push(new MaterialPageRoute(builder: (context) => AdminPage()));
+        } else {
+          Navigator.of(context).push(new MaterialPageRoute(
+              builder: (context) => TabsWidget(
+                    acountInfos: [this.username],
+                  )));
+        }
+        /*
         Navigator.of(context).push(new MaterialPageRoute(
             builder: (context) => TabsWidget(
                   acountInfos: [this.username],
-                )));
+                )));*/
         //Navigator.of(context).pushNamed('/home', arguments: [this.username]);
 
 //        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => Home()));
