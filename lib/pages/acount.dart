@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/models/user.dart';
+//import 'package:medico/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AcountWidget extends StatefulWidget {
@@ -18,10 +18,12 @@ Future<Null> logout() async {
 }
 
 class _AcountWidgetState extends State<AcountWidget> {
-  User currentUser = new User.init().getCurrentUser();
+  // User currentUser = new User.init().getCurrentUser();
+  //User currentUser = new User.basic("name", "email");
 
   @override
   Widget build(BuildContext context) {
+    // String name = currentUser.getusername();
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
@@ -47,18 +49,19 @@ class _AcountWidgetState extends State<AcountWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      ball("images/imageuser.png", Colors.transparent),
+                      //  ball("images/imageuser.png", Colors.transparent),
                       Column(
                         children: <Widget>[
+                          SizedBox(height: 50),
                           Text(
-                            "${currentUser.name}",
+                            "${widget.acountInfos[0]}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "+ ${currentUser.email}",
+                            "${widget.acountInfos[1]}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Poppins',
@@ -66,6 +69,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 50),
                       Text(
                         "25%",
                         style: TextStyle(
@@ -177,14 +181,14 @@ class _AcountWidgetState extends State<AcountWidget> {
                     context),
                 _dropDownListe(
                     Icon(
-                      Icons.card_giftcard,
+                      Icons.analytics,
                       color: Theme.of(context).accentColor,
                     ),
                     'Analysis',
                     1,
                     '/analysispage',
                     context),
-                _dropDownListe(
+                /*  _dropDownListe(
                     Icon(
                       Icons.payment,
                       color: Theme.of(context).accentColor,
@@ -192,7 +196,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                     'My Payments',
                     1,
                     '',
-                    context),
+                    context),*/
                 _dropDownListe(
                     Icon(
                       Icons.local_offer,

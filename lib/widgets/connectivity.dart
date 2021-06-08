@@ -107,8 +107,8 @@ class _AutoLogin extends State<AutoLogin> {
         body: !isLoggedIn
             ? Welcome()
             : TabsWidget(
-                //acountInfos: args,
-                )
+                acountInfos: ["${this.userId}", "${this.email}"],
+              )
         /*Navigator.of(context).pushNamed('/home', arguments: [
                 name,
                 email

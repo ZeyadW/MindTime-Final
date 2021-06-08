@@ -6,10 +6,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:medico/widgets/connectivity.dart';
 import 'package:medico/models/contactprovider.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (kReleaseMode) exit(1);
+  };
   runApp(MyApp());
 }
 

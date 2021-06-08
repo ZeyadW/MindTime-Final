@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           /* Text(
-                            "$username",
+                            "${widget.value}",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 16.0,
@@ -118,7 +118,7 @@ class _HomeState extends State<Home> {
                         child: ball("images/microscope.png",
                             Theme.of(context).scaffoldBackgroundColor),
                       ),
-                      FlatButton(
+                      /*  FlatButton(
                         padding: EdgeInsets.all(0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                         },
                         child: ball("images/microscope.png",
                             Theme.of(context).scaffoldBackgroundColor),
-                      ),
+                      ),*/
                     ],
                   ),
                 ),
@@ -202,7 +202,7 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  Column(
+                  /*Column(
                     children: <Widget>[
                       Text(
                         "Tests",
@@ -221,7 +221,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ],
-                  ),
+                  ),*/
                 ],
               ),
             ),
@@ -330,7 +330,7 @@ class _HomeState extends State<Home> {
                   FlatButton(
                     onPressed: () {},
                     child: Text(
-                      'Doctors nearly  you ',
+                      'Doctors',
                       style: TextStyle(
                           fontSize: 12.0,
                           fontFamily: 'Poppins',

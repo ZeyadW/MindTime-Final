@@ -8,6 +8,7 @@ class User {
   String gender;
   DateTime dateOfBirth;
   String avatar;
+  User();
 
   User.init();
 
@@ -20,11 +21,23 @@ class User {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.name = prefs.getString('username');
     this.email = prefs.getString('email');
+    print(" in get current userrrr" + this.name);
   }
 
   User getCurrentUser() {
     getUser();
+    //print(" in get current userrrr" + this.name);
     return User.basic(this.name, this.email);
+  }
+
+  String getusername() {
+    getUser();
+    return this.name;
+  }
+
+  String getemail() {
+    getUser();
+    return this.email;
   }
 
   getDateOfBirth() {

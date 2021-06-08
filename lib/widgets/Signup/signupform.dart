@@ -65,7 +65,8 @@ class SignUpFormState extends State<SignUpForm> {
         prefs.setString('email', emailcontroller.text);
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context).pushNamed('/home', arguments: [u.username]);
-/*
+/*            Navigator.of(context).pushNamed('/home', arguments:[widget.currentUser.name]);
+
         Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Home()

@@ -105,7 +105,7 @@ class RouteGenerator {
           title: Text('Error'),
         ),
         body: Center(
-          child: Text('ERROR'),
+          child: Text('Page not found'),
         ),
       );
     });

@@ -3,6 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:medico/pages/acount.dart';
 import 'package:medico/pages/conversations.dart' as prefix0;
 import 'home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TabsWidget extends StatefulWidget {
   final List<String> acountInfos;
@@ -17,27 +18,37 @@ class TabsWidget extends StatefulWidget {
 
 class _BubblesState extends State<TabsWidget>
     with SingleTickerProviderStateMixin {
+  String name = "";
+  String email = "";
+  Future<void> getUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.name = prefs.getString('username');
+    this.email = prefs.getString('email');
+    print(" in get  userr  in tabsss" + this.name);
+  }
+
   AnimationController _controller;
   int _page = 0;
   String currentTitle = 'Home';
   Widget _currentPage(int page) {
+    getUser();
     switch (page) {
       case 0:
         currentTitle = 'Home';
-        return Home(//value: "${widget.acountInfos[0]}"
-            );
+        return Home(value: "${this.name}");
+      //value: "${widget.acountInfos[0]}");
       case 1:
         currentTitle = 'chat';
         return prefix0.Conversation();
       case 2:
         currentTitle = 'profile';
         return AcountWidget(
-            //acountInfos: ["${widget.acountInfos[0]}","${widget.acountInfos[1]}"],
-            );
+          acountInfos: ["${this.name}", "${this.email}"],
+        );
       default:
         currentTitle = 'Home';
-        return Home(//value: "${widget.acountInfos[0]}"
-            );
+        return Home(value: "${this.name}");
+      //value: "${widget.acountInfos[0]}");
     }
   }
 
