@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medico/widgets/stats/stat.dart';
-
+/*
 class Statscreen extends StatefulWidget {
   @override
   _StatscreenState createState() => _StatscreenState();
@@ -44,3 +44,4 @@ class _StatscreenState extends State<Statscreen> {
     );
   }
 }
+*/
