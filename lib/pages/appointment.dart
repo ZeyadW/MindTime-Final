@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medico/models/appointments.dart' as model;
+import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/appointmentsWidget.dart';
 
@@ -11,6 +12,7 @@ class AppointmentsList extends StatefulWidget {
 
 class _AppointmentsListState extends State<AppointmentsList> {
   model.ApointmentList appointmentList;
+  Doctor doctor = new Doctor.doc().getCurrentDoctor();
   @override
   void initState() {
     this.appointmentList = new model.ApointmentList();

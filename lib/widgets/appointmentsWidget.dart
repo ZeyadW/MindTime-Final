@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
+import 'package:medico/widgets/Journal/editjournal.dart';
 
 class AppointmentsWidget extends StatefulWidget {
   final model.Appointment appointment;
-  const AppointmentsWidget({Key key, this.appointment}) : super(key: key);
+  final date;
+  const AppointmentsWidget({Key key, this.appointment, this.date})
+      : super(key: key);
 
   @override
   _AppointmentsWidgetState createState() => _AppointmentsWidgetState();
@@ -64,7 +67,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                             height: 12,
                           ),
                           Text(
-                            '${widget.appointment.date}',
+                            '${date}',
                             style: TextStyle(
                               color: Colors.grey,
                               fontFamily: 'Poppins',
