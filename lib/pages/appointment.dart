@@ -30,8 +30,11 @@ class _AppointmentsListState extends State<AppointmentsList> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+
+/*
             Navigator.of(context).pushNamed('/home',
-                arguments: [widget.currentUser.name, widget.currentUser.email]);
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
           },
         ),
         backgroundColor: Theme.of(context).accentColor,

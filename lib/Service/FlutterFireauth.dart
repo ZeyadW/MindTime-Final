@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<bool> signIn(String email, String password) async {
+Future<String> signIn(String email, String password) async {
   print("sign inn abl tryyyyyyy ");
   print(email);
   print(password);
@@ -10,14 +10,16 @@ Future<bool> signIn(String email, String password) async {
         .signInWithEmailAndPassword(email: email, password: password);
     print(FirebaseAuth.instance.currentUser.uid);
     print("b3d await");
-    return true;
+    return "Logged in successfully";
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      print('No user found for that email.');
+      return "No user found for that email.";
     } else if (e.code == 'wrong-password') {
-      print('Wrong password provided for that user.');
+      return "Wrong password provided for that user.";
     }
-    return false;
+    return "No Internet Connection";
+  } catch (e) {
+    return e.toString();
   }
 }
 

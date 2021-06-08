@@ -22,8 +22,9 @@ class _AnalysisPageState extends State<AnalysisPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
-            Navigator.of(context).pushNamed('/home',
-                arguments: [currentUser.name, currentUser.email]);
+            Navigator.of(context, rootNavigator: true).pop();
+            /*  Navigator.of(context).pushNamed('/home',
+                arguments: [currentUser.name, currentUser.email]);*/
           },
         ),
         backgroundColor: Theme.of(context).accentColor,

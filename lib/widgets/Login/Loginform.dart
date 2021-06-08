@@ -5,6 +5,7 @@ import 'package:medico/models/users.dart';
 import 'package:medico/Service/FlutterFireauth.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:medico/pages/home.dart';
+import 'package:medico/pages/tabs.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -65,8 +66,11 @@ class LoginFormState extends State<LoginForm> {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
-
-        Navigator.of(context).pushNamed('/home', arguments: [this.username]);
+        Navigator.of(context).push(new MaterialPageRoute(
+            builder: (context) => TabsWidget(
+                  acountInfos: [this.username],
+                )));
+        //Navigator.of(context).pushNamed('/home', arguments: [this.username]);
 
 //        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => Home()));
       },
@@ -211,7 +215,7 @@ class LoginFormState extends State<LoginForm> {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     print("waiting");
-                    bool shouldNavigate = await signIn(
+                    String shouldNavigate = await signIn(
                         emailcontroller.text, passwordcontroller.text);
                     print("done waiting");
                     var p = await checkuserexist();
@@ -219,7 +223,8 @@ class LoginFormState extends State<LoginForm> {
                     print(p);
                     print(" shouldNavigate ");
                     print(shouldNavigate);
-                    if (p == true && shouldNavigate) {
+                    if (p == true &&
+                        shouldNavigate == "Logged in successfully") {
                       return showDialog(
                         context: context,
                         builder: (context) {
@@ -234,7 +239,7 @@ class LoginFormState extends State<LoginForm> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            content: Text("wrong username or password"),
+                            content: Text(shouldNavigate),
                             actions: [okButton2],
                           );
                         },
