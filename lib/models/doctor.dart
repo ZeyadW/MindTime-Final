@@ -18,8 +18,8 @@ class Doctor {
   Doctor.init();
   Doctor(this.name, this.description, this.avatar, this.state);
   Doctor getCurrentDoctor() {
-    return Doctor("Dr.Alina james", "B.Sc DDVL Demilitologist",
-        "images/asset-1.png", "Closed To day");
+    return Doctor("Dr.ADLY EL SHEIKH", "B.Sc DDVL Demilitologist",
+        "images/dradly.png", "Closed To day");
   }
 
   Doctor.doc(

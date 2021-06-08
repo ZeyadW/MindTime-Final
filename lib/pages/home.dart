@@ -173,7 +173,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Text(
-                        "Order medicine",
+                        "Add Journals",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',
@@ -193,7 +193,7 @@ class _HomeState extends State<Home> {
                             color: Theme.of(context).focusColor),
                       ),
                       Text(
-                        "view analysis",
+                        "Journals analysis",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',

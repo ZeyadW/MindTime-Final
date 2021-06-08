@@ -472,7 +472,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                   ),
                   Column(
                     children: <Widget>[
-                      card("images/asset-2.png", "Dr.Mickel Nick",
+                      card("images/drsalma.jpg", "Dr.SALMA ABDELBAKI",
                           "B.Sc DDVL Demilitologist", "4.2"),
                       SizedBox(
                           height: 30.0,
