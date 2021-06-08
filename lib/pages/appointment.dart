@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/models/appointment.dart' as model;
+import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/appointmentsWidget.dart';
 
