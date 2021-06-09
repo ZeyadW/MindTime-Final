@@ -12,7 +12,7 @@ class FrameInfo {
     this.videoid = videoid;
   }
 
-  Future<dynamic> getFrameInfo() async {
+  Future<List> getFrameInfo() async {
     print("in get frame info function");
     DocumentSnapshot variable = await FirebaseFirestore.instance
         .collection('Users')
@@ -23,6 +23,7 @@ class FrameInfo {
     emotions = variable.get("Mood");
     print("after document snapshot");
     print(emotions);
+
     return emotions;
   }
 }

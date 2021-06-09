@@ -1,5 +1,7 @@
 /*import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:medico/models/FrameInfo.dart';
+import 'package:medico/models/moodswings.dart';
 
 class LineChartSample2 extends StatefulWidget {
   @override
@@ -7,25 +9,73 @@ class LineChartSample2 extends StatefulWidget {
 }
 
 class _LineChartSample2State extends State<LineChartSample2> {
+  var fd = new FrameInfo();
   List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
+    Colors.red,
+    Colors.blue[200],
   ];
+  List array;
+  int arraysize = 0;
+  Future<double> getarraylength() async {
+    array = await fd.getFrameInfo();
+    arraysize = array.length;
+    print(arraysize);
+    return arraysize.toDouble();
+  }
 
   bool showAvg = false;
+  List<FlSpot> points() {
+    List<FlSpot> arr = new List<FlSpot>();
+    double y;
+    for (int i = 0; i < arraysize; i++) {
+      for (int j = 1; j <= 8; j++) {
+        switch (array[i]) {
+          case 'anger':
+            y = 1;
+            break;
+          case 'Contempt':
+            y = 2;
+            break;
+          case 'disgust':
+            y = 3;
+            break;
+          case 'fear':
+            y = 4;
+            break;
+          case 'happy':
+            y = 5;
+            break;
+          case 'neutral':
+            y = 6;
+            break;
+          case 'sad':
+            y = 7;
+            break;
+          case 'surprise':
+            y = 8;
+
+            break;
+        }
+      }
+      arr.add(FlSpot(i.toDouble(), y));
+    }
+    print(arr);
+    return arr;
+  }
 
   @override
   Widget build(BuildContext context) {
+    getarraylength();
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.70,
+          aspectRatio: 1.2,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: Color(0xff232d37)),
+                color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -83,16 +133,14 @@ class _LineChartSample2State extends State<LineChartSample2> {
           getTextStyles: (value) => const TextStyle(
               color: Color(0xff68737d),
               fontWeight: FontWeight.bold,
-              fontSize: 16),
+              fontSize: 10),
           getTitles: (value) {
+            print(value);
             switch (value.toInt()) {
-              case 2:
-                return 'MAR';
-              case 5:
-                return 'JUN';
-              case 8:
-                return 'SEP';
+              default:
+                return value.toString();
             }
+
             return '';
           },
           margin: 8,
@@ -102,33 +150,47 @@ class _LineChartSample2State extends State<LineChartSample2> {
           getTextStyles: (value) => const TextStyle(
             color: Color(0xff67727d),
             fontWeight: FontWeight.bold,
-            fontSize: 15,
+            fontSize: 10,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return '10k';
+                return 'Angry';
+              case 2:
+                return 'Contempt';
+
               case 3:
-                return '30k';
+                return 'Disgust';
+              case 4:
+                return 'Fear';
+
               case 5:
-                return '50k';
+                return 'Happy';
+              case 6:
+                return 'Neutral';
+              case 7:
+                return 'Sad';
+              case 8:
+                return 'Surprise';
             }
             return '';
           },
-          reservedSize: 28,
-          margin: 12,
+          reservedSize: 36,
+          margin: 17,
         ),
       ),
       borderData: FlBorderData(
           show: true,
           border: Border.all(color: const Color(0xff37434d), width: 1)),
       minX: 0,
-      maxX: 11,
+      maxX: arraysize.toDouble(),
       minY: 0,
-      maxY: 6,
+      maxY: 9,
       lineBarsData: [
         LineChartBarData(
-          spots: [
+          spots:
+              points() /*[
+            
             FlSpot(0, 3),
             FlSpot(2.6, 2),
             FlSpot(4.9, 5),
@@ -136,7 +198,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
             FlSpot(8, 4),
             FlSpot(9.5, 3),
             FlSpot(11, 4),
-          ],
+          ]*/
+          ,
           isCurved: true,
           colors: gradientColors,
           barWidth: 5,
@@ -162,13 +225,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
         drawHorizontalLine: true,
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
@@ -214,7 +277,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
             return '';
           },
           reservedSize: 28,
-          margin: 12,
+          margin: 13,
         ),
       ),
       borderData: FlBorderData(

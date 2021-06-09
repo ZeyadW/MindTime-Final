@@ -86,14 +86,14 @@ class _BubblesState extends State<TabsWidget>
             color: Theme.of(context).primaryColor,
           ),
           FlatButton(
-            textColor: Colors.white,
-            color: Colors.transparent,
+            textColor: Theme.of(context).accentColor,
+            color: Colors.white,
             onPressed: () {
               launch("tel://${this.phone}");
             },
             child: Text('SOS'),
             shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(50.0),
+              borderRadius: new BorderRadius.circular(100.0),
             ),
           ),
 

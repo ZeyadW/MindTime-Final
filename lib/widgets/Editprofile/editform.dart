@@ -48,7 +48,6 @@ class EditProfileFormState extends State<EditProfileForm> {
       ),
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context).push(
             new MaterialPageRoute(builder: (context) => EditProfilePage()));
       },
@@ -65,10 +64,10 @@ class EditProfileFormState extends State<EditProfileForm> {
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
-      name = prefs.getString('doctorname');
-     loc = prefs.getString('doctorloc');
-     desc = prefs.getString('doctordesc');
-     pass = prefs.getString('doctorpass');
+    name = prefs.getString('doctorname');
+    loc = prefs.getString('doctorloc');
+    desc = prefs.getString('doctordesc');
+    pass = prefs.getString('doctorpass');
 
     DocumentSnapshot variable =
         await FirebaseFirestore.instance.collection('Users').doc(email).get();
