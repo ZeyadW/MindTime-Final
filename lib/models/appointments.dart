@@ -35,6 +35,7 @@ class appointment {
     this.email = prefs.getString('email');
     final String rand = '${new Random().nextInt(10000)}';
     String appointmentname = 'Appointment' + rand;
+    String isbooked = '0';
     await _db
         .collection('Therapists')
         .doc(email)
@@ -45,6 +46,10 @@ class appointment {
       "SessionsTimes": SessionsTimes,
       "SessionDate": SessionDate,
       "SessionsPerDay": SessionsPerDay,
+      "isBooked": isbooked,
+      "ZoomMeetingID": isbooked,
+      "ZoomMeetingPassword": isbooked,
+      "IsAccepted": isbooked,
       "datecreated": DateTime.now(),
     });
     return true;
