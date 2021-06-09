@@ -3,13 +3,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 DateTime now = new DateTime.now();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
+class Diary {
+  var text;
+  var title;
+  var diaryid;
+  var timestamp;
+
+  Diary({
+    this.text,
+    this.title,
+    this.diaryid,
+    this.timestamp,
+  });
+}
+
 class Diaries {
   var text;
   var title;
   var diaryid;
   var timestamp;
   DocumentReference reference;
-
+  //List<Diary> ds = [];
   Diaries({
     this.text,
     this.title,
