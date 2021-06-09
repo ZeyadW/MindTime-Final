@@ -6,6 +6,7 @@ import 'package:medico/pages/book-test-online4.dart';
 //import 'package:medico/pages/choosediary.dart';
 import 'package:medico/pages/doctor-book-1.dart';
 import 'package:medico/pages/doctor-book-2.dart';
+import 'package:medico/pages/drviewprofile.dart';
 import 'package:medico/pages/emergencycontact.dart';
 import 'package:medico/pages/health.dart';
 import 'package:medico/pages/my-doctors.dart';
@@ -73,6 +74,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => MyDoctorsList());
       case '/appointment':
         return MaterialPageRoute(builder: (_) => AppointmentsList());
+      case '/drmyappointment':
+        return MaterialPageRoute(builder: (_) => ViewAppointments());
       case '/health':
         return MaterialPageRoute(builder: (_) => HealthTips());
       case '/analysispage':
@@ -96,6 +99,8 @@ class RouteGenerator {
             builder: (context) => ViewEmergencyContactscreen());
       case '/editprofile':
         return MaterialPageRoute(builder: (context) => EditProfilePage());
+      case '/doctorprofile':
+        return MaterialPageRoute(builder: (context) => Viewdr());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

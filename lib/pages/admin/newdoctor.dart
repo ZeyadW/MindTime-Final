@@ -1,10 +1,48 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medico/widgets/Signup/docsignup.dart';
 //import 'package:medico/widgets/Signup/signupform.dart';
+import 'package:path/path.dart' as path;
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
+void _getFile() async {
+  try {
+    File file = await ImagePicker.pickImage(source: ImageSource.gallery);
+    print('file:' + file.path);
+    _uploadfile(file);
+  } catch (e) {
+    print(e.message);
+  }
+}
+
+void _uploadfile(File file) async {
+  print('gwa upload file');
+  //print('file gwa upload' + file.path);
+  String filename = path.basename(file.path);
+  print(filename);
+  FirebaseStorage _storage;
+  StorageUploadTask _uploadtask =
+      _storage.ref().child('drimages').child(filename).putFile(file);
+
+  _uploadtask.events.listen((event) {
+    if (event.type == StorageTaskEventType.progress) {
+      print(
+          "${event.snapshot.bytesTransferred} of ${event.snapshot.totalByteCount}");
+    }
+    if (event.type == StorageTaskEventType.success) {
+      print('fe el if');
+      event.snapshot.ref.getDownloadURL().then((url) {
+        print(url);
+      });
+    }
+  });
+}
 
 class Doctorsignup extends StatelessWidget {
   @override
@@ -83,6 +121,9 @@ class Doctorsignup extends StatelessWidget {
                               child: SingleChildScrollView(
                                 child: Column(
                                   children: <Widget>[
+                                    FloatingActionButton(onPressed: () {
+                                      _getFile();
+                                    }),
                                     //  row1,
                                     row2,
                                     DocsignUpForm()
