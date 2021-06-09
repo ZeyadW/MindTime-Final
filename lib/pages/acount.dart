@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medico/models/TextAnalysis.dart';
 //import 'package:medico/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +21,23 @@ Future<Null> logout() async {
 class _AcountWidgetState extends State<AcountWidget> {
   // User currentUser = new User.init().getCurrentUser();
   //User currentUser = new User.basic("name", "email");
+  TotalTextAnalysis text;
+  void awaittext(email) async {
+    print("in await");
+    await text.getAnalysisfromDB(email);
+    print("b3d await ");
+  }
+
+  @override
+  void initState() {
+    text = new TotalTextAnalysis();
+    print(widget.acountInfos[0]);
+    print("init state of health page");
+    print(widget.acountInfos[1]);
+    text.getAnalysisfromDB(widget.acountInfos[1]);
+    //text.getAnalysisfromDB(currentUser.email);
+    // awaittext(currentUser.email);
+  }
 
   @override
   Widget build(BuildContext context) {

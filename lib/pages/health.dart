@@ -1,16 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fl_chart/fl_chart.dart';
+//import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/line_chart_sample2.dart';
+import 'package:medico/models/TextAnalysis.dart';
 
 class HealthTips extends StatefulWidget {
+  final List<String> acountInfos;
+
+  const HealthTips({Key key, this.acountInfos}) : super(key: key);
   @override
   _HealthTipsState createState() => _HealthTipsState();
 }
 
 class _HealthTipsState extends State<HealthTips> {
-  User currentUser = new User.init().getCurrentUser();
+  // User currentUser = new User.init().getCurrentUser();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +67,7 @@ class _HealthTipsState extends State<HealthTips> {
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
-                      LineChartSample2(),
+                      //  LineChartSample2(),
                     ],
                   ),
                 ),

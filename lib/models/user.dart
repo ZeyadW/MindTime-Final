@@ -21,12 +21,12 @@ class User {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.name = prefs.getString('username');
     this.email = prefs.getString('email');
+    print("email :" + this.email);
     print(" in get current userrrr" + this.name);
   }
 
   User getCurrentUser() {
     getUser();
-    //print(" in get current userrrr" + this.name);
     return User.basic(this.name, this.email);
   }
 
