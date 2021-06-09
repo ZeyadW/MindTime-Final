@@ -46,7 +46,7 @@ class _AppointmentListviewState extends State<AppointmentListview> {
         Center(
             child: new SingleChildScrollView(
           child: Container(
-            width: 385.1,
+            width: 400,
             height: 475.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -60,20 +60,36 @@ class _AppointmentListviewState extends State<AppointmentListview> {
             child: _buildBody(context),
           ),
         )),
-        FlatButton(
-          child: Text(
-            '+ Appointment',
-            style: TextStyle(
-                fontSize: 20,
-                color: config.Colors().mainColor(1),
-                fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(34.0),
+                topRight: Radius.circular(34.0),
+                bottomRight: Radius.circular(34.0),
+                bottomLeft: Radius.circular(34.0),
+              ),
+              color: Colors.white,
+            ),
+            child: FlatButton(
+              height: 60,
+              minWidth: 200,
+              color: Colors.transparent,
+              child: Text(
+                '+ Appointment',
+                style: TextStyle(
+                    color: config.Colors().mainDarkColor(1),
+                    fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddAppointment()),
+                );
+              },
+            ),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddAppointment()),
-            );
-          },
         ),
       ],
     );
@@ -117,9 +133,9 @@ class _AppointmentListviewState extends State<AppointmentListview> {
             child: Container(
       child: ListTile(
           title: AppointmentsWidget(
-            appointment: appointmentList.appointment.elementAt(2),
-            date: string,
-          )),
+        appointment: appointmentList.appointment.elementAt(2),
+        date: string,
+      )),
     )));
   }
 }

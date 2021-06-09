@@ -24,27 +24,42 @@ class EditdrFormState extends State<EditdrForm> {
   var email;
   var desc;
   var pass;
+  final namecontroller = TextEditingController();
+  final locationcontoller = TextEditingController();
+  final descriptioncontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+  final newpasswordcontroller = TextEditingController();
 
   var username;
   var _passwordVisible;
   FocusNode myFocusNode;
 
   void getdoctoremail() async {
+    print('object');
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     doctoremail = prefs.getString('doctoremail');
-    print("in get doctor email function" + doctoremail);
-    name = prefs.getString('doctorname');
-    loc = prefs.getString('doctorloc');
-    desc = prefs.getString('doctordesc');
-    pass = prefs.getString('doctorpass');
-    print(name + "  " + loc + "  " + desc + "  " + pass);
+
+    DocumentSnapshot variable = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(doctoremail)
+        .get();
+    if (variable.data() != null) {
+      print('object1');
+      setState(() {
+        this.namecontroller.text = variable.get("name");
+        this.descriptioncontroller.text = variable.get("description");
+        this.locationcontoller.text = variable.get("location");
+
+        this.passwordcontroller.text = variable.get("password");
+      });
+    }
   }
 
   @override
   void initState() {
     _passwordVisible = false;
     super.initState();
-    //getdoctoremail();
+    getdoctoremail();
     //getdetails();
     myFocusNode = FocusNode();
   }
@@ -72,11 +87,10 @@ class EditdrFormState extends State<EditdrForm> {
       },
     );
 
-   
     getdoctoremail();
-    print("description:"+desc);
-    print("location:"+loc);
-    print("password:"+pass);
+    print("description:" + desc);
+    print("location:" + loc);
+    print("password:" + pass);
     print("desc contoller =S" + descriptioncontroller.text);
     if (descriptioncontroller.text == "") {
       print(descriptioncontroller.text);
@@ -150,11 +164,6 @@ class EditdrFormState extends State<EditdrForm> {
   @override
   Widget build(BuildContext context) {
     DateTime selectedDate;
-    final namecontroller = TextEditingController();
-    final locationcontoller = TextEditingController();
-    final descriptioncontroller = TextEditingController();
-    final passwordcontroller = TextEditingController();
-    final newpasswordcontroller = TextEditingController();
 
     return Form(
       key: _formKey,
