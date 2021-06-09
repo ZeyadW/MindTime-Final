@@ -27,8 +27,8 @@ class MeetingWidget extends StatelessWidget {
     // Setting Zoom meeting options (default to false if not set)
     this.meetingOptions = new ZoomMeetingOptions(
         userId: 'Mr Hamada',
-        meetingId: '86778480419',
-        meetingPassword: '2cVQq9',
+        meetingId: meetingId,
+        meetingPassword: meetingPassword,
         disableDialIn: "true",
         disableDrive: "true",
         disableInvite: "true",

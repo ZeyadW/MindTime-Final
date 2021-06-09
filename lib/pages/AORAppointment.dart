@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medico/config/app_config.dart' as config;
+import 'package:medico/pages/JoinSession.dart';
 import 'package:medico/pages/editappointment.dart';
 import 'package:medico/pages/viewappointments.dart';
 
@@ -35,7 +36,6 @@ class AORAppointmentState extends State<AORAppointment> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.of(context, rootNavigator: true).pop();
             Navigator.push(
                 context,
                 new MaterialPageRoute(
@@ -128,6 +128,14 @@ class AORAppointmentState extends State<AORAppointment> {
                               style: TextStyle(color: Colors.white)),
                           onPressed: () {
                             setState(() {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => MeetingWidget(
+                                          meetingId: ZoomIDController.text,
+                                          meetingPassword:
+                                              ZoomPasswordController.text)));
+
                               pressed = false;
                             });
                           },
@@ -136,57 +144,146 @@ class AORAppointmentState extends State<AORAppointment> {
                     ],
                   ),
                 )
-              : Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 200, 0, 0),
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: new EdgeInsets.symmetric(
-                            vertical: 20.0, horizontal: 10.0),
+              : Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        height: 450,
+                        width: 350,
+                        margin: EdgeInsets.only(top: 100),
+                        padding: EdgeInsets.only(
+                            top: 0, right: 20, left: 20, bottom: 20),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(21.0),
-                          gradient: RadialGradient(
-                            center: Alignment(-0.88, -1.0),
-                            radius: 1.35,
-                            colors: [Colors.green, Colors.green],
-                            stops: [0.0, 1.0],
-                          ),
-                        ),
-                        child: FlatButton(
-                          child: Text(
-                            "Accept appointment",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              pressed = true;
-                            });
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                        child: Container(
-                          margin: new EdgeInsets.symmetric(
-                              vertical: 20.0, horizontal: 10.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(21.0),
-                            gradient: RadialGradient(
-                              center: Alignment(-0.88, -1.0),
-                              radius: 1.35,
-                              colors: [Colors.red, Colors.red],
-                              stops: [0.0, 1.0],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black54,
+                              spreadRadius: 5,
+                              blurRadius: 20,
+                              offset:
+                                  Offset(0, 0), // changes position of shadow
                             ),
-                          ),
-                          child: FlatButton(
-                            child: Text("Reject appointment",
-                                style: TextStyle(color: Colors.white)),
-                            onPressed: () {},
-                          ),
+                          ],
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30.0),
+                              bottomRight: Radius.circular(30.0),
+                              bottomLeft: Radius.circular(30.0),
+                              topLeft: Radius.circular(30.0)),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.97,
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      spreadRadius: 2,
+                                      blurRadius: 10,
+                                      offset: Offset(
+                                          0, 0), // changes position of shadow
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(30.0),
+                                      bottomRight: Radius.circular(30.0),
+                                      bottomLeft: Radius.circular(30.0),
+                                      topLeft: Radius.circular(30.0)),
+                                  color: config.Colors().mainDarkColor(1),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                    child: Column(
+                                      children: [
+                                        Text("Patient Name: Zeyad",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                            )),
+                                        Text("Session Date: 6-9-2021",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                            )),
+                                        Text("Session Time: 6:30 PM",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 50, 0, 0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(21.0),
+                                      gradient: RadialGradient(
+                                        radius: 1.35,
+                                        colors: [Colors.green, Colors.green],
+                                        stops: [0.0, 1.0],
+                                      ),
+                                    ),
+                                    child: FlatButton(
+                                      padding: const EdgeInsets.all(7.0),
+                                      child: Text(
+                                        "Accept appointment",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          pressed = true;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: new EdgeInsets.symmetric(
+                                        vertical: 20.0, horizontal: 10.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(21.0),
+                                      gradient: RadialGradient(
+                                        center: Alignment(-0.88, -1.0),
+                                        radius: 1.35,
+                                        colors: [Colors.red, Colors.red],
+                                        stops: [0.0, 1.0],
+                                      ),
+                                    ),
+                                    child: FlatButton(
+                                      padding: const EdgeInsets.all(7.0),
+                                      child: Text("Reject appointment",
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            new MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewAppointments()));
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
         ],
       ),
