@@ -88,6 +88,8 @@ class _ListAllJournalState extends State<ListAllJournals> {
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     final diary = d.Diaries.fromSnapshot(data);
+    print("in build list item journals");
+    print(diary);
     final diarydate =
         diary.timestamp.toDate().difference(DateTime.now()).inDays.abs();
     return Center(
