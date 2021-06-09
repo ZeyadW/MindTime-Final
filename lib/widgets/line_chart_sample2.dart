@@ -1,4 +1,4 @@
-/*import 'package:fl_chart/fl_chart.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/models/FrameInfo.dart';
 import 'package:medico/models/moodswings.dart';
@@ -311,4 +311,3 @@ class _LineChartSample2State extends State<LineChartSample2> {
     );
   }
 }
-*/
