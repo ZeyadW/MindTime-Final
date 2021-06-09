@@ -38,7 +38,7 @@ class _ViewAppointments extends State<ViewAppointments> {
             ),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: config.Colors().mainDarkColor(1),
         body: new SingleChildScrollView(
           child: Column(
             children: <Widget>[

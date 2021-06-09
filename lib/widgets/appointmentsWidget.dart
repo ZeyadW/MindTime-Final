@@ -3,6 +3,7 @@ import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
+import 'package:medico/config/app_config.dart' as config;
 
 class AppointmentsWidget extends StatefulWidget {
   final model.Appointment appointment;
@@ -22,34 +23,40 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        FlatButton(
-          onPressed: () {},
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: ListTile(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) => AORAppointment()));
-            },
-            title: Card(
+        ListTile(
+          onTap: () {
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => AORAppointment()));
+          },
+          title: Container(
+            decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+                gradient: new LinearGradient(
+                    colors: [
+                      config.Colors().mainDarkColor(1),
+                      Colors.blue[200],
+                      config.Colors().mainDarkColor(1),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.centerRight,
+                    tileMode: TileMode.clamp)),
+            child: Card(
+              //color: Colors.transparent,
               elevation: 0.2,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Container(
-                decoration: BoxDecoration(
+                /* decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
                         offset: Offset(0, 4),
                         blurRadius: 10)
                   ],
-                ),
+                ),*/
                 padding: const EdgeInsets.only(
-                    top: 20.0, bottom: 20.0, left: 12.0, right: 12.0),
+                    top: 20.0, bottom: 20.0, left: 0.0, right: 0.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -103,6 +110,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
             ),
           ),
         ),
+
         //SizedBox(height: 20.0,child: Center(child: Container(height: 2.0,color: Colors.grey.withOpacity(0.1),),),),
       ],
     ));
