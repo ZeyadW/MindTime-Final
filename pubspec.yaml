@@ -60,7 +60,7 @@ dependencies:
   syncfusion_flutter_charts: any
   firebase_storage: 4.0.0
   group_radio_button: ^1.0.1
-  fl_chart: ^0.36.1
+  fl_chart: any
   flutter_zoom_plugin:
       git:
         url: git://github.com/decodedhealth/flutter_zoom_plugin.git
