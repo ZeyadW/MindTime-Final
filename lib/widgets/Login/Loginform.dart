@@ -4,6 +4,7 @@ import 'package:medico/models/users.dart';
 //import 'package:medico/pages/Home.dart';
 import 'package:medico/Service/FlutterFireauth.dart';
 import 'package:medico/pages/admin/admin.dart';
+import 'package:medico/pages/doctoraccount.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:medico/pages/home.dart';
 import 'package:medico/pages/tabs.dart';
@@ -68,6 +69,11 @@ class LoginFormState extends State<LoginForm> {
         Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
         if (emailcontroller.text.contains("@mindtime.com")) {
+          Navigator.of(context).push(new MaterialPageRoute(
+              builder: (context) => DracountWidget(acountInfos: [
+                    "${this.username}",
+                    "${this.emailcontroller.text}"
+                  ])));
         } else if (emailcontroller.text.contains("@mindtimeteam.com")) {
           //  return AdminPage();
           Navigator.of(context)
@@ -234,7 +240,7 @@ class LoginFormState extends State<LoginForm> {
                     var p = await checkuserexist();
                     print("check exist ");
                     print(p);
-                    print(" shouldNavigate ");
+                    print(" shouldNavigate: $shouldNavigate ");
                     print(shouldNavigate);
                     if (p == true &&
                         shouldNavigate == "Logged in successfully") {

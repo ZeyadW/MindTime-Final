@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/pages/EditProfile.dart';
 import 'package:medico/pages/appointment.dart';
 import 'package:medico/pages/book-test-online3.dart';
@@ -29,6 +30,7 @@ import 'package:medico/pages/AnalysisPage.dart';
 import 'package:medico/pages/erq.dart';
 import 'package:medico/pages/bmis.dart';
 import 'package:medico/pages/foal.dart';
+import 'package:medico/pages/viewmypatients.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -72,6 +74,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => BookTestsOnlineFourthStep());
       case '/mydoctors':
         return MaterialPageRoute(builder: (_) => MyDoctorsList());
+      case '/mypatients':
+        return MaterialPageRoute(builder: (_) => Viewmypatients());
+      case '/AOR':
+        return MaterialPageRoute(builder: (_) => AORAppointment());
+
       case '/appointment':
         return MaterialPageRoute(builder: (_) => AppointmentsList());
       case '/drmyappointment':
@@ -81,8 +88,8 @@ class RouteGenerator {
       case '/analysispage':
         return MaterialPageRoute(builder: (_) => AnalysisPage());
 
-      case '/analysis':
-        return MaterialPageRoute(builder: (_) => Statscreen());
+      case '/requests':
+        return MaterialPageRoute(builder: (_) => AORAppointment());
       case '/tests':
         return MaterialPageRoute(builder: (_) => Questioanires());
       case '/bmis':

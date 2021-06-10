@@ -48,7 +48,7 @@ class AORAppointmentState extends State<AORAppointment> {
         ),
         backgroundColor: config.Colors().mainDarkColor(1),
         title: Text(
-          'Appointments',
+          'Booked appointments',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',

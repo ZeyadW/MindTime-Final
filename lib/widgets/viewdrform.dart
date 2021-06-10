@@ -77,7 +77,13 @@ class ViewdrFormState extends State<ViewdrForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(padding: EdgeInsets.only(top: 280.0)),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(140, 50, 0, 0),
+            child: Expanded(
+                child: SizedBox(
+                    child: ball('images/dradly.png', Colors.transparent))),
+          ),
+          Padding(padding: EdgeInsets.only(top: 100.0)),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
@@ -312,4 +318,19 @@ class ViewdrFormState extends State<ViewdrForm> {
       ),
     );
   }
+}
+
+Widget ball(String image, Color color) {
+  return Container(
+    height: 150,
+    width: 150.0,
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(100.0),
+      image: DecorationImage(
+        image: AssetImage(image),
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
 }
