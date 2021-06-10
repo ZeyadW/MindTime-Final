@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 //import 'package:medico/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AcountWidget extends StatefulWidget {
+class DracountWidget extends StatefulWidget {
   final List<String> acountInfos;
 
-  const AcountWidget({Key key, this.acountInfos}) : super(key: key);
+  const DracountWidget({Key key, this.acountInfos}) : super(key: key);
   @override
-  _AcountWidgetState createState() => _AcountWidgetState();
+  _DracountWidgetState createState() => _DracountWidgetState();
 }
 
 Future<Null> logout() async {
@@ -17,7 +17,7 @@ Future<Null> logout() async {
   prefs.setBool('isLoggedIn', false);
 }
 
-class _AcountWidgetState extends State<AcountWidget> {
+class _DracountWidgetState extends State<DracountWidget> {
   // User currentUser = new User.init().getCurrentUser();
   //User currentUser = new User.basic("name", "email");
 

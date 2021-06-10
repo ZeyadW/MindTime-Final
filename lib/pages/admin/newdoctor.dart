@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
+//import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medico/widgets/Signup/docsignup.dart';
 //import 'package:medico/widgets/Signup/signupform.dart';
@@ -11,40 +12,38 @@ import 'package:path/path.dart' as path;
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
-void _getFile() async {
-  try {
-    File file = await ImagePicker.pickImage(source: ImageSource.gallery);
-    print('file:' + file.path);
-    _uploadfile(file);
-  } catch (e) {
-    print(e.message);
+
+class Doctorsignup extends StatefulWidget {
+  //Doctorsignu({Key? key}) : super(key: key);
+
+  @override
+  _DoctorsignupState createState() => _DoctorsignupState();
+}
+
+class _DoctorsignupState extends State<Doctorsignup> {
+  final picker = ImagePicker();
+
+  Future pickImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
   }
-}
 
-void _uploadfile(File file) async {
-  print('gwa upload file');
-  //print('file gwa upload' + file.path);
-  String filename = path.basename(file.path);
-  print(filename);
-  FirebaseStorage _storage;
-  StorageUploadTask _uploadtask =
-      _storage.ref().child('drimages').child(filename).putFile(file);
+  File _imageFile;
 
-  _uploadtask.events.listen((event) {
-    if (event.type == StorageTaskEventType.progress) {
-      print(
-          "${event.snapshot.bytesTransferred} of ${event.snapshot.totalByteCount}");
-    }
-    if (event.type == StorageTaskEventType.success) {
-      print('fe el if');
-      event.snapshot.ref.getDownloadURL().then((url) {
-        print(url);
-      });
-    }
-  });
-}
+  Future uploadImageToFirebase() async {
+    String fileName = _imageFile.path;
+    StorageReference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child('drimages/');
+    StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => print("Done: $value"),
+        );
+  }
 
-class Doctorsignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /* var row1 = Row(
@@ -122,11 +121,16 @@ class Doctorsignup extends StatelessWidget {
                                 child: Column(
                                   children: <Widget>[
                                     FloatingActionButton(onPressed: () {
-                                      _getFile();
+                                      pickImage();
                                     }),
                                     //  row1,
                                     row2,
-                                    DocsignUpForm()
+                                    DocsignUpForm(),
+                                    FlatButton(
+                                        onPressed: () {
+                                          uploadImageToFirebase();
+                                        },
+                                        child: Text('data')),
                                   ],
                                 ),
                               ),
