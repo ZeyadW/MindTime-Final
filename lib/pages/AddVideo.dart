@@ -17,6 +17,7 @@ import 'package:medico/models/video_info.dart';
 import 'package:medico/widgets/player.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:http/http.dart' as http;
+import 'package:medico/config/app_config.dart' as config;
 
 class Video {
   final int id;
@@ -409,7 +410,26 @@ class _VideoUploadState extends State<VideoUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Upload Video Diary"),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16.0),
+              bottomRight: Radius.circular(16.0)),
+        ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+            /*
+            Navigator.of(context).pushNamed('/home',
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
+          },
+        ),
+        backgroundColor: config.Colors().mainDarkColor(1),
       ),
       body: Center(child: _processing ? _getProgressBar() : _getListView()),
       floatingActionButton: FloatingActionButton(
