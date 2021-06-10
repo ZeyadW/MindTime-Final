@@ -1,6 +1,7 @@
 //import 'dart:html';
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TextAnalysis {
   String selfharm;
@@ -86,8 +87,34 @@ class TotalTextAnalysis {
     print("Self Harm " + selfharmper.toString());
     print("Anger " + angerper.toString());
     print("Empty " + emptyper.toString());
+    setAnalysisDetails();
   }
 
+  void setAnalysisDetails() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setDouble('selfharmper', this.selfharmper);
+    prefs.setDouble('angerper', this.angerper);
+    prefs.setDouble('emptyper', this.emptyper);
+    print("anger in text moidellllllll:" +
+        this.selfharmper.toString() +
+        "selfharm:" +
+        this.angerper.toString() +
+        "empty:" +
+        this.emptyper.toString());
+  }
+
+  void getTextAnalysisDetails() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.selfharmper = prefs.getDouble("selfharmper");
+    this.angerper = prefs.getDouble("angerper");
+    this.emptyper = prefs.getDouble("emptyper");
+    print("anger in fgetttt modellll:" +
+        angerper.toString() +
+        "selfharm:" +
+        selfharmper.toString() +
+        "empty:" +
+        emptyper.toString());
+  }
   /* void awaittext(email) async {
     print("in await");
     //bool tt =

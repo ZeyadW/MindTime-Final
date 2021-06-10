@@ -28,6 +28,19 @@ class _AcountWidgetState extends State<AcountWidget> {
     print("b3d await ");
   }
 
+  void setAnalysisDetails() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setDouble('selfharmper', text.selfharmper);
+    prefs.setDouble('angerper', text.angerper);
+    prefs.setDouble('emptyper', text.emptyper);
+    print("anger:" +
+        text.selfharmper.toString() +
+        "selfharm:" +
+        text.angerper.toString() +
+        "empty:" +
+        text.emptyper.toString());
+  }
+
   @override
   void initState() {
     text = new TotalTextAnalysis();
@@ -35,6 +48,7 @@ class _AcountWidgetState extends State<AcountWidget> {
     print("init state of health page");
     print(widget.acountInfos[1]);
     text.getAnalysisfromDB(widget.acountInfos[1]);
+    setAnalysisDetails();
     //text.getAnalysisfromDB(currentUser.email);
     // awaittext(currentUser.email);
   }
@@ -188,7 +202,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                     1,
                     '/appointment',
                     context),
-                _dropDownListe(
+                /*  _dropDownListe(
                     Icon(
                       Icons.card_giftcard,
                       color: Theme.of(context).accentColor,
@@ -196,7 +210,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                     'Health Interest',
                     1,
                     '/health',
-                    context),
+                    context),*/
                 _dropDownListe(
                     Icon(
                       Icons.analytics,
@@ -204,7 +218,7 @@ class _AcountWidgetState extends State<AcountWidget> {
                     ),
                     'Analysis',
                     1,
-                    '/analysispage',
+                    '/health',
                     context),
                 /*  _dropDownListe(
                     Icon(
