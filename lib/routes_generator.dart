@@ -73,7 +73,7 @@ class RouteGenerator {
       case '/mydoctors':
         return MaterialPageRoute(builder: (_) => MyDoctorsList());
       case '/appointment':
-        return MaterialPageRoute(builder: (_) => AppointmentsList());
+        return MaterialPageRoute(builder: (_) => MyDoctorsList());
       case '/drmyappointment':
         return MaterialPageRoute(builder: (_) => ViewAppointments());
       case '/health':

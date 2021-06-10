@@ -62,7 +62,7 @@ class DoctorsList {
       new Doctor(
           "Dr.Steve Robert",
           "B.Sc DDVL Demilitologist 26 years of experience",
-          "images/asset-3.png",
+          "images/dr-3.png",
           "Open To day"),
       new Doctor(
           "Dr.Nemeli Aaraf",
