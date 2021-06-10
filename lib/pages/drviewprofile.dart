@@ -35,7 +35,7 @@ class _ViewdrState extends State<Viewdr> {
         ),
         backgroundColor: config.Colors().mainDarkColor(1),
         title: Text(
-          'Appointments',
+          'My profile',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',

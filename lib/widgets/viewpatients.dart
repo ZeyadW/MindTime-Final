@@ -5,17 +5,17 @@ import 'package:medico/models/user.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/config/app_config.dart' as config;
 
-class AppointmentsWidget extends StatefulWidget {
+class ViewpatientsWidget extends StatefulWidget {
   final model.Appointment appointment;
   final date;
-  const AppointmentsWidget({Key key, this.appointment, this.date})
+  const ViewpatientsWidget({Key key, this.appointment, this.date})
       : super(key: key);
 
   @override
-  _AppointmentsWidgetState createState() => _AppointmentsWidgetState();
+  _ViewpatientsWidgetState createState() => _ViewpatientsWidgetState();
 }
 
-class _AppointmentsWidgetState extends State<AppointmentsWidget> {
+class _ViewpatientsWidgetState extends State<ViewpatientsWidget> {
   User currentUser = new User.init().getCurrentUser();
   @override
   Widget build(BuildContext context) {
