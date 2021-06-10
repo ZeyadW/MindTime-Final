@@ -115,7 +115,8 @@ flutter:
     - images/index.jpeg
     - images/imageuser.png
     - images/gps.png
-  # An image asset can refer to one or more resolution-specific "variants", see
+    - images/
+    # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
   # For details regarding adding assets from package dependencies, see
