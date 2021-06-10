@@ -3,21 +3,22 @@ import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/models/users.dart' as u;
 import 'package:medico/pages/AORAppointment.dart';
+import 'package:medico/pages/mypatientprofile.dart';
 import 'package:medico/pages/viewappointments.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/pages/JoinSession.dart';
 import 'package:medico/widgets/patientslistview.dart';
 
-class PatientsWidget extends StatefulWidget {
+class MypatientsWidget extends StatefulWidget {
   final u.Patient patient;
 
-  const PatientsWidget({Key key, this.patient}) : super(key: key);
+  const MypatientsWidget({Key key, this.patient}) : super(key: key);
 
   @override
-  _PatientsWidgetState createState() => _PatientsWidgetState();
+  _MypatientsWidgetState createState() => _MypatientsWidgetState();
 }
 
-class _PatientsWidgetState extends State<PatientsWidget> {
+class _MypatientsWidgetState extends State<MypatientsWidget> {
   bool pressed = false;
   final ZoomIDController = TextEditingController();
   final ZoomPasswordController = TextEditingController();
@@ -36,7 +37,15 @@ class _PatientsWidgetState extends State<PatientsWidget> {
           child: Expanded(
             child: SizedBox(
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => Mypatientprofile()));
+
+                  pressed = false;
+                },
                 title: Expanded(
                   child: SizedBox(
                     child: Card(
@@ -229,34 +238,6 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 0, 0, 0),
-                                        child: Container(
-                                          child: Row(
-                                            children: [
-                                              IconButton(
-                                                padding: EdgeInsets.all(0),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    pressed = true;
-                                                  });
-                                                  //Navigator.of(context).pushNamed('/chat');
-                                                },
-                                                icon: Icon(Icons.thumb_up),
-                                                iconSize: 20,
-                                                color: Colors.green,
-                                              ),
-                                              IconButton(
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        new MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                ViewAppointments()));
-                                                  },
-                                                  icon: Icon(Icons.thumb_down),
-                                                  color: Colors.red),
-                                            ],
-                                          ),
-                                        ),
                                       ),
                                     ],
                                   ),
