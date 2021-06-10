@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/line_chart_sample2.dart';
 import 'package:medico/models/TextAnalysis.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HealthTips extends StatefulWidget {
   final List<String> acountInfos;
@@ -15,9 +16,56 @@ class HealthTips extends StatefulWidget {
 
 class _HealthTipsState extends State<HealthTips> {
   // User currentUser = new User.init().getCurrentUser();
+  double selfharmper;
+  double emptyper;
+  double angerper;
 
+  TotalTextAnalysis tt;
+  void getsharedpref() async {
+    await tt.getTextAnalysisDetails();
+  }
+
+  dynamic ch;
+  @override
+  void initState() {
+    tt = new TotalTextAnalysis();
+    getsharedpref();
+    print(tt.angerper);
+    //tt.getTextAnalysisDetails();
+    ch = LineChartSample2();
+  }
+
+  var x = Colors.transparent;
+  var y = Colors.white;
   @override
   Widget build(BuildContext context) {
+    //Theme.of(context).primaryColor;
+    var textself = Text(" ${tt.selfharmper} %",
+        style: TextStyle(
+          fontSize: 28.0,
+          fontFamily: 'Poppins',
+          color: x,
+        ));
+    var textempty = Text(" ${tt.emptyper} %",
+        style: TextStyle(
+          fontSize: 28.0,
+          fontFamily: 'Poppins',
+          color: x,
+        ));
+    var textanger = Text(" ${tt.angerper} %",
+        style: TextStyle(
+          fontSize: 28.0,
+          fontFamily: 'Poppins',
+          color: x,
+        ));
+    /* dynamic ch = Container(
+      width: 20,
+      height: 40,
+    );*/
+    dynamic chart = Container(
+      child: ch,
+      //color: x,
+    );
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -37,7 +85,7 @@ class _HealthTipsState extends State<HealthTips> {
         ),
         backgroundColor: Theme.of(context).accentColor,
         title: Text(
-          'Analysis',
+          'Borderline Symptoms Analysis',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',
@@ -56,84 +104,33 @@ class _HealthTipsState extends State<HealthTips> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(10, 0, 10, 50),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        'Mood Analysis',
-                        style: TextStyle(
-                            fontSize: 28.0,
-                            fontFamily: 'Poppins',
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      //  LineChartSample2(),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                elevation: 1,
-                color: Colors.green,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                child: Container(
                   padding: EdgeInsets.all(12),
-                  height: 400,
-                  width: 300,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Monday 26th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                          Text(
-                            "Wednsday 28th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(height: 80),
                       Container(
-                        child: Text(
-                          "Brush up on hygiene . ",
-                          style: TextStyle(
-                              fontSize: 28.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold),
+                        child: TextButton(
+                          child: Text(
+                            "Self Harm and Dangerous behavior", //. ${tt.selfharmper} ",
+                            style: TextStyle(
+                                fontSize: 28.0,
+                                fontFamily: 'Poppins',
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              x = Theme.of(context).primaryColor;
+                            });
+                          },
                         ),
                       ),
-                      SizedBox(height: 120),
+                      SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            "",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
+                          textself,
                           Text(
                             "Read more",
                             style: TextStyle(
@@ -152,58 +149,39 @@ class _HealthTipsState extends State<HealthTips> {
               ),
               Card(
                 elevation: 1,
-                color: Colors.blue,
+                color: Colors.blueGrey,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
                   padding: EdgeInsets.all(12),
-                  height: 400,
-                  width: 300,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Monday 26th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                          Text(
-                            "Wednsday 28th April",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(height: 80),
                       Container(
-                        child: Text(
-                          "Don't skip your breakfast . ",
-                          style: TextStyle(
-                              fontSize: 28.0,
-                              fontFamily: 'Poppins',
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold),
+                        child: TextButton(
+                          child: Text(
+                            "Feeling of Emptiness", //. ${tt.selfharmper} ",
+                            style: TextStyle(
+                                fontSize: 28.0,
+                                fontFamily: 'Poppins',
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              x = Theme.of(context).primaryColor;
+                            });
+                          },
                         ),
                       ),
-                      SizedBox(height: 120),
+                      SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
+                          textempty,
                           Text(
-                            "",
+                            "Read more",
                             style: TextStyle(
                               fontSize: 18.0,
                               fontFamily: 'Poppins',
@@ -212,6 +190,87 @@ class _HealthTipsState extends State<HealthTips> {
                                   .withOpacity(0.8),
                             ),
                           ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Card(
+                  elevation: 1,
+                  color: Colors.blueGrey,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16)),
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 50),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          'Mood Analysis',
+                          style: TextStyle(
+                              fontSize: 28.0,
+                              fontFamily: 'Poppins',
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                          child: Text(
+                            "Tab to View Analysis",
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Poppins',
+                                color: y,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              y = Colors.transparent;
+
+                              ch = LineChartSample2();
+                              chart = LineChartSample2();
+                            });
+                          },
+                        ),
+                        LineChartSample2(),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 1,
+                color: Colors.blueGrey,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(height: 80),
+                      Container(
+                        child: TextButton(
+                          child: Text(
+                            "Extreme anger", //. ${tt.selfharmper} ",
+                            style: TextStyle(
+                                fontSize: 28.0,
+                                fontFamily: 'Poppins',
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              x = Theme.of(context).primaryColor;
+                            });
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          textanger,
                           Text(
                             "Read more",
                             style: TextStyle(

@@ -81,8 +81,8 @@ class RouteGenerator {
       case '/analysispage':
         return MaterialPageRoute(builder: (_) => AnalysisPage());
 
-      /* case '/analysis':
-        return MaterialPageRoute(builder: (_) => Statscreen());*/
+      case '/analysis':
+        return MaterialPageRoute(builder: (_) => Statscreen());
       case '/tests':
         return MaterialPageRoute(builder: (_) => Questioanires());
       case '/bmis':
