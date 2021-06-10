@@ -61,7 +61,7 @@ dependencies:
   firebase_storage: 4.0.0
   group_radio_button: ^1.0.1
   fl_chart: any
-  file_picker: any
+  #file_picker: any
   flutter_zoom_plugin:
       git:
         url: git://github.com/decodedhealth/flutter_zoom_plugin.git

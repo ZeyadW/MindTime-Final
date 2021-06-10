@@ -3,6 +3,7 @@ import 'package:flutter_zoom_plugin/zoom_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:medico/config/app_config.dart' as config;
 
 void main() async {
   runApp(MeetingWidget());
@@ -26,7 +27,7 @@ class MeetingWidget extends StatelessWidget {
 
     // Setting Zoom meeting options (default to false if not set)
     this.meetingOptions = new ZoomMeetingOptions(
-        userId: 'Mr Hamada',
+        userId: 'Patient',
         meetingId: meetingId,
         meetingPassword: meetingPassword,
         disableDialIn: "true",
@@ -54,7 +55,26 @@ class MeetingWidget extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Loading meeting '),
+          title: Text("Joining Meeting"),
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16.0),
+                bottomRight: Radius.circular(16.0)),
+          ),
+          backgroundColor: config.Colors().mainDarkColor(1),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).pop();
+              /*
+            Navigator.of(context).pushNamed('/home',
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
+            },
+          ),
         ),
         body: Padding(
             padding: EdgeInsets.all(16.0),
