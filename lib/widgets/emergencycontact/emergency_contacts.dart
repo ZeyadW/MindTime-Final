@@ -88,7 +88,7 @@ class _Listemergencycontacts extends State<Listemergencycontacts> {
               // color: Colors.white,
               color: Theme.of(context).accentColor),
           child: ListTile(
-            leading: Image(image: AssetImage('images/Icons- ambulance.jpeg')),
+            //  leading: Image(image: AssetImage('images/Icons- ambulance.jpeg')),
             trailing: IconButton(
               onPressed: () async {
                 emergencyContact.deletecontact(emergencyContact.number);
