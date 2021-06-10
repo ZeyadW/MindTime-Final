@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 6.0, bottom: 6.0),
-              padding: const EdgeInsets.only(left: 15.0, right: 10.0),
+              padding: const EdgeInsets.only(left: 25, right: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -152,7 +152,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Text(
-                        "Search doctors",
+                        "Your doctors",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',
