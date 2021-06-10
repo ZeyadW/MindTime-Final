@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:flutter/material.dart';
 import 'package:medico/models/emergencycontact.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class User {
   String username;
@@ -28,6 +30,42 @@ class User {
   Future<String> getEmail() {
     return Future.value(email);
   }
+}
+
+class Patient {
+  String username;
+  String date;
+  String time;
+  Patient({this.username, this.date, this.time});
+  Patient getCurrentPatient() {
+    return Patient(
+        username: "Mohammed Salah", date: "9-6-2021", time: "6:30 PM");
+  }
+}
+
+class PatientL {
+  String id = UniqueKey().toString();
+  Patient p;
+  String date;
+
+  PatientL(this.date, this.p);
+}
+
+class PatientList {
+  Patient currentPatient = new Patient().getCurrentPatient();
+  List<Patient> _PatientsList;
+
+  PatientList() {
+    this._PatientsList = [
+      new Patient(
+          username: currentPatient.username,
+          date: currentPatient.date,
+          time: currentPatient.time),
+      new Patient(username: "Emy Mohammed", date: "10-6-2021", time: "4:30 PM"),
+    ];
+  }
+
+  List<Patient> get patient => _PatientsList;
 }
 
 class Users {
