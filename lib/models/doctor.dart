@@ -75,7 +75,7 @@ class DoctorsList {
 
   Future<Doctor> adddoctor(
       email, password, description, date, location, name) async {
-    await FirebaseFirestore.instance.collection("Users").doc(email).set({
+    await FirebaseFirestore.instance.collection("Therapists").doc(email).set({
       'name': name,
       'email': email,
       'password': password,
