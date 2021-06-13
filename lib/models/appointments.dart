@@ -1,28 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:medico/models/appointments.dart';
+//import 'package:medico/models/appointments.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:medico/models/doctor.dart';
 
 class appointment {
-  List SessionsTimes;
-  var SessionDate;
+  List sessionsTimes;
+  var sessionDate;
   var datecreated;
-  var SessionsPerDay;
+  var sessionsPerDay;
   var appointmentID;
   DoctorsList dr = DoctorsList();
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   var email;
   DocumentReference reference;
-  appointment({this.SessionsTimes, this.SessionDate});
+  appointment({this.sessionsTimes, this.sessionDate});
 
   appointment.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['SessionsTimes'] != null),
         assert(map['SessionDate'] != null),
         assert(map['appointmentID'] != null),
-        SessionsTimes = map['SessionsTimes'],
-        SessionDate = map['SessionDate'],
+        sessionsTimes = map['SessionsTimes'],
+        sessionDate = map['SessionDate'],
         appointmentID = map['appointmentID'],
         datecreated = map['datecreated'];
 
@@ -30,7 +30,7 @@ class appointment {
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   Future<bool> createAppointment(
-      SessionsTimes, SessionDate, SessionsPerDay) async {
+      sessionsTimes, sessionDate, sessionsPerDay) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.email = prefs.getString('email');
     final String rand = '${new Random().nextInt(10000)}';
@@ -43,9 +43,9 @@ class appointment {
         .doc(appointmentname)
         .set({
       "appointmentID": appointmentname,
-      "SessionsTimes": SessionsTimes,
-      "SessionDate": SessionDate,
-      "SessionsPerDay": SessionsPerDay,
+      "SessionsTimes": sessionsTimes,
+      "SessionDate": sessionDate,
+      "SessionsPerDay": sessionsPerDay,
       "isBooked": isbooked,
       "ZoomMeetingID": isbooked,
       "ZoomMeetingPassword": isbooked,
@@ -55,7 +55,7 @@ class appointment {
     return true;
   }
 
-  Future<bool> DeleteAppointment(DocumentSnapshot snap, appointmentID) async {
+  Future<bool> seleteAppointment(DocumentSnapshot snap, appointmentID) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.email = prefs.getString('email');
     await _db
@@ -68,7 +68,7 @@ class appointment {
   }
 
   Future<bool> updateAppointment(
-      SessionsTimes, SessionDate, SessionsPerDay) async {
+      sessionsTimes, sessionDate, sessionsPerDay) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.email = prefs.getString('email');
     await _db
@@ -77,9 +77,9 @@ class appointment {
         .collection("Appointments")
         .doc(appointmentID)
         .update({
-      "SessionsTimes": SessionsTimes,
-      "SessionsPerDay": SessionsPerDay,
-      "SessionDate": SessionDate,
+      "SessionsTimes": sessionsTimes,
+      "SessionsPerDay": sessionsPerDay,
+      "SessionDate": sessionDate,
     });
     return true;
   }

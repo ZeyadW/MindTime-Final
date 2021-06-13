@@ -126,7 +126,7 @@ class _AppointmentListviewState extends State<AppointmentListview> {
     final appointdate =
         appoint.datecreated.toDate().difference(DateTime.now()).inHours.abs();
     var date = DateTime.fromMicrosecondsSinceEpoch(
-        appoint.SessionDate.microsecondsSinceEpoch);
+        appoint.sessionDate.microsecondsSinceEpoch);
     String string = dateFormat.format(date);
     return Center(
         child: new SingleChildScrollView(

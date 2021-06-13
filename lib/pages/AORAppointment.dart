@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medico/config/app_config.dart' as config;
-import 'package:medico/pages/JoinSession.dart';
-import 'package:medico/pages/editappointment.dart';
+//import 'package:medico/pages/JoinSession.dart';
+//import 'package:medico/pages/editappointment.dart';
 import 'package:medico/pages/viewappointments.dart';
 import 'package:medico/widgets/patientslistview.dart';
 
