@@ -4,11 +4,11 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medico/widgets/Signup/docsignup.dart';
 //import 'package:medico/widgets/Signup/signupform.dart';
-import 'package:path/path.dart' as path;
+//import 'package:path/path.dart' as path;
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);

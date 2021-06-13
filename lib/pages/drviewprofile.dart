@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medico/widgets/admin/addDoctorbutton.dart';
-import 'package:medico/widgets/admin/doctors.dart';
+//import 'package:medico/widgets/admin/addDoctorbutton.dart';
+//import 'package:medico/widgets/admin/doctors.dart';
 import 'package:medico/widgets/viewdrform.dart';
 import 'package:medico/config/app_config.dart' as config;
 
@@ -10,6 +10,7 @@ class Viewdr extends StatefulWidget {
 }
 
 class _ViewdrState extends State<Viewdr> {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,3 +50,4 @@ class _ViewdrState extends State<Viewdr> {
     ));
   }
 }
+

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
+import 'package:medico/pages/AORAppointment.dart';
 //import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/config/app_config.dart' as config;
@@ -25,7 +26,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
       children: <Widget>[
         ListTile(
           onTap: () {
-           /* Navigator.push(context,
+            /*  Navigator.push(context,
                 new MaterialPageRoute(builder: (context) => AORAppointment()));*/
           },
           title: Container(

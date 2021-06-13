@@ -92,6 +92,24 @@ class _ListAllJournalState extends State<ListAllJournals> {
     print(diary);
     final diarydate =
         diary.timestamp.toDate().difference(DateTime.now()).inDays.abs();
+
+    Widget yesdelete = FlatButton(
+      child: Text(
+        "Yes delete",
+      ),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        deleteDiary(diary);
+      },
+    );
+    Widget nodelete = FlatButton(
+      child: Text(
+        "Cancel",
+      ),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
     return Center(
         child: new SingleChildScrollView(
             child: Container(
@@ -99,7 +117,17 @@ class _ListAllJournalState extends State<ListAllJournals> {
       leading: Image(image: AssetImage('images/journl.jpeg')),
       trailing: IconButton(
           onPressed: () {
-            deleteDiary(diary);
+            return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Text("Delete diary "),
+                  actions: [yesdelete, nodelete],
+                );
+              },
+            );
+
+            // deleteDiary(diary);
           },
           icon: Icon(Icons.delete),
           color: Colors.red),

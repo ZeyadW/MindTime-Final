@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medico/config/app_config.dart' as config;
-import 'package:medico/pages/JoinSession.dart';
-import 'package:medico/pages/editappointment.dart';
+//import 'package:medico/pages/JoinSession.dart';
+//import 'package:medico/pages/editappointment.dart';
 import 'package:medico/pages/viewappointments.dart';
 import 'package:medico/widgets/patientslistview.dart';
 
@@ -48,7 +48,7 @@ class AORAppointmentState extends State<AORAppointment> {
         ),
         backgroundColor: config.Colors().mainDarkColor(1),
         title: Text(
-          'Appointments',
+          'Booked appointments',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',

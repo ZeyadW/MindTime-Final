@@ -1,12 +1,12 @@
-import 'package:date_field/date_field.dart';
+//import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:medico/widgets/admin/editdr.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:medico/widgets/admin/editdr.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:medico/models/users.dart';
-import 'package:medico/pages/EditProfile.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+//import 'package:medico/models/users.dart';
+//import 'package:medico/pages/EditProfile.dart';
+//import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class ViewdrForm extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class ViewdrFormState extends State<ViewdrForm> {
 
   void getdoctoremail() async {
     print('object');
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    // final SharedPreferences prefs = await SharedPreferences.getInstance();
     //doctoremail = prefs.getString('doctoremail');
     doctoremail = 'hamada@mindtime.com';
     DocumentSnapshot variable = await FirebaseFirestore.instance
@@ -70,14 +70,20 @@ class ViewdrFormState extends State<ViewdrForm> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime selectedDate;
+    //DateTime selectedDate;
 
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(padding: EdgeInsets.only(top: 280.0)),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(140, 50, 0, 0),
+            child: Expanded(
+                child: SizedBox(
+                    child: ball('images/dradly.png', Colors.transparent))),
+          ),
+          Padding(padding: EdgeInsets.only(top: 100.0)),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21.0),
@@ -312,4 +318,19 @@ class ViewdrFormState extends State<ViewdrForm> {
       ),
     );
   }
+}
+
+Widget ball(String image, Color color) {
+  return Container(
+    height: 150,
+    width: 150.0,
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(100.0),
+      image: DecorationImage(
+        image: AssetImage(image),
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
 }

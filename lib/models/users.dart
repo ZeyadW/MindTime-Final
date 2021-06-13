@@ -134,6 +134,7 @@ class Users {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('username', this.username);
         prefs.setString('email', email);
+        print("Email: Login + $email");
         prefs.setString('emergencynumber', this.phone);
         prefs.setBool('isLoggedIn', true);
         return true;
@@ -148,7 +149,7 @@ class Users {
 
     if (log1) {
       User u = User(
-          email: email, username: this.username, emergencycontact: this.phone);
+          email: email, password: this.username, emergencycontact: this.phone);
 
       return u;
     } else {

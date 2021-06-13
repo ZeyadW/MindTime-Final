@@ -65,7 +65,25 @@ class _Listemergencycontacts extends State<Listemergencycontacts> {
     print(data.data());
     print("o0000");
     final emergencyContact = Contact.fromSnapshot(data);
-
+    Widget yesdelete = FlatButton(
+      child: Text(
+        "Yes delete",
+      ),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        emergencyContact.deletecontact(emergencyContact.number);
+        // Navigator.of(context).push(new MaterialPageRoute(builder: (context) => LoginPage()));
+      },
+    );
+    Widget nodelete = FlatButton(
+      child: Text(
+        "Cancel",
+      ),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        // Navigator.of(context).push(new MaterialPageRoute(builder: (context) => LoginPage()));
+      },
+    );
     return Center(
         child: new SingleChildScrollView(
             child: Padding(
@@ -88,10 +106,20 @@ class _Listemergencycontacts extends State<Listemergencycontacts> {
               // color: Colors.white,
               color: Theme.of(context).accentColor),
           child: ListTile(
-            leading: Image(image: AssetImage('images/Icons- ambulance.jpeg')),
+            //  leading: Image(image: AssetImage('images/Icons- ambulance.jpeg')),
             trailing: IconButton(
               onPressed: () async {
-                emergencyContact.deletecontact(emergencyContact.number);
+                return showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Text("Delete Emergency Contact"),
+                      actions: [yesdelete, nodelete],
+                    );
+                  },
+                );
+
+                //  emergencyContact.deletecontact(emergencyContact.number);
               },
               icon: Icon(Icons.delete),
               //color: Colors.red,

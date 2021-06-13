@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/admin/admin.dart';
+import 'package:medico/pages/doctoraccount.dart';
 import 'package:medico/pages/home.dart';
 import 'package:medico/pages/tabs.dart';
 
@@ -180,6 +181,7 @@ class _AutoLogin extends State<AutoLogin> {
 
   Widget navigate() {
     if (email.contains("@mindtime.com")) {
+      return DracountWidget(acountInfos: ["${this.name}", "${this.email}"]);
     } else if (email.contains("@mindtimeteam.com")) {
       return AdminPage();
     } else {

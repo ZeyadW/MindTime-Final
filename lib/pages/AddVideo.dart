@@ -259,10 +259,10 @@ class _VideoUploadState extends State<VideoUpload> {
       email = prefs.getString('email');
       print("Email in SendVidToRestAPI " + email);
 
-      var VideoEnc = jsonEncode(<String, String>{
+      var videoEnc = jsonEncode(<String, String>{
         'Video Name': vidName,
       });
-      print('REST API: ' + VideoEnc);
+      print('REST API: ' + videoEnc);
 
       final response = await http.post(Uri.http(
           '143.198.113.232', '' + vidName + "-" + email + "-" + 'Video'));

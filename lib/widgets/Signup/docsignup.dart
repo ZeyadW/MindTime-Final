@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/users.dart';
 
-//import 'package:medico/Service/FlutterFireauth.dart';
+import 'package:medico/Service/FlutterFireauth.dart';
 //import 'package:project_mobile/models/users.dart';
 
 //import 'package:medico/Pages/home.dart';
@@ -323,6 +323,10 @@ class DocsignUpFormState extends State<DocsignUpForm> {
               child: FlatButton(
                 onPressed: () {
                   DoctorsList dr = new DoctorsList();
+                  register(
+                    emailcontroller.text,
+                    passwordcontroller.text,
+                  );
                   dr.adddoctor(
                       emailcontroller.text,
                       passwordcontroller.text,

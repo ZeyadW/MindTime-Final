@@ -25,7 +25,7 @@ class _ViewpatientsWidgetState extends State<ViewpatientsWidget> {
       children: <Widget>[
         ListTile(
           onTap: () {
-           /* Navigator.push(context,
+            /* Navigator.push(context,
                 new MaterialPageRoute(builder: (context) => AORAppointment()));*/
           },
           title: Container(
@@ -82,7 +82,7 @@ class _ViewpatientsWidgetState extends State<ViewpatientsWidget> {
                               height: 12,
                             ),
                             Text(
-                              '${date}',
+                              '$date',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Poppins',

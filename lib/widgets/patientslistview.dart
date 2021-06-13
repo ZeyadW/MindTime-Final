@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:medico/pages/AORAppointment.dart';
-import 'package:medico/pages/addappointment.dart';
-import 'package:medico/pages/editappointment.dart';
-import 'package:medico/pages/viewappointments.dart';
+//import 'package:medico/pages/AORAppointment.dart';
+//import 'package:medico/pages/addappointment.dart';
+//import 'package:medico/pages/editappointment.dart';
+//import 'package:medico/pages/viewappointments.dart';
 import 'package:medico/models/appointments.dart';
 import 'package:medico/widgets/PatientsWidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:medico/models/users.dart' as u;
-import 'package:medico/config/app_config.dart' as config;
+//import 'package:medico/config/app_config.dart' as config;
 
 class PatientListview extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class _PatientListviewState extends State<PatientListview> {
     return true;
   }
 
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  //final FirebaseFirestore _db = FirebaseFirestore.instance;
   appointment r = new appointment();
   var email;
   DateFormat dateFormat = DateFormat("yyyy-MM-dd hh:mm");
@@ -92,11 +92,12 @@ class _PatientListviewState extends State<PatientListview> {
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     final appoint = appointment.fromSnapshot(data);
-    final appointdate =
-        appoint.datecreated.toDate().difference(DateTime.now()).inHours.abs();
+    //final appointdate =
+    appoint.datecreated.toDate().difference(DateTime.now()).inHours.abs();
     var date = DateTime.fromMicrosecondsSinceEpoch(
-        appoint.SessionDate.microsecondsSinceEpoch);
-    String string = dateFormat.format(date);
+        appoint.sessionDate.microsecondsSinceEpoch);
+    //String string =
+    dateFormat.format(date);
     return Center(
         child: new SingleChildScrollView(
             child: Container(
