@@ -12,6 +12,20 @@ import 'package:path/path.dart' as path;
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
+<<<<<<< Updated upstream
+=======
+
+/*
+void _getFile() async {
+  try {
+    File file = await ImagePicker.pickImage(source: ImageSource.gallery);
+    print('file:' + file.path);
+    _uploadfile(file);
+  } catch (e) {
+    print(e.message);
+  }
+}
+>>>>>>> Stashed changes
 
 class Doctorsignup extends StatefulWidget {
   //Doctorsignu({Key? key}) : super(key: key);
@@ -19,6 +33,7 @@ class Doctorsignup extends StatefulWidget {
   @override
   _DoctorsignupState createState() => _DoctorsignupState();
 }
+<<<<<<< Updated upstream
 
 class _DoctorsignupState extends State<Doctorsignup> {
   final picker = ImagePicker();
@@ -44,6 +59,10 @@ class _DoctorsignupState extends State<Doctorsignup> {
         );
   }
 
+=======
+*/
+class Doctorsignup extends StatelessWidget {
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     /* var row1 = Row(
@@ -121,7 +140,11 @@ class _DoctorsignupState extends State<Doctorsignup> {
                                 child: Column(
                                   children: <Widget>[
                                     FloatingActionButton(onPressed: () {
+<<<<<<< Updated upstream
                                       pickImage();
+=======
+                                      //  _getFile();
+>>>>>>> Stashed changes
                                     }),
                                     //  row1,
                                     row2,
