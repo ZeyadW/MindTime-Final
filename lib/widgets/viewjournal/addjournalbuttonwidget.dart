@@ -29,10 +29,13 @@ class Addjournalbutton extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              Navigator.push(
+              Navigator.of(context).pushNamed('/addjournaltext');
+
+              /*  Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ChooseDiary()),
               );
+              */
             },
           ),
         ),

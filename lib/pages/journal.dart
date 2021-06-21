@@ -11,8 +11,25 @@ class _Journal extends State<Journal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Journal '),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+
+            //  Navigator.of(context).pushNamed('/home', arguments:[widget.currentUser.name]);
+          },
+        ),
         backgroundColor: Theme.of(context).accentColor,
+        title: Text(
+          'Add Journal ',
+          style: TextStyle(
+            fontSize: 22.0,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
