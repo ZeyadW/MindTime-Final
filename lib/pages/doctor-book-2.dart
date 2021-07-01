@@ -18,7 +18,8 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
-            Navigator.of(context).pushNamed('/firstDoctorBook');
+            //  Navigator.of(context).pushNamed('/firstDoctorBook');
+            Navigator.of(context, rootNavigator: true).pop();
           },
         ),
         backgroundColor: Theme.of(context).accentColor,
