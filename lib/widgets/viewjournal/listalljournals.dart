@@ -19,7 +19,6 @@ class _ListAllJournalState extends State<ListAllJournals> {
   @override
   void initState() {
     super.initState();
-
     setEmail(); // calls getconnect method to check which type if connection it
   }
 
@@ -78,7 +77,6 @@ class _ListAllJournalState extends State<ListAllJournals> {
         child: Container(
           height: queryData.size.height - 200,
           // width: queryData.size.width - 20,
-
           //padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -157,8 +155,8 @@ class _ListAllJournalState extends State<ListAllJournals> {
       },
     );
 
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
+//    MediaQueryData queryData;
+    //   queryData = MediaQuery.of(context);
     return Center(
         child: new SingleChildScrollView(
             child: Padding(
@@ -177,7 +175,7 @@ class _ListAllJournalState extends State<ListAllJournals> {
             ),
           ),
           child: ListTile(
-            leading: Image(image: AssetImage('images/journl.jpeg')),
+            //leading: Image(image: AssetImage('images/journl.jpeg')),
             trailing: IconButton(
                 onPressed: () {
                   return showDialog(
@@ -193,7 +191,7 @@ class _ListAllJournalState extends State<ListAllJournals> {
                   // deleteDiary(diary);
                 },
                 icon: Icon(Icons.delete),
-                color: Colors.red),
+                color: Colors.grey[800]),
             title: Column(children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 150, 0),
