@@ -9,7 +9,7 @@ class ViewJournals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -39,7 +39,7 @@ class ViewJournals extends StatelessWidget {
       body: Column(
         children: [
           Addjournalbutton(),
-          ListAllJournals(),
+          new SingleChildScrollView(child: ListAllJournals()),
         ],
       ),
     );
