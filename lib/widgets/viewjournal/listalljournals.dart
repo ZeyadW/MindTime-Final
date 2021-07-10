@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:medico/pages/editjournal.dart';
 import 'package:medico/models/diaries.dart' as d;
 //import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
@@ -18,7 +19,6 @@ class _ListAllJournalState extends State<ListAllJournals> {
   @override
   void initState() {
     super.initState();
-
     setEmail(); // calls getconnect method to check which type if connection it
   }
 
@@ -45,23 +45,22 @@ class _ListAllJournalState extends State<ListAllJournals> {
 
   @override
   Widget build(BuildContext context) {
+    //return Center(
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Center(
-        child: new SingleChildScrollView(
-      child: Container(
-        width: 385.1,
-        height: 475.2,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(34.0),
-            topRight: Radius.circular(34.0),
-            bottomRight: Radius.circular(34.0),
-            bottomLeft: Radius.circular(34.0),
+      child: new SingleChildScrollView(
+        child: Container(
+          height: queryData.size.height - 200,
+          // width: queryData.size.width - 20,
+          //padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
           ),
-          color: Colors.white,
+          child: _buildBody(context),
         ),
-        child: _buildBody(context),
       ),
-    ));
+    );
   }
 
   Widget _buildBody(BuildContext context) {
@@ -82,6 +81,8 @@ class _ListAllJournalState extends State<ListAllJournals> {
 
   Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
     return ListView(
+      shrinkWrap: true,
+      primary: false,
       children: snapshot.map((data) => _buildListItem(context, data)).toList(),
     );
   }
@@ -90,8 +91,10 @@ class _ListAllJournalState extends State<ListAllJournals> {
     final diary = d.Diaries.fromSnapshot(data);
     print("in build list item journals");
     print(diary);
-    final diarydate =
-        diary.timestamp.toDate().difference(DateTime.now()).inDays.abs();
+
+    var diarydate =
+        diary.timestamp.toDate(); //.difference(DateTime.now()).inDays.abs();
+    diarydate = DateFormat.yMMMd().add_jm().format(diarydate);
 
     Widget yesdelete = FlatButton(
       child: Text(
@@ -110,51 +113,76 @@ class _ListAllJournalState extends State<ListAllJournals> {
         Navigator.of(context, rootNavigator: true).pop();
       },
     );
+
+//    MediaQueryData queryData;
+    //   queryData = MediaQuery.of(context);
     return Center(
         child: new SingleChildScrollView(
-            child: Container(
-                child: ListTile(
-      leading: Image(image: AssetImage('images/journl.jpeg')),
-      trailing: IconButton(
-          onPressed: () {
-            return showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  content: Text("Delete diary "),
-                  actions: [yesdelete, nodelete],
-                );
-              },
-            );
+            child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          height: 100,
+          //width: queryData.size.width - 20,
+          ///  padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Theme.of(context).accentColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(34.0),
+              topRight: Radius.circular(34.0),
+              bottomRight: Radius.circular(34.0),
+              bottomLeft: Radius.circular(34.0),
+            ),
+          ),
+          child: ListTile(
+            //leading: Image(image: AssetImage('images/journl.jpeg')),
+            trailing: IconButton(
+                onPressed: () {
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: Text("Delete diary "),
+                        actions: [yesdelete, nodelete],
+                      );
+                    },
+                  );
 
-            // deleteDiary(diary);
-          },
-          icon: Icon(Icons.delete),
-          color: Colors.red),
-      title: Column(children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 150, 0),
-          child: FlatButton(
-            child: Text(diary.title),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EditJournalM(diary)),
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 120, 0),
-          child: Text(
-            'Added $diarydate Days Ago',
-            style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-                fontWeight: FontWeight.normal),
-          ),
-        )
-      ]),
-    ))));
+                  // deleteDiary(diary);
+                },
+                icon: Icon(Icons.delete),
+                color: Colors.grey[800]),
+            title: Column(children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 150, 0),
+                child: FlatButton(
+                  child: Text(
+                    diary.title,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EditJournalM(diary)),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 120, 0),
+                child: Text(
+                  //'Added $diarydate Days Ago',
+                  " $diarydate ",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal),
+                ),
+              )
+            ]),
+          )),
+    )));
   }
 }

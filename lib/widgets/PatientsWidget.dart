@@ -163,7 +163,6 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                   style: TextStyle(
                                                       color: Colors.white)),
                                               onPressed: () {
-                                                /*
                                                 setState(() {
                                                   Navigator.push(
                                                       context,
@@ -178,7 +177,7 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                                           .text)));
 
                                                   pressed = false;
-                                                });*/
+                                                });
                                               },
                                             ),
                                           )

@@ -105,6 +105,9 @@ class _AutoLogin extends State<AutoLogin> {
   String userId;
   @override
   Widget build(BuildContext context) {
+    isLoggedIn = false;
+    print("is loggedinnnn");
+    print(isLoggedIn);
     return Scaffold(body: !isLoggedIn ? Welcome() : navigate()
         /*Navigator.of(context).pushNamed('/home', arguments: [
                 name,

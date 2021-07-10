@@ -10,12 +10,12 @@ class Addjournalbutton extends StatelessWidget {
     return Container(
       width: 850,
       height: 70,
-      color: Theme.of(context).accentColor,
+      color: Colors.white,
       margin: EdgeInsets.only(left: 0.0, top: 0.0, right: 20.0, bottom: 0.0),
       child: Row(children: [
         Padding(
           padding: const EdgeInsets.only(
-            left: 240.0,
+            left: 220.0,
             top: 10.0,
             right: 0.0,
             bottom: 0.0,
@@ -25,14 +25,17 @@ class Addjournalbutton extends StatelessWidget {
               '+ Journals',
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              Navigator.push(
+              Navigator.of(context).pushNamed('/addjournaltext');
+
+              /*  Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ChooseDiary()),
               );
+              */
             },
           ),
         ),

@@ -26,11 +26,6 @@ class LoginFormState extends State<LoginForm> {
     myFocusNode = FocusNode();
   }
 
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   var username;
   final _formKey = GlobalKey<FormState>();
   static final validCharacters = RegExp(r'^[a-zA-Z0-9]+$');
@@ -84,14 +79,6 @@ class LoginFormState extends State<LoginForm> {
                     acountInfos: [this.username],
                   )));
         }
-        /*
-        Navigator.of(context).push(new MaterialPageRoute(
-            builder: (context) => TabsWidget(
-                  acountInfos: [this.username],
-                )));*/
-        //Navigator.of(context).pushNamed('/home', arguments: [this.username]);
-
-//        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => Home()));
       },
     );
 
@@ -232,12 +219,13 @@ class LoginFormState extends State<LoginForm> {
               alignment: Alignment.topCenter,
               child: FlatButton(
                 onPressed: () async {
+                  var p;
                   if (_formKey.currentState.validate()) {
                     print("waiting");
                     String shouldNavigate = await signIn(
                         emailcontroller.text, passwordcontroller.text);
                     print("done waiting");
-                    var p = await checkuserexist();
+                    p = await checkuserexist();
                     print("check exist ");
                     print(p);
                     print(" shouldNavigate: $shouldNavigate ");
@@ -258,7 +246,7 @@ class LoginFormState extends State<LoginForm> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            content: Text(shouldNavigate),
+                            content: Text("wrong username or password"),
                             actions: [okButton2],
                           );
                         },

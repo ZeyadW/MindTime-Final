@@ -9,7 +9,7 @@ class ViewJournals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -21,9 +21,7 @@ class ViewJournals extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
             Navigator.of(context, rootNavigator: true).pop();
-
-/*
-            Navigator.of(context).pushNamed('/home',
+            /*   Navigator.of(context).pushNamed('/home',
                 arguments: [widget.currentUser.name, widget.currentUser.email]);*/
           },
         ),
@@ -33,13 +31,12 @@ class ViewJournals extends StatelessWidget {
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
       body: Column(
         children: [
           Addjournalbutton(),
-          ListAllJournals(),
+          new SingleChildScrollView(child: ListAllJournals()),
         ],
       ),
     );

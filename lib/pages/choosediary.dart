@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medico/pages/AddVideo.dart';
-import 'package:medico/pages/journal.dart';
+//import 'package:medico/pages/journal.dart';
 
 class ChooseDiary extends StatelessWidget {
   @override
@@ -54,10 +54,12 @@ class ChooseDiary extends StatelessWidget {
                   child: InkWell(
                     splashColor: Colors.blue, // splash color
                     onTap: () {
-                      Navigator.push(
+                      Navigator.of(context).pushNamed('/viewjournalstext');
+
+                      /*Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Journal()),
-                      );
+                      );*/
                     }, // button pressed
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -109,13 +111,26 @@ class ChooseDiary extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16.0),
+              bottomRight: Radius.circular(16.0)),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+            /*   Navigator.of(context).pushNamed('/home',
+                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
+          },
+        ),
+        backgroundColor: Theme.of(context).accentColor,
         title: Text(
-          'Choose Journal Type:',
+          'Choose Journal Type',
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Theme.of(context).accentColor,
-
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
       body: Container(
