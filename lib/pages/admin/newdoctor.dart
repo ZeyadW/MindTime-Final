@@ -12,8 +12,6 @@ import 'package:medico/widgets/Signup/docsignup.dart';
 
 const pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 final validatePhone = RegExp(pattern);
-<<<<<<< Updated upstream
-=======
 
 /*
 void _getFile() async {
@@ -25,7 +23,6 @@ void _getFile() async {
     print(e.message);
   }
 }
->>>>>>> Stashed changes
 
 class Doctorsignup extends StatefulWidget {
   //Doctorsignu({Key? key}) : super(key: key);
@@ -33,7 +30,6 @@ class Doctorsignup extends StatefulWidget {
   @override
   _DoctorsignupState createState() => _DoctorsignupState();
 }
-<<<<<<< Updated upstream
 
 class _DoctorsignupState extends State<Doctorsignup> {
   final picker = ImagePicker();
@@ -59,10 +55,8 @@ class _DoctorsignupState extends State<Doctorsignup> {
         );
   }
 
-=======
 */
 class Doctorsignup extends StatelessWidget {
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     /* var row1 = Row(
@@ -140,20 +134,13 @@ class Doctorsignup extends StatelessWidget {
                                 child: Column(
                                   children: <Widget>[
                                     FloatingActionButton(onPressed: () {
-<<<<<<< Updated upstream
-                                      pickImage();
-=======
                                       //  _getFile();
->>>>>>> Stashed changes
                                     }),
                                     //  row1,
                                     row2,
                                     DocsignUpForm(),
                                     FlatButton(
-                                        onPressed: () {
-                                          uploadImageToFirebase();
-                                        },
-                                        child: Text('data')),
+                                        onPressed: () {}, child: Text('data')),
                                   ],
                                 ),
                               ),

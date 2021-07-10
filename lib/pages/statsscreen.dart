@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:medico/widgets/stats/stat.dart';
 
 class Statscreen extends StatefulWidget {
@@ -43,4 +43,4 @@ class _StatscreenState extends State<Statscreen> {
       body: Stat(),
     );
   }
-}
+}*/

@@ -201,12 +201,13 @@ class _FoaState extends State<Foa> {
                             );*/
                           }
                           setState(() {
-                            if (i == 8) {
+                            if (i == questions.length - 1) {
                               button = 'Finish';
+                            } else {
+                              _verticalGroupValue = '';
+                              print(i);
+                              i += 1;
                             }
-                            _verticalGroupValue = '';
-                            print(i);
-                            i += 1;
                           });
                         },
                         child: Text(button,

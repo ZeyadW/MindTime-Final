@@ -14,8 +14,7 @@ class _BmisState extends State<Bmis> {
   int i = 0;
 
   String button = 'Next';
-  List<double> _choiceValue = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
-
+  List<double> _choiceValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   String _verticalGroupValue = '';
 
   List<String> _status = [
@@ -61,8 +60,9 @@ class _BmisState extends State<Bmis> {
   double _bmisscore(List values) {
     double sum = 0;
 
-    for (int i = 0; i <= 15; i++) {
+    for (int i = 0; i < values.length; i++) {
       sum = sum + values[i];
+      print(i);
     }
 
     return sum;
@@ -228,12 +228,13 @@ class _BmisState extends State<Bmis> {
                             );*/
                           }
                           setState(() {
-                            if (i == 14) {
+                            if (i == questions.length - 1) {
                               button = 'Finish';
+                            } else {
+                              i += 1;
+                              _verticalGroupValue = '';
+                              print(i);
                             }
-                            _verticalGroupValue = '';
-                            print(i);
-                            i += 1;
                           });
                         },
                         child: Text(button))

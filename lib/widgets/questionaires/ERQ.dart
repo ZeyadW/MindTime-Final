@@ -45,7 +45,7 @@ class _ErqState extends State<Erq> {
     double avg;
     double sum = 0;
 
-    for (int i = 0; i <= 9; i++) {
+    for (int i = 0; i <= questions.length; i++) {
       sum = sum + values[i];
     }
     avg = (sum / values.length);

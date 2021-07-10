@@ -17,6 +17,10 @@ void main() async {
     FlutterError.dumpErrorToConsole(details);
     if (kReleaseMode) exit(1);
   };
+  print(Platform.operatingSystem);
+
+  // The OS version
+  print(Platform.operatingSystemVersion);
   runApp(MyApp());
 }
 
