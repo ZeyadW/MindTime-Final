@@ -44,30 +44,6 @@ class _ListAllJournalState extends State<ListAllJournals> {
   }
 
   @override
-  /*Widget build(BuildContext context) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
-    return Center(
-        child: new SingleChildScrollView(
-      child: Container(
-        height: queryData.size.height - 200,
-        width: queryData.size.width - 20,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(34.0),
-            topRight: Radius.circular(34.0),
-            bottomRight: Radius.circular(34.0),
-            bottomLeft: Radius.circular(34.0),
-          ),
-          //color: Colors.white,
-          //color: Theme.of(context).accentColor,
-        ),
-        child: _buildBody(context),
-      ),
-    ));
-  }*/
-
-  @override
   Widget build(BuildContext context) {
     //return Center(
     MediaQueryData queryData;
@@ -87,23 +63,6 @@ class _ListAllJournalState extends State<ListAllJournals> {
     );
   }
 
-/*return Center(
-        child: new SingleChildScrollView(
-      child: Container(
-        width: 385.1,
-        height: 475.2,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(34.0),
-            topRight: Radius.circular(34.0),
-            bottomRight: Radius.circular(34.0),
-            bottomLeft: Radius.circular(34.0),
-          ),
-          color: Colors.white,
-        ),
-        child: _buildBody(context),
-      ),
-    ));*/
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance

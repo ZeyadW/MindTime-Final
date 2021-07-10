@@ -45,109 +45,113 @@ class EditJournalState extends State<EditJournal> {
   }
 
   Widget UpdateForm() {
+    Widget okButton = FlatButton(
+      child: Text(
+        "ok",
+      ),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
+
     final textcontroller = TextEditingController(text: diary.text);
     final titlecontroller = TextEditingController(text: diary.title);
+
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x21329d9c),
-                  offset: Offset(0, 13),
-                  blurRadius: 34,
-                ),
-              ],
-            ),
-            child: TextFormField(
-              controller: textcontroller,
-              style: TextStyle(
-                color: Theme.of(context).accentColor,
-              ),
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 100.0),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                  )),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Theme.of(context).accentColor,
-                    ),
-                    borderRadius: BorderRadius.circular(21.0),
-                  )),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 10.0)),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x21329d9c),
-                  offset: Offset(0, 13),
-                  blurRadius: 34,
-                ),
-              ],
-            ),
-          ),
-          Padding(padding: const EdgeInsets.symmetric(vertical: 25.0)),
-          Center(
+          SingleChildScrollView(
             child: Container(
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(21.0),
-                gradient: RadialGradient(
-                  center: Alignment(-0.88, -1.0),
-                  radius: 1.35,
-                  colors: [Colors.white, Colors.white],
-                  stops: [0.0, 1.0],
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x36329d9c),
-                    offset: Offset(15, 15),
-                    blurRadius: 40,
+              decoration: BoxDecoration(color: Theme.of(context).accentColor),
+              child: Column(children: <Widget>[
+                Row(children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Enter your Journal",
+                      style: TextStyle(
+                        fontSize: 16,
+                        //color: Theme.of(context).accentColor,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ],
-              ),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: FlatButton(
-                  onPressed: () {
-                    // Validate returns true if the form is valid, or false
-                    // otherwise.
-
-                    if (_formKey.currentState.validate()) {
-                      // If the form is valid, display a Snackbar.
-                      updateJournal(
-                          this.diary, textcontroller, titlecontroller);
-                    }
-                    Navigator.of(context, rootNavigator: true).pop();
-
-                    /*  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ViewJournals()),
-                    );*/
-                  },
-                  child: Text('Update'),
+                  Padding(padding: const EdgeInsets.only(left: 180)),
+                ]),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(21.0),
+                      color: const Color(0xffffffff),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0x21329d9c),
+                          offset: Offset(0, 13),
+                          blurRadius: 34,
+                        ),
+                      ],
+                    ),
+                    child: SingleChildScrollView(
+                      child: TextFormField(
+                        maxLines: 15,
+                        controller: textcontroller,
+                        style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            print("emptyyyy2");
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(34.0),
+                        topRight: Radius.circular(34.0),
+                        bottomRight: Radius.circular(34.0),
+                        bottomLeft: Radius.circular(34.0),
+                      ),
+                    ),
+                    child: FlatButton(
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          updateJournal(
+                              this.diary, textcontroller, titlecontroller);
+//Navigator.of(context, rootNavigator: true).pop();
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text("updated successfully"),
+                                actions: [okButton],
+                              );
+                            },
+                          );
+                        }
+                      },
+                      child: Text(
+                        'Update',
+                        style: TextStyle(color: Theme.of(context).accentColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -156,22 +160,6 @@ class EditJournalState extends State<EditJournal> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: new SingleChildScrollView(
-      child: Container(
-        width: 385.1,
-        height: 375.2,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(34.0),
-            topRight: Radius.circular(34.0),
-            bottomRight: Radius.circular(34.0),
-            bottomLeft: Radius.circular(34.0),
-          ),
-          color: Theme.of(context).accentColor,
-        ),
-        child: UpdateForm(),
-      ),
-    ));
+    return UpdateForm();
   }
 }

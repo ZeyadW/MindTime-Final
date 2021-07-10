@@ -1,5 +1,6 @@
 import 'package:medico/config/app_config.dart' as config;
 import 'package:flutter/material.dart';
+import 'package:medico/pages/Welcome.dart';
 //import 'package:medico/pages/admin/admin.dart';
 import 'package:medico/routes_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Mindtime',
-          home: AutoLogin(),
+          home: AutoLogin(), //Welcome(), // AutoLogin(),
           initialRoute: '/',
           onGenerateRoute: RouteGenerator.generateRoute,
           debugShowCheckedModeBanner: false,

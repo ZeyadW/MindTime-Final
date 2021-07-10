@@ -93,13 +93,11 @@ class LoginFormState extends State<JournalForm> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          //  Padding(padding: EdgeInsets.fromLTRB(30, 20, 30, 0)),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -133,6 +131,7 @@ class LoginFormState extends State<JournalForm> {
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
+                      print("emptyyyy1");
                       return 'Please enter some text';
                     }
                     return null;
@@ -163,10 +162,9 @@ class LoginFormState extends State<JournalForm> {
                       color: Colors.white,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          // If the form is valid, display a Snackbar.
                           createDiary(textcontroller, titlecontroller);
                         }
-                        Navigator.of(context, rootNavigator: true).pop();
+                        // Navigator.of(context, rootNavigator: true).pop();
                       },
                     ),
                   ),
@@ -194,6 +192,7 @@ class LoginFormState extends State<JournalForm> {
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
+                            print("emptyyyy2");
                             return 'Please enter some text';
                           }
                           return null;
@@ -202,26 +201,9 @@ class LoginFormState extends State<JournalForm> {
                     ),
                   ),
                 ),
-                //  Padding(padding: const EdgeInsets.symmetric(vertical: 20.0))
               ]),
             ),
           ),
-
-          // Padding(padding: EdgeInsets.only(top: 10.0)),
-          /* Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(21.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x21329d9c),
-                  offset: Offset(0, 13),
-                  blurRadius: 34,
-                ),
-              ],
-            ),
-          ),
-          Padding(padding: const EdgeInsets.symmetric(vertical: 5.0)),*/
         ],
       ),
     );

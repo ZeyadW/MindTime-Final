@@ -27,8 +27,6 @@ class _EditJournal extends State<EditJournalM> {
           icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
           onPressed: () {
             Navigator.of(context, rootNavigator: true).pop();
-            /*   Navigator.of(context).pushNamed('/home',
-                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
           },
         ),
         backgroundColor: Theme.of(context).accentColor,
@@ -39,17 +37,21 @@ class _EditJournal extends State<EditJournalM> {
         ),
 //            title: Center(child: Image(image: AssetImage('images/Icon.png'))),
       ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            child: new SingleChildScrollView(
-                child: Column(children: [
-              EditJournal(this.diary),
-            ])),
+      backgroundColor: Theme.of(context).accentColor,
+      body: //SafeArea(
+          // child:
+          Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).accentColor,
           ),
+          child: new SingleChildScrollView(
+              child: Column(children: [
+            EditJournal(this.diary),
+          ])),
         ),
       ),
+      // ),
     );
   }
 }
