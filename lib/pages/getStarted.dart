@@ -12,7 +12,7 @@ class _GetStartedState extends State<GetStarted> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/image-home.jpeg'),
+            image: AssetImage('images/logo.png'),
             fit: BoxFit.cover,
           ),
         ),

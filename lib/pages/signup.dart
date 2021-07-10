@@ -24,7 +24,7 @@ class _SignUpState extends State<SignUp> {
                   bottomLeft: Radius.circular(50.0),
                   bottomRight: Radius.circular(50.0)),
               image: DecorationImage(
-                image: AssetImage('images/image-home.jpeg'),
+                image: AssetImage('images/logo.png'),
                 fit: BoxFit.cover,
               ),
             ),
