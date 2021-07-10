@@ -1,12 +1,12 @@
-import 'package:date_field/date_field.dart';
+//import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:medico/widgets/admin/editdr.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:medico/widgets/admin/editdr.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:medico/models/users.dart';
-import 'package:medico/pages/EditProfile.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+//import 'package:medico/models/users.dart';
+//import 'package:medico/pages/EditProfile.dart';
+//import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class ViewdrForm extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class ViewdrFormState extends State<ViewdrForm> {
 
   void getdoctoremail() async {
     print('object');
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    // final SharedPreferences prefs = await SharedPreferences.getInstance();
     //doctoremail = prefs.getString('doctoremail');
     doctoremail = 'hamada@mindtime.com';
     DocumentSnapshot variable = await FirebaseFirestore.instance
@@ -70,7 +70,7 @@ class ViewdrFormState extends State<ViewdrForm> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime selectedDate;
+    //DateTime selectedDate;
 
     return Form(
       key: _formKey,

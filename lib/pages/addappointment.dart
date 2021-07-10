@@ -1,11 +1,11 @@
 import 'package:date_field/date_field.dart';
-import 'package:day_picker/day_picker.dart';
+//import 'package:day_picker/day_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../models/appointments.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/config/app_config.dart' as config;
 
 import 'viewappointments.dart';

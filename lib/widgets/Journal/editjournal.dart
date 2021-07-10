@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medico/pages/viewjournals.dart';
+//import 'package:medico/pages/viewjournals.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/models/diaries.dart' as d;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -136,10 +136,12 @@ class EditJournalState extends State<EditJournal> {
                       updateJournal(
                           this.diary, textcontroller, titlecontroller);
                     }
-                    Navigator.push(
+                    Navigator.of(context, rootNavigator: true).pop();
+
+                    /*  Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ViewJournals()),
-                    );
+                    );*/
                   },
                   child: Text('Update'),
                 ),

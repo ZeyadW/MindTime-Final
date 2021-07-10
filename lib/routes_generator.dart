@@ -4,12 +4,14 @@ import 'package:medico/pages/EditProfile.dart';
 import 'package:medico/pages/appointment.dart';
 import 'package:medico/pages/book-test-online3.dart';
 import 'package:medico/pages/book-test-online4.dart';
+import 'package:medico/pages/choosediary.dart';
 //import 'package:medico/pages/choosediary.dart';
 import 'package:medico/pages/doctor-book-1.dart';
 import 'package:medico/pages/doctor-book-2.dart';
 import 'package:medico/pages/drviewprofile.dart';
 import 'package:medico/pages/emergencycontact.dart';
 import 'package:medico/pages/health.dart';
+import 'package:medico/pages/journal.dart';
 import 'package:medico/pages/my-doctors.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/chat.dart';
@@ -65,7 +67,12 @@ class RouteGenerator {
       case '/firstDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookFirstStep());
       case '/journals':
+        return MaterialPageRoute(builder: (_) => ChooseDiary());
+      case '/addjournaltext':
+        return MaterialPageRoute(builder: (_) => Journal());
+      case '/viewjournalstext':
         return MaterialPageRoute(builder: (_) => ViewJournals());
+
       case '/secondeDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookSecondeStep());
       case '/thirdBookTest':
@@ -88,6 +95,8 @@ class RouteGenerator {
       case '/analysispage':
         return MaterialPageRoute(builder: (_) => AnalysisPage());
 
+      case '/analysis':
+        return MaterialPageRoute(builder: (_) => Statscreen());
       case '/requests':
         return MaterialPageRoute(builder: (_) => AORAppointment());
       case '/tests':

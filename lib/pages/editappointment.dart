@@ -1,5 +1,5 @@
 import 'package:date_field/date_field.dart';
-import 'package:day_picker/day_picker.dart';
+//import 'package:day_picker/day_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/pages/viewappointments.dart';
@@ -91,8 +91,8 @@ class _ViewAppointmentState extends State<ViewAppointment> {
                   controller: calendarcont,
                   selectionMode: DateRangePickerSelectionMode.single,
                   initialSelectedRange: PickerDateRange(
-                      appoint.SessionDate.toDate(),
-                      appoint.SessionDate.toDate()),
+                      appoint.sessionDate.toDate(),
+                      appoint.sessionDate.toDate()),
                 )),
             Container(
               margin: new EdgeInsets.symmetric(
@@ -148,7 +148,7 @@ class _ViewAppointmentState extends State<ViewAppointment> {
                                     Container(
                                       child: DateTimeFormField(
                                         initialValue:
-                                            appoint.SessionDate[i - 1].toDate(),
+                                            appoint.sessionDate[i - 1].toDate(),
                                         decoration: const InputDecoration(
                                           hintStyle:
                                               TextStyle(color: Colors.black45),
@@ -169,7 +169,7 @@ class _ViewAppointmentState extends State<ViewAppointment> {
                                           print(i - 1); //1,2
 
                                           print("zeyad $v");
-                                          appoint.SessionDate[i - 1] = v;
+                                          appoint.sessionDate[i - 1] = v;
                                           print(hrstable);
                                         },
                                       ),
@@ -210,7 +210,7 @@ class _ViewAppointmentState extends State<ViewAppointment> {
                 onPressed: () async {
                   if (cStrt == null) {
                     //grab bara el for loop el zar2a
-                    cStrt = appoint.SessionDate.toDate();
+                    cStrt = appoint.sessionDate.toDate();
                   }
                   print(hrstable);
                   print(int.parse(hrController.text));
