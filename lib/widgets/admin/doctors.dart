@@ -125,7 +125,7 @@ class _ListAllDoctorsState extends State<ListAllDoctors> {
                       Radius.circular(40.0),
                     )),
                 child: ListTile(
-                  leading: Image(image: AssetImage('images/journl.jpeg')),
+                  //leading: Image(image: AssetImage('images/journl.jpeg')),
                   trailing: IconButton(
                       onPressed: () {
                         deleteDoctor(doctor.email);
