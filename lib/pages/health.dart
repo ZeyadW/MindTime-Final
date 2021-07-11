@@ -216,7 +216,7 @@ class _HealthTipsState extends State<HealthTips> {
                         ),
                         TextButton(
                           child: Text(
-                            "Tab to View Analysis",
+                            "Tap to View Analysis",
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontFamily: 'Poppins',

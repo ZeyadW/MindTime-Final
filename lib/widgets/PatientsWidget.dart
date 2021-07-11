@@ -6,7 +6,7 @@ import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/pages/viewappointments.dart';
 //import 'package:medico/widgets/Journal/editjournal.dart';
-//import 'package:medico/pages/JoinSession.dart';
+import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/widgets/patientslistview.dart';
 
 class PatientsWidget extends StatefulWidget {

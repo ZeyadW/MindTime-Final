@@ -56,19 +56,30 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
-                            'MindTime',
-                            style: TextStyle(
-                              fontSize: 22.0,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.8),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                            child: Center(
+                              child: Text(
+                                'MindTime',
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.8),
+                                ),
+                              ),
                             ),
                           ),
+                          Image(
+                            image: AssetImage('images/MindTimeIconSize.png'),
+                            width: 120,
+                            height: 70,
+                          ),
+
                           /* Text(
                             "${widget.value}",
                             style: TextStyle(
