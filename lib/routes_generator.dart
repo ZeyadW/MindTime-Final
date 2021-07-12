@@ -25,7 +25,8 @@ import 'package:medico/pages/signup.dart';
 import 'package:medico/pages/statsscreen.dart';
 import 'package:medico/pages/tabs.dart';
 import 'package:medico/pages/verification_number.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsUser.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:medico/pages/viewjournals.dart';
 import 'package:medico/pages/AnalysisPage.dart';
 //import 'package:medico/widgets/stats/stat.dart';
@@ -43,8 +44,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Welcome());
       case '/signup':
         return MaterialPageRoute(builder: (_) => SignUp());
-      case '/appointment':
-        return MaterialPageRoute(builder: (_) => ViewAppointments());
 
       case '/login':
         return MaterialPageRoute(builder: (_) => LoginPage());
@@ -87,9 +86,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => AORAppointment());
 
       case '/appointment':
-        return MaterialPageRoute(builder: (_) => AppointmentsList());
+        return MaterialPageRoute(builder: (_) => ViewAppointmentsUser());
       case '/drmyappointment':
-        return MaterialPageRoute(builder: (_) => ViewAppointments());
+        return MaterialPageRoute(builder: (_) => ViewAppointmentsDoctor());
       case '/health':
         return MaterialPageRoute(builder: (_) => HealthTips());
       case '/analysispage':

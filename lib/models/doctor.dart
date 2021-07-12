@@ -51,7 +51,31 @@ class Doctor {
 
 class DoctorsList {
   List<Doctor> _doctorsList;
+  Future<void> getarraydoctors() async {
+    QuerySnapshot snap =
+        await FirebaseFirestore.instance.collection('Therapists').get();
+    List ll;
+    var list = snap.docs;
+    print(list);
+    snap.docs.forEach((document) async {
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(document.id)
+          .get();
+      //  ll.add(variable);
+      print(document.id);
+      print(variable);
+    });
+  }
+
   DoctorsList() {
+    var variable = FirebaseFirestore.instance
+        .collection("Therapists")
+        .orderBy('name', descending: true)
+        .get();
+    print("snap");
+    getarraydoctors();
+    print(variable.runtimeType);
     this._doctorsList = [
       new Doctor("Dr.SALMA ABDELBAKI", "B.Sc DDVL Demilitologist",
           "images/drsalma.jpg", "4.2"),

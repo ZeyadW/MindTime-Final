@@ -4,7 +4,7 @@ import 'package:medico/models/user.dart';
 import 'package:medico/models/users.dart' as u;
 import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/pages/mypatientprofile.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/pages/JoinSession.dart';
 import 'package:medico/widgets/patientslistview.dart';

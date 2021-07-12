@@ -62,8 +62,8 @@ class _AcountWidgetState extends State<AcountWidget> {
         children: <Widget>[
           Container(
             height: 280.0,
-            padding: EdgeInsets.all(12.0),
-            margin: EdgeInsets.only(top: 40.0, left: 12.0, right: 12.0),
+            padding: EdgeInsets.only(top: 70),
+            margin: EdgeInsets.only(top: 90.0, left: 12.0, right: 12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.0),
               color: Theme.of(context).accentColor,
@@ -71,12 +71,6 @@ class _AcountWidgetState extends State<AcountWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  alignment: Alignment.topRight,
-                  padding: const EdgeInsets.all(12.0),
-                  child: Icon(Icons.perm_identity,
-                      size: 25, color: Theme.of(context).primaryColor),
-                ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,36 +95,10 @@ class _AcountWidgetState extends State<AcountWidget> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 50),
-                      Text(
-                        "25%",
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            width: 70,
-                            height: 4,
-                          ),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: Colors.indigo,
-                              ),
-                              height: 4,
-                            ),
-                          ),
-                        ],
-                      ),
+
                       Container(
+                        margin: EdgeInsets.only(
+                            bottom: 20.0, left: 12.0, right: 12.0),
                         height: 30,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -163,14 +131,6 @@ class _AcountWidgetState extends State<AcountWidget> {
                     ],
                   ),
                 ),
-                Container(
-                    alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.all(12.0),
-                    child: Icon(
-                      Icons.settings,
-                      size: 25.0,
-                      color: Theme.of(context).primaryColor,
-                    ))
               ],
             ),
           ),

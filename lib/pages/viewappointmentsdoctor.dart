@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../widgets/appointments/appointmentlistview.dart';
+import '../widgets/appointments/appointmentlistviewdoctor.dart';
 import 'package:medico/config/app_config.dart' as config;
 
-class _ViewAppointments extends State<ViewAppointments> {
+class _ViewAppointments extends State<ViewAppointmentsDoctor> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,7 +46,7 @@ class _ViewAppointments extends State<ViewAppointments> {
                 children: <Widget>[
                   Padding(padding: EdgeInsets.only(top: 40.0)),
                   new SingleChildScrollView(
-                    child: AppointmentListview(),
+                    child: AppointmentListviewDoctor(),
                   ),
                 ],
               ),
@@ -58,7 +58,7 @@ class _ViewAppointments extends State<ViewAppointments> {
   }
 }
 
-class ViewAppointments extends StatefulWidget {
+class ViewAppointmentsDoctor extends StatefulWidget {
   @override
   _ViewAppointments createState() => _ViewAppointments();
 }
