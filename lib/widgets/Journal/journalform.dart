@@ -45,6 +45,7 @@ DateTime date = new DateTime(now.year, now.month, now.day);
 
 class LoginFormState extends State<JournalForm> {
   var email;
+  bool share = false;
 
   Future<Diaries> sendDiaryToApi(
       String DiaryContent, String email, String DiaryTitle) async {
@@ -81,7 +82,8 @@ class LoginFormState extends State<JournalForm> {
         .set({
       'title': titlecontroller.text,
       'text': textcontroller.text,
-      'timestamp': date
+      'timestamp': date,
+      'shared': share
     }); //setData take a map as input
     sendDiaryToApi(textcontroller.text, email, titlecontroller.text);
     return true;
@@ -93,6 +95,27 @@ class LoginFormState extends State<JournalForm> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    Widget okButton2 = FlatButton(
+      child: Text(
+        "ok",
+      ),
+      onPressed: () {
+        share = !share;
+        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
+
+    Widget okButton = FlatButton(
+      child: Text(
+        "ok",
+      ),
+      onPressed: () {
+        share = !share;
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
+
     return Form(
       key: _formKey,
       child: Column(
@@ -163,8 +186,17 @@ class LoginFormState extends State<JournalForm> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           createDiary(textcontroller, titlecontroller);
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(" Added successfully"),
+                                actions: [okButton2],
+                              );
+                            },
+                          );
+                          // Navigator.of(context, rootNavigator: true).pop();
                         }
-                        // Navigator.of(context, rootNavigator: true).pop();
                       },
                     ),
                   ),
@@ -201,6 +233,38 @@ class LoginFormState extends State<JournalForm> {
                     ),
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(34.0),
+                        topRight: Radius.circular(34.0),
+                        bottomRight: Radius.circular(34.0),
+                        bottomLeft: Radius.circular(34.0),
+                      ),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        return showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text(
+                                  " are you sure you want to share diary!"),
+                              actions: [okButton],
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        'Share with therapist',
+                        style: TextStyle(color: Theme.of(context).accentColor),
+                      ),
+                    ),
+                  ),
+                )
               ]),
             ),
           ),

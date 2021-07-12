@@ -12,6 +12,7 @@ class DoctorsList extends StatefulWidget {
 
 class _DoctorsListState extends State<DoctorsList> {
   model.DoctorsList doctorsList;
+
   @override
   void initState() {
     this.doctorsList = new model.DoctorsList();

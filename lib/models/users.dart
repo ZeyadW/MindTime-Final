@@ -13,6 +13,7 @@ class User {
   String email;
   String imagepath;
   String emergencycontactname;
+  String therapist = "";
   List<Contact> emergencyContacts;
   User(
       {this.username,
@@ -21,7 +22,8 @@ class User {
       this.date,
       this.email,
       this.imagepath,
-      this.emergencycontactname});
+      this.emergencycontactname,
+      this.therapist});
 
   String getusername() {
     return username;
@@ -93,6 +95,7 @@ class Users {
       'birthdate': date,
       'password': password,
       'username': username,
+      'therapist': "",
     });
 
     await FirebaseFirestore.instance
@@ -126,6 +129,7 @@ class Users {
     if (variable.data() == null) {
       return false;
     } else {
+      print(variable.get("therapist"));
       var passworduser = variable.get("password");
       if (passworduser == password) {
         this.username = variable.get("username");

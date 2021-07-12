@@ -22,6 +22,7 @@ class Diaries {
   var title;
   var diaryid;
   var timestamp;
+  var share;
   DocumentReference reference;
   //List<Diary> ds = [];
   Diaries({
@@ -30,16 +31,19 @@ class Diaries {
     this.diaryid,
     this.timestamp,
     this.reference,
+    this.share,
   });
 
   Diaries.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['text'] != null),
         assert(map['title'] != null),
         assert(map['timestamp'] != null),
+        assert(map['shared'] != null),
         text = map['text'],
         title = map['title'],
         diaryid = map['diaryid'],
-        timestamp = map['timestamp'];
+        timestamp = map['timestamp'],
+        share = map['shared'];
   Diaries.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
