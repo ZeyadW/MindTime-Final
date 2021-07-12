@@ -8,7 +8,7 @@ import '../models/appointments.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/config/app_config.dart' as config;
 
-import 'viewappointments.dart';
+import 'viewappointmentsdoctor.dart';
 
 class AddAppointment extends StatefulWidget {
   @override
@@ -215,7 +215,8 @@ class _AddAppointmentState extends State<AddAppointment> {
                   // }
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewAppointments()),
+                    MaterialPageRoute(
+                        builder: (context) => ViewAppointmentsDoctor()),
                   );
                 },
               ),

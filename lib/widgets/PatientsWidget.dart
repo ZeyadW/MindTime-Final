@@ -4,7 +4,7 @@ import 'package:medico/models/user.dart';
 import 'package:medico/models/users.dart' as u;
 import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/pages/AORAppointment.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 //import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/widgets/patientslistview.dart';
@@ -250,7 +250,7 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                         context,
                                                         new MaterialPageRoute(
                                                             builder: (context) =>
-                                                                ViewAppointments()));
+                                                                ViewAppointmentsDoctor()));
                                                   },
                                                   icon: Icon(Icons.thumb_down),
                                                   color: Colors.red),

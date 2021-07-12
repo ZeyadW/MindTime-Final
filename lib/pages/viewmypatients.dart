@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/config/app_config.dart' as config;
 //import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/pages/editappointment.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:medico/widgets/mypatientslistview.dart';
 import 'package:medico/widgets/patientslistview.dart';
 
@@ -34,10 +34,8 @@ class ViewmypatientsState extends State<Viewmypatients> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.push(
-                context,
-                new MaterialPageRoute(
-                    builder: (context) => ViewAppointments()));
+            Navigator.of(context, rootNavigator: true).pop();
+
             /*
             Navigator.of(context).pushNamed('/home',
                 arguments: [widget.currentUser.name, widget.currentUser.email]);*/

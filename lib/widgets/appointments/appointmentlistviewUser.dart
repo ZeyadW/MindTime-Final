@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/pages/addappointment.dart';
 import 'package:medico/pages/editappointment.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:medico/models/appointments.dart';
 import 'package:medico/widgets/appointmentsWidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,12 +11,13 @@ import 'package:intl/intl.dart';
 import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/config/app_config.dart' as config;
 
-class AppointmentListview extends StatefulWidget {
+class AppointmentListviewUser extends StatefulWidget {
   @override
-  _AppointmentListviewState createState() => _AppointmentListviewState();
+  _AppointmentListviewUserState createState() =>
+      _AppointmentListviewUserState();
 }
 
-class _AppointmentListviewState extends State<AppointmentListview> {
+class _AppointmentListviewUserState extends State<AppointmentListviewUser> {
   model.ApointmentList appointmentList;
   @override
   void initState() {
@@ -71,23 +72,6 @@ class _AppointmentListviewState extends State<AppointmentListview> {
                 bottomLeft: Radius.circular(34.0),
               ),
               color: Colors.white,
-            ),
-            child: FlatButton(
-              height: 60,
-              minWidth: 200,
-              color: Colors.transparent,
-              child: Text(
-                '+ Appointment',
-                style: TextStyle(
-                    color: config.Colors().mainDarkColor(1),
-                    fontWeight: FontWeight.bold),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddAppointment()),
-                );
-              },
             ),
           ),
         ),
