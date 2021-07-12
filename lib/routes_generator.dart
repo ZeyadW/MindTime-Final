@@ -12,6 +12,7 @@ import 'package:medico/pages/drviewprofile.dart';
 import 'package:medico/pages/emergencycontact.dart';
 import 'package:medico/pages/health.dart';
 import 'package:medico/pages/journal.dart';
+import 'package:medico/pages/knowledgehub.dart';
 import 'package:medico/pages/my-doctors.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/chat.dart';
@@ -94,8 +95,8 @@ class RouteGenerator {
       case '/analysispage':
         return MaterialPageRoute(builder: (_) => AnalysisPage());
 
-      // case '/analysis':
-      //  return MaterialPageRoute(builder: (_) => Statscreen());
+      case '/knowledge':
+        return MaterialPageRoute(builder: (_) => Knowledgehub());
       case '/requests':
         return MaterialPageRoute(builder: (_) => AORAppointment());
       case '/tests':
