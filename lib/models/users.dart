@@ -69,6 +69,7 @@ class PatientList {
 }
 
 class Users {
+  var therapist = "";
   User signup(
       username, password, emergency, date, email, emergencycontactname) {
     adduser(username, password, emergency, date, email, emergencycontactname);
@@ -93,6 +94,7 @@ class Users {
       'birthdate': date,
       'password': password,
       'username': username,
+      'therapist': "",
     });
 
     await FirebaseFirestore.instance
@@ -126,6 +128,7 @@ class Users {
     if (variable.data() == null) {
       return false;
     } else {
+      print(variable.get("therapist"));
       var passworduser = variable.get("password");
       if (passworduser == password) {
         this.username = variable.get("username");

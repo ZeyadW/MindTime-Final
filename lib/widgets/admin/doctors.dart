@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:medico/pages/editjournal.dart';
 import 'package:medico/models/doctor.dart' as d;
 import 'package:medico/widgets/admin/editdr.dart';
-import 'package:medico/widgets/admin/editdrform.dart';
-import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
+//import 'package:medico/widgets/admin/editdrform.dart';
+//import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
 
 //import 'package:medico/widgets/viewjournal/addjournalbuttonwidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';

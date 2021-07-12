@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 //import 'package:medico/pages/viewjournals.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:medico/models/users.dart';
+import 'package:medico/pages/viewappointmentsUser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -44,14 +46,18 @@ DateTime now = new DateTime.now();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
 class LoginFormState extends State<JournalForm> {
+  Future<bool> CheckTherapist() async {}
+
   var email;
+  bool share = false;
+  var therapistassigned;
 
   Future<Diaries> sendDiaryToApi(
       String DiaryContent, String email, String DiaryTitle) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
     print("Email in SendVidToRestAPI " + email);
-
+    CheckTherapist();
     var DiaryEnc = jsonEncode(<String, String>{
       'Diary Content': DiaryContent,
       'Email': email,
@@ -70,7 +76,9 @@ class LoginFormState extends State<JournalForm> {
 
   Future<bool> createDiary(textcontroller, titlecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    therapistassigned = prefs.getString('therapistassigned');
     this.email = prefs.getString('email');
+    print("Therapist Assigned:" + therapistassigned);
     print("creating record");
     print(textcontroller.text);
     await FirebaseFirestore.instance
@@ -81,7 +89,8 @@ class LoginFormState extends State<JournalForm> {
         .set({
       'title': titlecontroller.text,
       'text': textcontroller.text,
-      'timestamp': date
+      'timestamp': date,
+      'shared': share
     }); //setData take a map as input
     sendDiaryToApi(textcontroller.text, email, titlecontroller.text);
     return true;
@@ -93,6 +102,26 @@ class LoginFormState extends State<JournalForm> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    Widget okButton2 = FlatButton(
+      child: Text(
+        "ok",
+      ),
+      onPressed: () {
+        share = !share;
+        Navigator.of(context).pop();
+      },
+    );
+
+    Widget okButton = FlatButton(
+      child: Text(
+        "ok",
+      ),
+      onPressed: () {
+        share = !share;
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
+
     return Form(
       key: _formKey,
       child: Column(
@@ -163,8 +192,17 @@ class LoginFormState extends State<JournalForm> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           createDiary(textcontroller, titlecontroller);
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(" Added successfully"),
+                                actions: [okButton2],
+                              );
+                            },
+                          );
+                          // Navigator.of(context, rootNavigator: true).pop();
                         }
-                        // Navigator.of(context, rootNavigator: true).pop();
                       },
                     ),
                   ),
@@ -201,6 +239,52 @@ class LoginFormState extends State<JournalForm> {
                     ),
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(34.0),
+                        topRight: Radius.circular(34.0),
+                        bottomRight: Radius.circular(34.0),
+                        bottomLeft: Radius.circular(34.0),
+                      ),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        print("TherapAssigned: " + therapistassigned);
+                        if (therapistassigned == "") {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(
+                                    "You don't have a therapist assigned yet, Please book a session to assign a therapist."),
+                                actions: [okButton],
+                              );
+                            },
+                          );
+                        } else if (therapistassigned != "") {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(
+                                    " are you sure you want to share diary!"),
+                                actions: [okButton],
+                              );
+                            },
+                          );
+                        }
+                      },
+                      child: Text(
+                        'Share with therapist',
+                        style: TextStyle(color: Theme.of(context).accentColor),
+                      ),
+                    ),
+                  ),
+                )
               ]),
             ),
           ),

@@ -2,9 +2,9 @@ import 'package:date_field/date_field.dart';
 //import 'package:day_picker/day_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:medico/pages/viewappointments.dart';
+import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'viewappointments.dart';
+import 'viewappointmentsdoctor.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medico/models/appointments.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -220,7 +220,8 @@ class _ViewAppointmentState extends State<ViewAppointment> {
                   // }
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewAppointments()),
+                    MaterialPageRoute(
+                        builder: (context) => ViewAppointmentsDoctor()),
                   );
                 },
               ),

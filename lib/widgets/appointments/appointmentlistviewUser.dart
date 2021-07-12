@@ -5,23 +5,23 @@ import 'package:medico/pages/addappointment.dart';
 import 'package:medico/pages/editappointment.dart';
 import 'package:medico/pages/viewappointmentsdoctor.dart';
 import 'package:medico/models/appointments.dart';
-import 'package:medico/widgets/PatientsWidget.dart';
-import 'package:medico/widgets/mypatientswidget.dart';
+import 'package:medico/widgets/appointmentsWidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:medico/models/users.dart' as u;
+import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/config/app_config.dart' as config;
 
-class MypatientListview extends StatefulWidget {
+class AppointmentListviewUser extends StatefulWidget {
   @override
-  _MypatientListviewState createState() => _MypatientListviewState();
+  _AppointmentListviewUserState createState() =>
+      _AppointmentListviewUserState();
 }
 
-class _MypatientListviewState extends State<MypatientListview> {
-  u.PatientList p;
+class _AppointmentListviewUserState extends State<AppointmentListviewUser> {
+  model.ApointmentList appointmentList;
   @override
   void initState() {
-    this.p = new u.PatientList();
+    this.appointmentList = new model.ApointmentList();
     super.initState();
 
     setEmail(); // calls getconnect method to check which type if connection it
@@ -47,7 +47,7 @@ class _MypatientListviewState extends State<MypatientListview> {
         Center(
             child: new SingleChildScrollView(
           child: Container(
-            width: 385.1,
+            width: 400,
             height: 475.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -60,9 +60,40 @@ class _MypatientListviewState extends State<MypatientListview> {
             ),
             child: _buildBody(context),
           ),
-        ))
+        )),
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(34.0),
+                topRight: Radius.circular(34.0),
+                bottomRight: Radius.circular(34.0),
+                bottomLeft: Radius.circular(34.0),
+              ),
+              color: Colors.white,
+            ),
+          ),
+        ),
       ],
     );
+  }
+
+  Future<void> getDoctorsAppointments() async {
+    QuerySnapshot snap =
+        await FirebaseFirestore.instance.collection('Therapists').get();
+    List ll;
+    var list = snap.docs;
+    print(list);
+    snap.docs.forEach((document) async {
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Therapists')
+          .doc(document.id)
+          .get();
+      //  ll.add(variable);
+      print(document.id);
+      print(variable);
+    });
   }
 
   Widget _buildBody(BuildContext context) {
@@ -102,8 +133,9 @@ class _MypatientListviewState extends State<MypatientListview> {
         child: new SingleChildScrollView(
             child: Container(
       child: ListTile(
-          title: MypatientsWidget(
-        patient: p.patient.elementAt(1),
+          title: AppointmentsWidget(
+        appointment: appointmentList.appointment.elementAt(2),
+        date: string,
       )),
     )));
   }
