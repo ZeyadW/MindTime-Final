@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/analysis');
+                          Navigator.of(context).pushNamed('/knowledge');
                         },
                         child: ball("images/microscope.png",
                             Theme.of(context).scaffoldBackgroundColor),
@@ -196,7 +196,7 @@ class _HomeState extends State<Home> {
                   Column(
                     children: <Widget>[
                       Text(
-                        "Diagnostic",
+                        "KnowledgeHub",
                         style: TextStyle(
                             fontSize: 12.0,
                             fontFamily: 'Poppins',
