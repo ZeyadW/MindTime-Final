@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 //import 'package:medico/pages/viewjournals.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:medico/models/users.dart';
+import 'package:medico/pages/viewappointmentsUser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -44,15 +46,18 @@ DateTime now = new DateTime.now();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
 class LoginFormState extends State<JournalForm> {
+  Future<bool> CheckTherapist() async {}
+
   var email;
   bool share = false;
+  var therapistassigned;
 
   Future<Diaries> sendDiaryToApi(
       String DiaryContent, String email, String DiaryTitle) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
     print("Email in SendVidToRestAPI " + email);
-
+    CheckTherapist();
     var DiaryEnc = jsonEncode(<String, String>{
       'Diary Content': DiaryContent,
       'Email': email,
@@ -71,7 +76,9 @@ class LoginFormState extends State<JournalForm> {
 
   Future<bool> createDiary(textcontroller, titlecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    therapistassigned = prefs.getString('therapistassigned');
     this.email = prefs.getString('email');
+    print("Therapist Assigned:" + therapistassigned);
     print("creating record");
     print(textcontroller.text);
     await FirebaseFirestore.instance
@@ -101,8 +108,7 @@ class LoginFormState extends State<JournalForm> {
       ),
       onPressed: () {
         share = !share;
-        Navigator.of(context, rootNavigator: true).pop();
-        Navigator.of(context, rootNavigator: true).pop();
+        Navigator.of(context).pop();
       },
     );
 
@@ -247,16 +253,30 @@ class LoginFormState extends State<JournalForm> {
                     ),
                     child: FlatButton(
                       onPressed: () {
-                        return showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              content: Text(
-                                  " are you sure you want to share diary!"),
-                              actions: [okButton],
-                            );
-                          },
-                        );
+                        print("TherapAssigned: " + therapistassigned);
+                        if (therapistassigned == "") {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(
+                                    "You don't have a therapist assigned yet, Please book a session to assign a therapist."),
+                                actions: [okButton],
+                              );
+                            },
+                          );
+                        } else if (therapistassigned != "") {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text(
+                                    " are you sure you want to share diary!"),
+                                actions: [okButton],
+                              );
+                            },
+                          );
+                        }
                       },
                       child: Text(
                         'Share with therapist',

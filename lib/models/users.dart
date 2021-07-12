@@ -13,7 +13,6 @@ class User {
   String email;
   String imagepath;
   String emergencycontactname;
-  String therapist = "";
   List<Contact> emergencyContacts;
   User(
       {this.username,
@@ -22,8 +21,7 @@ class User {
       this.date,
       this.email,
       this.imagepath,
-      this.emergencycontactname,
-      this.therapist});
+      this.emergencycontactname});
 
   String getusername() {
     return username;
@@ -71,6 +69,7 @@ class PatientList {
 }
 
 class Users {
+  var therapist = "";
   User signup(
       username, password, emergency, date, email, emergencycontactname) {
     adduser(username, password, emergency, date, email, emergencycontactname);

@@ -79,6 +79,23 @@ class _AppointmentListviewUserState extends State<AppointmentListviewUser> {
     );
   }
 
+  Future<void> getDoctorsAppointments() async {
+    QuerySnapshot snap =
+        await FirebaseFirestore.instance.collection('Therapists').get();
+    List ll;
+    var list = snap.docs;
+    print(list);
+    snap.docs.forEach((document) async {
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Therapists')
+          .doc(document.id)
+          .get();
+      //  ll.add(variable);
+      print(document.id);
+      print(variable);
+    });
+  }
+
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
