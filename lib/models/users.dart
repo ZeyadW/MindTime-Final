@@ -132,7 +132,6 @@ class Users {
     if (variable.data() == null) {
       return false;
     } else {
-      print(variable.get("therapist"));
       var passworduser = variable.get("password");
       if (passworduser == password) {
         this.username = variable.get("username");
