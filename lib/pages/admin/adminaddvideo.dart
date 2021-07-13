@@ -42,16 +42,16 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-class Knowledgehub extends StatefulWidget {
-  Knowledgehub({Key key, this.title}) : super(key: key);
+class AdminvideoUpload extends StatefulWidget {
+  AdminvideoUpload({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _KnowledgehubState createState() => _KnowledgehubState();
+  _AdminvideoUploadState createState() => _AdminvideoUploadState();
 }
 
-class _KnowledgehubState extends State<Knowledgehub> {
+class _AdminvideoUploadState extends State<AdminvideoUpload> {
   final thumbWidth = 100;
   final thumbHeight = 150;
   List<VideoInfo> _videos = <VideoInfo>[];
@@ -66,7 +66,7 @@ class _KnowledgehubState extends State<Knowledgehub> {
   Future<Video> sendVidName;
   @override
   void initState() {
-    FirebaseProvider.listenTokVideos((newVideos) {
+    FirebaseProvider.listenToVideos((newVideos) {
       setState(() {
         _videos = newVideos;
       });
@@ -193,7 +193,7 @@ class _KnowledgehubState extends State<Knowledgehub> {
     String email;
 
     final StorageReference ref =
-        FirebaseStorage.instance.ref().child('RawVideos').child(videoNameF);
+        FirebaseStorage.instance.ref().child('knowledgehub').child(videoNameF);
     StorageUploadTask uploadTask = ref.putFile(rawVideoFile);
     uploadTask.events.listen(_onUploadProgress);
     final Directory extDir = await getApplicationDocumentsDirectory();
@@ -313,6 +313,14 @@ class _KnowledgehubState extends State<Knowledgehub> {
         itemBuilder: (BuildContext context, int index) {
           final video = _videos[index];
           return ListTile(
+            trailing: IconButton(
+              onPressed: () {
+                print("Video ID: " + video.id);
+                deleteVideo(video.id);
+              },
+              icon: Icon(Icons.delete),
+              color: Colors.red,
+            ),
             title: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -401,29 +409,14 @@ class _KnowledgehubState extends State<Knowledgehub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("KnowledgeHub"),
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(16.0),
-              bottomRight: Radius.circular(16.0)),
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context, rootNavigator: true).pop();
-            /*
-            Navigator.of(context).pushNamed('/home',
-                arguments: [widget.currentUser.name, widget.currentUser.email]);*/
-          },
-        ),
-        backgroundColor: config.Colors().mainDarkColor(1),
-      ),
       body: Center(child: _processing ? _getProgressBar() : _getListView()),
+      floatingActionButton: FloatingActionButton(
+          child: _processing
+              ? CircularProgressIndicator(
+                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                )
+              : Icon(Icons.add),
+          onPressed: _takeVideo),
     );
   }
 }

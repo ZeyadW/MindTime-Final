@@ -52,6 +52,24 @@ class LoginFormState extends State<LoginForm> {
     }
   }
 
+  Future<bool> checkTherapistexist() async {
+    this.u = await users.validateloginTherapist(
+        emailcontroller.text, passwordcontroller.text);
+    print("in chekkkkkkk user ");
+    print(u);
+    if (u != null) {
+      print("in  checkuser not null user");
+      print(u.toString());
+      print(u.username);
+      username = u.username;
+      return true;
+    } else {
+      print("in  checkuser null user");
+
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget okButton = FlatButton(
@@ -224,8 +242,13 @@ class LoginFormState extends State<LoginForm> {
                     print("waiting");
                     String shouldNavigate = await signIn(
                         emailcontroller.text, passwordcontroller.text);
+                    if (emailcontroller.text.contains("@mindtime.com")) {
+                      p = await checkTherapistexist();
+                    } else {
+                      p = await checkuserexist();
+                    }
+
                     print("done waiting");
-                    p = await checkuserexist();
                     print("check exist ");
                     print(p);
                     print(" shouldNavigate: $shouldNavigate ");
