@@ -13,6 +13,7 @@ class User {
   String email;
   String imagepath;
   String emergencycontactname;
+  String therapist = "";
   List<Contact> emergencyContacts;
   User(
       {this.username,
@@ -21,7 +22,8 @@ class User {
       this.date,
       this.email,
       this.imagepath,
-      this.emergencycontactname});
+      this.emergencycontactname,
+      this.therapist});
 
   String getusername() {
     return username;
@@ -72,7 +74,8 @@ class Users {
   var therapist = "";
   User signup(
       username, password, emergency, date, email, emergencycontactname) {
-    adduser(username, password, emergency, date, email, emergencycontactname);
+    adduser(username, password, emergency, date, email, emergencycontactname,
+        therapist);
     User rr = User(
         username: username,
         password: password,
@@ -82,8 +85,8 @@ class Users {
     return rr;
   }
 
-  Future<User> adduser(
-      username, password, emergencyname, date, email, emergencycontact) async {
+  Future<User> adduser(username, password, emergencyname, date, email,
+      emergencycontact, therapist) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('username', username);
     prefs.setString('email', email);
@@ -115,6 +118,7 @@ class Users {
         emergencycontact: emergencycontact,
         date: date,
         email: email,
+        therapist: therapist,
         emergencycontactname: emergencyname);
     //myusers.add(u);
     return u;
@@ -128,7 +132,6 @@ class Users {
     if (variable.data() == null) {
       return false;
     } else {
-      print(variable.get("therapist"));
       var passworduser = variable.get("password");
       if (passworduser == password) {
         this.username = variable.get("username");
