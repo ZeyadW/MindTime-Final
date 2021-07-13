@@ -16,7 +16,14 @@ class _DoctorsListState extends State<DoctorsList> {
   @override
   void initState() {
     this.doctorsList = new model.DoctorsList();
+    this.doctorsList.getarraydoctors();
+    waitdr();
     super.initState();
+  }
+
+  void waitdr() async {
+    await this.doctorsList.getarraydoctors();
+    print(this.doctorsList);
   }
 
   @override
@@ -73,7 +80,7 @@ class _DoctorsListState extends State<DoctorsList> {
               child: ListView.separated(
                 shrinkWrap: true,
                 primary: false,
-                itemCount: doctorsList.doctors.length,
+                itemCount: 4, //doctorsList.doctors.length,
                 separatorBuilder: (context, index) {
                   return SizedBox(height: 4.0);
                 },

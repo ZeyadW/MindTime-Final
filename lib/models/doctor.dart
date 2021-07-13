@@ -51,32 +51,98 @@ class Doctor {
 
 class DoctorsList {
   List<Doctor> _doctorsList;
-  Future<void> getarraydoctors() async {
+
+  Future<List<Doctor>> getarraydoctors() async {
     QuerySnapshot snap =
         await FirebaseFirestore.instance.collection('Therapists').get();
-    List ll;
+    _doctorsList = new List<Doctor>();
     var list = snap.docs;
-    print(list);
-    snap.docs.forEach((document) async {
+    print("snappp list");
+    print(list.length);
+    for (int i = 0; i < snap.docs.length; i++) {
+      var a = snap.docs[i];
+      print("snap docs[i]" + i.toString() + a.toString());
       DocumentSnapshot variable = await FirebaseFirestore.instance
-          .collection('Users')
-          .doc(document.id)
+          .collection('Therapists')
+          .doc(a.id)
           .get();
-      //  ll.add(variable);
-      print(document.id);
-      print(variable);
-    });
+      print("variabllleee from snapppppp");
+      print(variable.data());
+      print("snap variable name[i]" + variable.get("name"));
+      _doctorsList.add(
+        new Doctor(
+            variable.get("name"), variable.get("description"), "", "4.2"),
+      );
+      print(_doctorsList.length);
+
+      //print(a.documentID);
+      // print(snap.docs[0].data().values);
+    }
+    print(_doctorsList);
+    return _doctorsList;
+
+    // int count = 0;
+    //List<Doctor> drlist = new List<Doctor>();
+    /* var toto = await kk(snap);
+    print("toto");
+    print("toto" + toto.toString());
+    if (toto == true) {
+      print("awaitinggg kk snap");
+      print(toto.toString());
+      // this._doctorsList = drlist.toList();
+      print("drrr listtt in model");
+      print(_doctorsList);
+      print(_doctorsList.length);
+      return _doctorsList;
+    }
+    print("agterrrrrr ifff toto");
+    print(toto.toString());*/
   }
 
+  /* Future<bool> kk(QuerySnapshot snap) async {
+    snap.docs.forEach((document) async {
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Therapists')
+          .doc(document.id)
+          .get();
+      if (variable.data() != null) {
+        print("dr email in kk");
+        print(variable.get("email"));
+        _doctorsList.add(
+          new Doctor(
+              variable.get("name"), variable.get("description"), "", "4.2"),
+        );
+        print("entry added to doc list" + variable.get("name"));
+      } else {
+        print("variable null");
+        print(_doctorsList.length);
+        return false;
+      }
+
+      /  _doctorsList.add(
+        new Doctor(
+            variable.get("name"), variable.get("description"), "", "4.2"),
+      );/
+    });
+    if (_doctorsList.length != 0) {
+      print(_doctorsList.length);
+
+      return Future.value(true);
+    } else {
+      await kk(snap);
+    }
+  }*/
+
   DoctorsList() {
-    var variable = FirebaseFirestore.instance
+    /* var variable = FirebaseFirestore.instance
         .collection("Therapists")
         .orderBy('name', descending: true)
         .get();
     print("snap");
-    getarraydoctors();
-    print(variable.runtimeType);
-    this._doctorsList = [
+    //this._doctorsList =
+    //getarraydoctors();
+    print(variable.runtimeType);*/
+    /* this._doctorsList = [
       new Doctor("Dr.SALMA ABDELBAKI", "B.Sc DDVL Demilitologist",
           "images/drsalma.jpg", "4.2"),
       new Doctor("Dr.ADLY EL SHEIKH", "MBBCH, MSC, ABPSYCH PSYCHIATRIST ",
@@ -93,8 +159,12 @@ class DoctorsList {
           "B.Sc DDVL Demilitologist 26 years of experience",
           "images/asset-6.png",
           "Closed To day"),
-    ];
+    ];*/
   }
+
+  /* Future<List<Doctor>> get doctors async {
+    return await _doctorsList;
+  }*/
   List<Doctor> get doctors => _doctorsList;
 
   Future<Doctor> adddoctor(

@@ -13,6 +13,7 @@ import 'package:medico/pages/emergencycontact.dart';
 import 'package:medico/pages/health.dart';
 import 'package:medico/pages/journal.dart';
 import 'package:medico/pages/knowledgehub.dart';
+import 'package:medico/pages/loaddoctor.dart';
 import 'package:medico/pages/my-doctors.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/chat.dart';
@@ -62,6 +63,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ChatWidget());
       case '/doctors':
         return MaterialPageRoute(builder: (_) => DoctorsList());
+      case '/loaddoctors':
+        return MaterialPageRoute(builder: (_) => Loaddoctors());
       case '/doctorProfil':
         return MaterialPageRoute(builder: (_) => DoctorAcount());
       case '/firstDoctorBook':

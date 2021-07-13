@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                         padding: EdgeInsets.all(0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(150)),
-                        onPressed: () {
+                        onPressed: () async {
                           Navigator.of(context).pushNamed('/mydoctors');
                         },
                         child: ball("images/nurse.png",
@@ -350,8 +350,9 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed("/doctors");
+                    onPressed: () async {
+                      //await Navigator.of(context).pushNamed("/doctors");
+                      await Navigator.of(context).pushNamed("/loaddoctors");
                     },
                     child: Text(
                       'See All',
