@@ -104,8 +104,15 @@ class Appointment {
 }
 
 class ApointmentList {
-  Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+  var currentDoctor;
+  var email;
   List<Appointment> _appointmentList;
+  getDoctorsEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.email = prefs.getString('email');
+    currentDoctor = new Doctor.init().getCurrentDoctor(this.email);
+  }
+
   ApointmentList() {
     this._appointmentList = [
       new Appointment("14 Decembre 2019", currentDoctor),

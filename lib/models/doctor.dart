@@ -17,7 +17,11 @@ class Doctor {
 
   Doctor.init();
   Doctor(this.name, this.description, this.avatar, this.state);
-  Doctor getCurrentDoctor() {
+  Future<Doctor> getCurrentDoctor(var docmail) async {
+    DocumentSnapshot variable = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(docmail)
+        .get();
     return Doctor("Dr.ADLY EL SHEIKH", "B.Sc DDVL Demilitologist",
         "images/dradly.png", "Closed To day");
   }

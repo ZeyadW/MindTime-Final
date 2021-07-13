@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DoctorBookSecondeStep extends StatefulWidget {
   @override
@@ -8,8 +9,25 @@ class DoctorBookSecondeStep extends StatefulWidget {
 }
 
 class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
+  var docemail;
+  var currentDoctor;
   User currentUser = new User.init().getCurrentUser();
-  Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+
+  Future<bool> getDocEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    docemail = prefs.getString('docemail');
+    currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
+    print("Hamadaa" + currentDoctor.name);
+    return true;
+  }
+
+  @override
+  void initState() {
+    print("initttttttttt");
+    super.initState();
+    getDocEmail();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

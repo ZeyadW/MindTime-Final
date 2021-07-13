@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DoctorAcount extends StatefulWidget {
   const DoctorAcount({
@@ -12,8 +13,37 @@ class DoctorAcount extends StatefulWidget {
 }
 
 class _DoctorAcountState extends State<DoctorAcount> {
-  Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+  var docname;
+  var _isLoading = true;
+  var currentDoctor = new Doctor.init();
   User currentUser = new User.init().getCurrentUser();
+
+  Future<bool> getDocEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    docname = prefs.getString('docname');
+    if (docname != null) {
+      // currentDoctor = await new Doctor.init().getCurrentDoctor(docname);
+      print("Hamadaa" + docname);
+
+      setState(() {
+        _isLoading = false;
+      });
+      return true;
+    } else {
+      setState(() {
+        _isLoading = true;
+      });
+      return false;
+    }
+  }
+
+  @override
+  void initState() {
+    print("initttttttttt");
+    super.initState();
+    getDocEmail();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +136,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                "${currentDoctor.name}",
+                                "${docname}",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16.0,
@@ -116,7 +146,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                               ),
                               Center(
                                 child: Text(
-                                  "${currentDoctor.description}",
+                                  "${"currentDoctor.description"}",
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -233,10 +263,12 @@ class _DoctorAcountState extends State<DoctorAcount> {
                       ),
                     ),
                     Center(
+                        /*
                         child: ball(
                       currentDoctor.avatar,
                       Theme.of(context).primaryColor,
-                    )),
+                    )*/
+                        ),
                   ],
                 ),
               ],

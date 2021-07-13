@@ -6,7 +6,7 @@ import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/chatWidget.dart';
 
-
+/*
 class ChatWidget extends StatefulWidget {
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
@@ -109,3 +109,4 @@ class _ChatWidgetState extends State<ChatWidget> {
     );
   }
 }
+*/

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Mypatientprofile extends StatefulWidget {
   const Mypatientprofile({
@@ -12,7 +13,14 @@ class Mypatientprofile extends StatefulWidget {
 }
 
 class _MypatientprofileState extends State<Mypatientprofile> {
-  Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
+  var currentDoctor;
+  var email;
+  getDoctorsEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.email = prefs.getString('email');
+    currentDoctor = new Doctor.init().getCurrentDoctor(this.email);
+  }
+
   User currentUser = new User.init().getCurrentUser();
   @override
   Widget build(BuildContext context) {

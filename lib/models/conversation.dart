@@ -1,7 +1,7 @@
 import 'package:medico/models/chat.dart';
 
-
-class Conversation{
+class Conversation {
+  /*
  String image;
  String name;
  List<Chat> chats;
@@ -20,5 +20,5 @@ class ConversationList{
     ];
   }
   List<Conversation> get conversation => _conversationList;
-
+*/
 }

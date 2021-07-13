@@ -3,6 +3,7 @@ import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/appointmentsWidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppointmentsList extends StatefulWidget {
   final User currentUser = User.init().getCurrentUser();
@@ -12,7 +13,14 @@ class AppointmentsList extends StatefulWidget {
 
 class _AppointmentsListState extends State<AppointmentsList> {
   model.ApointmentList appointmentList;
-  Doctor doctor = new Doctor.doc().getCurrentDoctor();
+  var email;
+  var doctor;
+  getDoctorsEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.email = prefs.getString('email');
+    doctor = new Doctor.init().getCurrentDoctor(this.email);
+  }
+
   @override
   void initState() {
     this.appointmentList = new model.ApointmentList();

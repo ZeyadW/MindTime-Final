@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:medico/models/chat.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
-
+/*
 class ChatMessageListItem extends StatelessWidget {
+
   final Chat chat;
   final User currentUser = new User.init().getCurrentUser();
   final Doctor currentDoctor = new Doctor.init().getCurrentDoctor();
@@ -108,3 +108,4 @@ class ChatMessageListItem extends StatelessWidget {
     );
   }
 }
+*/

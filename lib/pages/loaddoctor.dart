@@ -8,6 +8,7 @@ import 'package:medico/models/doctor.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/widgets/doctorsWidget.dart';
 import 'package:medico/widgets/searchWidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loaddoctors extends StatefulWidget {
   @override
@@ -166,7 +167,10 @@ class _LoaddoctorsState extends State<Loaddoctors> {
       padding: const EdgeInsets.all(6.0),
       child: FlatButton(
         highlightColor: Theme.of(context).primaryColor,
-        onPressed: () {
+        onPressed: () async {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString('docname', doctors.name);
+          print("doctor name:" + doctors.name);
           Navigator.of(context).pushNamed('/doctorProfil');
         },
         shape: RoundedRectangleBorder(

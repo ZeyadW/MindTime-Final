@@ -18,7 +18,7 @@ import 'package:medico/pages/my-doctors.dart';
 import 'package:medico/pages/Welcome.dart';
 import 'package:medico/pages/chat.dart';
 import 'package:medico/pages/createAccount.dart';
-import 'package:medico/pages/docotr_acount.dart';
+import 'package:medico/pages/doctor_acount.dart';
 import 'package:medico/pages/doctors.dart';
 
 import 'package:medico/pages/login.dart';
@@ -59,8 +59,8 @@ class RouteGenerator {
             builder: (_) => TabsWidget(
                 //acountInfos: args,
                 ));
-      case '/chat':
-        return MaterialPageRoute(builder: (_) => ChatWidget());
+      /*     case '/chat':
+        return MaterialPageRoute(builder: (_) => ChatWidget());*/
       case '/doctors':
         return MaterialPageRoute(builder: (_) => DoctorsList());
       case '/loaddoctors':
