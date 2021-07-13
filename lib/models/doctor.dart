@@ -24,7 +24,7 @@ class Doctor {
         .collection('Therapists')
         .doc(docmail)
         .get();
-    return Doctor("Dr.ADLY EL SHEIKH", "", "B.Sc DDVL Demilitologist",
+    return Doctor("Dr.ADLY EL SHEIKH", "B.Sc DDVL Demilitologist", "",
         "images/dradly.png", "Closed To day");
   }
 
