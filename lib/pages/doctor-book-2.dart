@@ -9,23 +9,36 @@ class DoctorBookSecondeStep extends StatefulWidget {
 }
 
 class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
+  var currentDoctor = new Doctor.init();
   var docemail;
-  var currentDoctor;
-  User currentUser = new User.init().getCurrentUser();
-
-  Future<bool> getDocEmail() async {
+  var docname;
+  bool _isLoading = true;
+  Future<bool> getDoctorsEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     docemail = prefs.getString('docemail');
-    currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
-    print("Hamadaa" + currentDoctor.name);
-    return true;
+    if (docemail != null) {
+      currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
+      print("Hamada Email" + currentDoctor.email);
+      print("Hamada Name" + currentDoctor.name);
+
+      setState(() {
+        _isLoading = false;
+      });
+      return true;
+    } else {
+      setState(() {
+        _isLoading = true;
+      });
+      return false;
+    }
   }
 
   @override
   void initState() {
     print("initttttttttt");
     super.initState();
-    getDocEmail();
+    getDoctorsEmail();
+    //waitt();
   }
 
   @override
@@ -83,7 +96,7 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          ball(currentDoctor.avatar, Colors.transparent),
+                          // ball(currentDoctor.avatar, Colors.transparent),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -312,8 +325,10 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                   elevation: 0,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/home",
-                        arguments: [currentUser.name, currentUser.email]);
+                    Navigator.of(context).pushNamed("/home", arguments: [
+                      "currentDoctor.name",
+                      " currentDoctor.email"
+                    ]);
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),

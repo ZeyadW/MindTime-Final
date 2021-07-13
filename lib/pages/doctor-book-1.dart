@@ -28,12 +28,28 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
   ];
   String selectedChoice = "";
   User currentUser = new User.init().getCurrentUser();
-  var currentDoctor;
+  var currentDoctor = new Doctor.init();
   var docemail;
-  getDoctorsEmail() async {
+  var docname;
+  bool _isLoading = true;
+  Future<bool> getDoctorsEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    this.docemail = prefs.getString('docemail');
-    currentDoctor = await new Doctor.init().getCurrentDoctor(this.docemail);
+    docemail = prefs.getString('docemail');
+    if (docemail != null) {
+      currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
+      print("Hamada Email" + currentDoctor.email);
+      print("Hamada Name" + currentDoctor.name);
+
+      setState(() {
+        _isLoading = false;
+      });
+      return true;
+    } else {
+      setState(() {
+        _isLoading = true;
+      });
+      return false;
+    }
   }
 
   @override
@@ -41,6 +57,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
     print("initttttttttt");
     super.initState();
     getDoctorsEmail();
+    //waitt();
   }
 
   @override
@@ -113,7 +130,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                               Container(
                                 width: 200,
                                 child: Text(
-                                  currentDoctor.description,
+                                  " currentDoctor.description",
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 12.0,

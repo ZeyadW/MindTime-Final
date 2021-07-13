@@ -31,6 +31,9 @@ class _LoaddoctorsState extends State<Loaddoctors> {
   Future<bool> waitdr() async {
     print("beforeeeeeeeee wait dr");
     drlist = await this.doctorsList.getarraydoctors();
+    setState(() {
+      _isLoading = false;
+    });
     if (drlist != null) {
       print(drlist.length);
       print(drlist);
@@ -170,7 +173,12 @@ class _LoaddoctorsState extends State<Loaddoctors> {
         onPressed: () async {
           final SharedPreferences prefs = await SharedPreferences.getInstance();
           prefs.setString('docname', doctors.name);
+          prefs.setString('docemail', doctors.email);
+          prefs.setString('description', doctors.description);
+          prefs.setString('location', doctors.location);
+          prefs.setString('state', doctors.state);
           print("doctor name:" + doctors.name);
+          print("doctor email:" + doctors.email);
           Navigator.of(context).pushNamed('/doctorProfil');
         },
         shape: RoundedRectangleBorder(
