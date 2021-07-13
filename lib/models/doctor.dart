@@ -16,13 +16,15 @@ class Doctor {
   String location;
 
   Doctor.init();
-  Doctor(this.name, this.description, this.avatar, this.state);
+  Doctor(this.name, this.description, this.email, this.avatar, this.state);
+  //Doctor(this.name, this.description, this.avatar, this.state);
+
   Future<Doctor> getCurrentDoctor(var docmail) async {
     DocumentSnapshot variable = await FirebaseFirestore.instance
         .collection('Therapists')
         .doc(docmail)
         .get();
-    return Doctor("Dr.ADLY EL SHEIKH", "B.Sc DDVL Demilitologist",
+    return Doctor("Dr.ADLY EL SHEIKH", "", "B.Sc DDVL Demilitologist",
         "images/dradly.png", "Closed To day");
   }
 
@@ -75,7 +77,7 @@ class DoctorsList {
       print("snap variable name[i]" + variable.get("name"));
       _doctorsList.add(
         new Doctor(
-            variable.get("name"), variable.get("description"), "", "4.2"),
+            variable.get("name"), variable.get("description"), a.id, "", "4.2"),
       );
       print(_doctorsList.length);
 
