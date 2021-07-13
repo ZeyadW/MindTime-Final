@@ -66,7 +66,7 @@ class _KnowledgehubState extends State<Knowledgehub> {
   Future<Video> sendVidName;
   @override
   void initState() {
-    FirebaseProvider.listenToVideos((newVideos) {
+    FirebaseProvider.listenTokVideos((newVideos) {
       setState(() {
         _videos = newVideos;
       });
@@ -122,7 +122,7 @@ class _KnowledgehubState extends State<Knowledgehub> {
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final StorageReference ref = FirebaseStorage.instance
         .ref()
-        .child(userUID)
+        .child('admin@mindtimeteam.com')
         .child(folderName)
         .child(basename);
     print('folder name = ' + folderName);
