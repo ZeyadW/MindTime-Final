@@ -122,7 +122,7 @@ class _AdminvideoUploadState extends State<AdminvideoUpload> {
     var userUID = FirebaseAuth.instance.currentUser.uid;
     final StorageReference ref = FirebaseStorage.instance
         .ref()
-        .child(userUID)
+        .child('admin@mindtimeteam.com')
         .child(folderName)
         .child(basename);
     print('folder name = ' + folderName);

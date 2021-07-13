@@ -37,6 +37,20 @@ class FirebaseProvider {
     });
   }
 
+  static listenTokVideos(callback) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var email = prefs.getString('email');
+    FirebaseFirestore.instance
+        .collection("Users")
+        .doc('admin@mindtimeteam.com')
+        .collection('videos')
+        .snapshots()
+        .listen((qs) {
+      final videos = mapQueryToVideoInfo(qs);
+      callback(videos);
+    });
+  }
+
   static mapQueryToVideoInfo(QuerySnapshot qs) {
     return qs.docs.map((DocumentSnapshot ds) {
       return VideoInfo(
