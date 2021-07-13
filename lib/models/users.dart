@@ -13,7 +13,7 @@ class User {
   String email;
   String imagepath;
   String emergencycontactname;
-  String therapist = "";
+  String therapist;
   List<Contact> emergencyContacts;
   User(
       {this.username,
@@ -136,10 +136,39 @@ class Users {
       if (passworduser == password) {
         this.username = variable.get("username");
         this.phone = variable.get("emergencyphone");
+        this.therapist = variable.get("therapist");
         print("username in user model" + this.username);
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('username', this.username);
         prefs.setString('email', email);
+        prefs.setString('therapist', this.therapist);
+        print("Email: Login + $email");
+        prefs.setString('emergencynumber', this.phone);
+        prefs.setBool('isLoggedIn', true);
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  Future<bool> login2(email, password) async {
+    DocumentSnapshot variable = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(email)
+        .get();
+    if (variable.data() == null) {
+      return false;
+    } else {
+      var passworduser = variable.get("password");
+      if (passworduser == password) {
+        this.username = variable.get("name");
+        //  this.therapist = variable.get("therapist");
+        print("username in user model" + this.username);
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('username', this.username);
+        prefs.setString('email', email);
+        //prefs.setString('therapist', this.therapist);
         print("Email: Login + $email");
         prefs.setString('emergencynumber', this.phone);
         prefs.setBool('isLoggedIn', true);
@@ -152,6 +181,19 @@ class Users {
 
   Future<User> validatelogin(email, password) async {
     var log1 = await login1(email, password);
+
+    if (log1) {
+      User u = User(
+          email: email, password: this.username, emergencycontact: this.phone);
+
+      return u;
+    } else {
+      return null;
+    }
+  }
+
+  Future<User> validateloginTherapist(email, password) async {
+    var log1 = await login2(email, password);
 
     if (log1) {
       User u = User(

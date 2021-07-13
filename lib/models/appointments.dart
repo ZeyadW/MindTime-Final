@@ -11,12 +11,19 @@ class appointment {
   var datecreated;
   var sessionsPerDay;
   var appointmentID;
+  var BookedBy;
   DoctorsList dr = DoctorsList();
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   var email;
   DocumentReference reference;
   appointment({this.sessionsTimes, this.sessionDate});
-
+  factory appointment.fromFirestore(DocumentSnapshot doc) {
+    Map data = doc.data();
+    return appointment(
+      sessionsTimes: data['sessionsTimes'],
+      sessionDate: data['SessionDate'],
+    );
+  }
   appointment.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['SessionsTimes'] != null),
         assert(map['SessionDate'] != null),
@@ -24,6 +31,7 @@ class appointment {
         sessionsTimes = map['SessionsTimes'],
         sessionDate = map['SessionDate'],
         appointmentID = map['appointmentID'],
+        BookedBy = map['BookedBy'],
         datecreated = map['datecreated'];
 
   appointment.fromSnapshot(DocumentSnapshot snapshot)
@@ -36,6 +44,7 @@ class appointment {
     final String rand = '${new Random().nextInt(10000)}';
     String appointmentname = 'Appointment' + rand;
     String isbooked = '0';
+    String BookedBy = "";
     await _db
         .collection('Therapists')
         .doc(email)
@@ -47,6 +56,7 @@ class appointment {
       "SessionDate": sessionDate,
       "SessionsPerDay": sessionsPerDay,
       "isBooked": isbooked,
+      "BookedBy": BookedBy,
       "ZoomMeetingID": isbooked,
       "ZoomMeetingPassword": isbooked,
       "IsAccepted": isbooked,
@@ -55,7 +65,7 @@ class appointment {
     return true;
   }
 
-  Future<bool> seleteAppointment(DocumentSnapshot snap, appointmentID) async {
+  Future<bool> deleteAppointment(DocumentSnapshot snap, appointmentID) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     this.email = prefs.getString('email');
     await _db

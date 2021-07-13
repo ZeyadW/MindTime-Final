@@ -46,18 +46,14 @@ DateTime now = new DateTime.now();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
 class LoginFormState extends State<JournalForm> {
-  Future<bool> CheckTherapist() async {}
-
   var email;
   bool share = false;
-  var therapistassigned;
-
+  var therapist;
   Future<Diaries> sendDiaryToApi(
       String DiaryContent, String email, String DiaryTitle) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
     print("Email in SendVidToRestAPI " + email);
-    CheckTherapist();
     var DiaryEnc = jsonEncode(<String, String>{
       'Diary Content': DiaryContent,
       'Email': email,
@@ -76,9 +72,8 @@ class LoginFormState extends State<JournalForm> {
 
   Future<bool> createDiary(textcontroller, titlecontroller) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    therapistassigned = prefs.getString('therapistassigned');
     this.email = prefs.getString('email');
-    print("Therapist Assigned:" + therapistassigned);
+    this.therapist = prefs.getString('therapist');
     print("creating record");
     print(textcontroller.text);
     await FirebaseFirestore.instance
@@ -253,8 +248,8 @@ class LoginFormState extends State<JournalForm> {
                     ),
                     child: FlatButton(
                       onPressed: () {
-                        print("TherapAssigned: " + therapistassigned);
-                        if (therapistassigned == "") {
+                        print("Therapist= " + therapist);
+                        if (therapist == "") {
                           return showDialog(
                             context: context,
                             builder: (context) {
@@ -265,7 +260,7 @@ class LoginFormState extends State<JournalForm> {
                               );
                             },
                           );
-                        } else if (therapistassigned != "") {
+                        } else if (therapist != "") {
                           return showDialog(
                             context: context,
                             builder: (context) {
