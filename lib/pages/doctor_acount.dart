@@ -13,17 +13,18 @@ class DoctorAcount extends StatefulWidget {
 }
 
 class _DoctorAcountState extends State<DoctorAcount> {
-  var docname;
+  var docemail;
   var _isLoading = true;
   var currentDoctor = new Doctor.init();
   User currentUser = new User.init().getCurrentUser();
 
   Future<bool> getDocEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    docname = prefs.getString('docname');
-    if (docname != null) {
-      // currentDoctor = await new Doctor.init().getCurrentDoctor(docname);
-      print("Hamadaa" + docname);
+    docemail = prefs.getString('docemail');
+    if (docemail != null) {
+      currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
+      print("Hamada Email" + currentDoctor.email);
+      print("Hamada Name" + currentDoctor.name);
 
       setState(() {
         _isLoading = false;
@@ -136,7 +137,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                "${docname}",
+                                "${currentDoctor.name}",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16.0,
@@ -146,7 +147,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                               ),
                               Center(
                                 child: Text(
-                                  "${"currentDoctor.description"}",
+                                  "${currentDoctor.description}",
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,

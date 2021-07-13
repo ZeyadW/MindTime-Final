@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Doctor {
   String id = UniqueKey().toString();
@@ -24,8 +25,14 @@ class Doctor {
         .collection('Therapists')
         .doc(docmail)
         .get();
-    return Doctor("Dr.ADLY EL SHEIKH", "B.Sc DDVL Demilitologist", "",
-        "images/dradly.png", "Closed To day");
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    name = prefs.getString('docname');
+
+    email = prefs.getString('docemail');
+    description = prefs.getString('description');
+    location = prefs.getString('location');
+    state = prefs.getString('state');
+    return Doctor(name, description, email, location, state);
   }
 
   Doctor.doc(
@@ -79,6 +86,7 @@ class DoctorsList {
         new Doctor(
             variable.get("name"), variable.get("description"), a.id, "", "4.2"),
       );
+      print("a.id: " + a.id);
       print(_doctorsList.length);
 
       //print(a.documentID);
