@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medico/models/appointments.dart' as model;
 import 'package:medico/models/user.dart';
 import 'package:medico/pages/AORAppointment.dart';
+import 'package:medico/pages/JoinSession.dart';
 //import 'package:medico/pages/AORAppointment.dart';
 import 'package:medico/widgets/Journal/editjournal.dart';
 import 'package:medico/config/app_config.dart' as config;
@@ -114,7 +115,12 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                       child: IconButton(
                         padding: EdgeInsets.all(0),
                         onPressed: () {
-                          //Navigator.of(context).pushNamed('/chat');
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (context) => MeetingWidget(
+                                      meetingId: "74254977738",
+                                      meetingPassword: "8DcaTh")));
                         },
                         icon: Icon(Icons.calendar_today),
                         iconSize: 20,

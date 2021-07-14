@@ -163,7 +163,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Text(
-                        "Your doctors",
+                        "View All doctors",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',

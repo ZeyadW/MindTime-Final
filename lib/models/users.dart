@@ -43,14 +43,14 @@ class Patient {
   Patient.p(this.username, this.date, this.time, this.email);
 }
 
-/*class PatientL {
+class PatientL {
   String id = UniqueKey().toString();
   Patient p;
   String date;
 
   PatientL(this.date, this.p);
 }
-*/
+
 class PatientList {
   List<Patient> _patientList;
 
@@ -185,7 +185,7 @@ class Users {
         //  this.therapist = variable.get("therapist");
         print("username in user model" + this.username);
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('username', this.username);
+        prefs.setString('name', this.username);
         prefs.setString('email', email);
         //prefs.setString('therapist', this.therapist);
         print("Email: Login + $email");

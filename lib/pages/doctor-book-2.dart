@@ -151,7 +151,7 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                   height: 15.0,
                                 ),
                                 Text(
-                                  "9 Dec 4:45PM",
+                                  "15 July 4:45PM",
                                   style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -184,7 +184,7 @@ class _DoctorBookSecondeStepState extends State<DoctorBookSecondeStep> {
                                   height: 15.0,
                                 ),
                                 Text(
-                                  "600\$",
+                                  "300 EGP",
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,

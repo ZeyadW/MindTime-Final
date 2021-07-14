@@ -13,7 +13,7 @@ void main() => runApp(MaterialApp(
     ));
 Future<bool> getUser() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  username = prefs.getString('username');
+  username = prefs.getString('name');
   email = prefs.getString('email');
   print("username in get user AOR" + username);
   print("email in get user AOR" + email);

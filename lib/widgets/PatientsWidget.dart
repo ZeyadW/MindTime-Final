@@ -196,7 +196,7 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                 CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Text(
-                                                '${widget.patient.username}',
+                                                '${"Emy Mohammed"}',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: 'Poppins',
@@ -204,7 +204,7 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                '${widget.patient.date}',
+                                                '${"16 July 2021"}',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: 'Poppins',
@@ -215,7 +215,7 @@ class _PatientsWidgetState extends State<PatientsWidget> {
                                                 height: 12,
                                               ),
                                               Text(
-                                                '${widget.patient.time}',
+                                                '${"6:45 PM"}',
                                                 style: TextStyle(
                                                   color: Colors.grey,
                                                   fontFamily: 'Poppins',

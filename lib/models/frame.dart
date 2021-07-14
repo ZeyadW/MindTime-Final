@@ -19,7 +19,7 @@ Future<List> getFrameInfo() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
 
-  
+  var emotions;
   QuerySnapshot snap = await FirebaseFirestore.instance
       .collection('users')
       .doc(email)
