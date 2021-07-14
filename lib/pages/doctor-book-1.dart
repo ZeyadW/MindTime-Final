@@ -107,18 +107,6 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                 children: <Widget>[
                   Stack(
                     children: <Widget>[
-<<<<<<< HEAD
-                      Container(
-                        height: 40,
-                        padding: const EdgeInsets.only(
-                            left: 0.0, right: 0.0, bottom: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(25.0),
-                              bottomRight: Radius.circular(25.0)),
-                          color: Theme.of(context).accentColor,
-                        ),
-=======
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -181,7 +169,6 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                       ),
                       SizedBox(
                         height: 15.0,
->>>>>>> dc1ab36044f2ea8f63488b10912a57a1152143cc
                       ),
                       Container(
                         padding: EdgeInsets.only(
