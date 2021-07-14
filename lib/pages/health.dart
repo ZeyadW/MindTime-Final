@@ -19,7 +19,7 @@ class _HealthTipsState extends State<HealthTips> {
   double selfharmper;
   double emptyper;
   double angerper;
-
+  var _isLoading = true;
   TotalTextAnalysis tt;
   void getsharedpref() async {
     await tt.getTextAnalysisDetails();
@@ -32,7 +32,23 @@ class _HealthTipsState extends State<HealthTips> {
     getsharedpref();
     print(tt.angerper);
     //tt.getTextAnalysisDetails();
+    // ch = LineChartSample2();
+    getDocEmail();
+  }
+
+  Future<bool> getDocEmail() async {
     ch = LineChartSample2();
+    if (ch != null) {
+      setState(() {
+        _isLoading = false;
+      });
+      return true;
+    } else {
+      setState(() {
+        _isLoading = true;
+      });
+      return false;
+    }
   }
 
   var x = Colors.transparent;
@@ -85,7 +101,7 @@ class _HealthTipsState extends State<HealthTips> {
         ),
         backgroundColor: Theme.of(context).accentColor,
         title: Text(
-          'Borderline Symptoms Analysis',
+          'Analysis',
           style: TextStyle(
             fontSize: 22.0,
             fontFamily: 'Poppins',
@@ -227,12 +243,16 @@ class _HealthTipsState extends State<HealthTips> {
                             setState(() {
                               y = Colors.transparent;
 
-                              ch = LineChartSample2();
-                              chart = LineChartSample2();
+                              /// ch = LineChartSample2();
+                              // chart = LineChartSample2();
                             });
                           },
                         ),
-                        LineChartSample2(),
+                        _isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : LineChartSample2(),
                       ],
                     ),
                   ),
