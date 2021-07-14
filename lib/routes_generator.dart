@@ -37,6 +37,7 @@ import 'package:medico/pages/erq.dart';
 import 'package:medico/pages/bmis.dart';
 import 'package:medico/pages/foal.dart';
 import 'package:medico/pages/viewmypatients.dart';
+import 'package:medico/pages/viewpatientjournals.dart';
 import 'package:medico/widgets/mypatientslistview.dart';
 
 class RouteGenerator {
@@ -80,6 +81,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Journal());
       case '/viewjournalstext':
         return MaterialPageRoute(builder: (_) => ViewJournals());
+      case '/viewjournalspatient':
+        return MaterialPageRoute(builder: (_) => ViewPatientJournals());
 
       case '/secondeDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookSecondeStep());

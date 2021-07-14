@@ -189,7 +189,8 @@ class _PatientAcountState extends State<PatientAcount> {
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
                           onPressed: () {
-                            //  Navigator.of(context).pushNamed("/health");
+                            Navigator.of(context)
+                                .pushNamed("/viewjournalspatient");
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
@@ -248,6 +249,64 @@ class _PatientAcountState extends State<PatientAcount> {
                               MaterialTapTargetSize.shrinkWrap,
                           onPressed: () {
                             Navigator.of(context).pushNamed("/health");
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          color: Theme.of(context).accentColor,
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                left: 55.0, right: 55.0, top: 12, bottom: 12),
+                            child: Text(
+                              'View',
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 12.0,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(26.0),
+                    width: double.maxFinite,
+                    margin: EdgeInsets.only(
+                        top: 30.0, left: 14.0, right: 14.0, bottom: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            offset: Offset(2, 4),
+                            blurRadius: 10)
+                      ],
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              'Session Notes',
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 12.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        RaisedButton(
+                          elevation: 0,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          onPressed: () {
+                            // Navigator.of(context).pushNamed("/health");
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
