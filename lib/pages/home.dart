@@ -204,7 +204,7 @@ class _HomeState extends State<Home> {
                             color: Theme.of(context).focusColor),
                       ),
                       Text(
-                        "Journals analysis",
+                        "knowledge is power",
                         style: TextStyle(
                           fontSize: 10.0,
                           fontFamily: 'Poppins',
