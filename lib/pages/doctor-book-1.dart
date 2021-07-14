@@ -218,7 +218,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                                     Container(
                                       width: 200,
                                       child: Text(
-                                        " currentDoctor.description",
+                                        "  ",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 12.0,

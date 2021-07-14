@@ -63,9 +63,17 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return arr;
   }
 
+  void arraylength() async {
+    await getarraylength();
+  }
+
+  @override
+  void initState() {
+    arraylength();
+  }
+
   @override
   Widget build(BuildContext context) {
-    getarraylength();
     return Stack(
       children: <Widget>[
         AspectRatio(
@@ -140,8 +148,6 @@ class _LineChartSample2State extends State<LineChartSample2> {
               default:
                 return value.toString();
             }
-
-            return '';
           },
           margin: 8,
         ),

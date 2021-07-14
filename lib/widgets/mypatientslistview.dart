@@ -155,7 +155,7 @@ class _MypatientListviewState extends State<MypatientListview> {
   Widget cardss(u.Patient patient) {
     print("cardssssssss");
     return Container(
-      height: 150.0,
+      height: 170.0,
       padding: const EdgeInsets.all(6.0),
       child: FlatButton(
         highlightColor: Theme.of(context).primaryColor,
@@ -169,67 +169,59 @@ class _MypatientListviewState extends State<MypatientListview> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
         ),
-        child: Card(
-          elevation: 0.2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    offset: Offset(0, 4),
-                    blurRadius: 10)
-              ],
-            ),
-            padding: const EdgeInsets.only(
-                top: 12.0, bottom: 12.0, left: 12.0, right: 12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
+          children: <Widget>[
+            Stack(
               children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 6.0),
-                          child: Text(
+                Container(
+                  padding: EdgeInsets.all(26.0),
+                  margin: EdgeInsets.only(top: 33.0, left: 14.0, right: 14.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.4),
+                          offset: Offset(2, 4),
+                          blurRadius: 10)
+                    ],
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
                             '${patient.username}',
-                            textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 12.0,
+                              fontSize: 16.0,
                               fontWeight: FontWeight.bold,
+                              color: Theme.of(context).hintColor,
                             ),
                           ),
-                        ),
-                        Container(
-                          width: 160.0,
-                          padding: const EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: Colors.grey.withOpacity(0.1)),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            '${patient.email}',
-                            style: TextStyle(
+                          Center(
+                            child: Text(
+                              '${patient.email}',
+                              style: TextStyle(
                                 fontFamily: 'Poppins',
+                                fontSize: 14.0,
                                 color: Colors.grey,
-                                fontSize: 10.0),
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );
