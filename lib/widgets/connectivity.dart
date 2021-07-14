@@ -126,6 +126,8 @@ class _AutoLogin extends State<AutoLogin> {
   Future<void> countVideos() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('email');
+    this.userId = prefs.getString('username');
+
     FirebaseFirestore.instance
         .collection("Users")
         .doc(email)
@@ -184,7 +186,7 @@ class _AutoLogin extends State<AutoLogin> {
 
   Widget navigate() {
     if (email.contains("@mindtime.com")) {
-      return DracountWidget(acountInfos: ["${this.name}", "${this.email}"]);
+      return DracountWidget(acountInfos: ["${this.userId}", "${this.email}"]);
     } else if (email.contains("@mindtimeteam.com")) {
       return AdminPage();
     } else {

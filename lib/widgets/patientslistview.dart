@@ -103,8 +103,8 @@ class _PatientListviewState extends State<PatientListview> {
             child: Container(
       child: ListTile(
           title: PatientsWidget(
-        patient: p.patient.elementAt(1),
-      )),
+              //  patient: p.patient.elementAt(1),
+              )),
     )));
   }
 }

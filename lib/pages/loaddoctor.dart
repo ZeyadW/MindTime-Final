@@ -24,7 +24,7 @@ class _LoaddoctorsState extends State<Loaddoctors> {
   @override
   void initState() {
     this.doctorsList = new model.DoctorsList();
-    didChangeDependencies();
+    didChange();
   }
 
   var drlist;
@@ -51,7 +51,7 @@ class _LoaddoctorsState extends State<Loaddoctors> {
     }
   }
 
-  void didChangeDependencies() async {
+  void didChange() async {
     if (_isInit) {
       bool o = await waitdr();
       if (o.toString() == "true") {
