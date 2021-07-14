@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FrameInfo {
-  String email = "khazbak@gmail.com";
-  String videoid = "video495";
+  String email;
+  String videoid;
   var emotions = [];
   FrameInfo();
   FrameInfo.id(email, videoid) {
@@ -45,8 +45,8 @@ class FrameInfo {
           .collection("assesments")
           .doc(a.id)
           .get();
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setDouble('bmi', 115.0);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setDouble('bmi', 115.0);
 
       emotionss = variable.get("score");
       print("after document snapshot");
