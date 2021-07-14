@@ -35,8 +35,7 @@ class PieChart2State extends State {
                               pieTouchResponse.touchInput is! PointerUpEvent;
                           if (desiredTouch &&
                               pieTouchResponse.touchedSection != null) {
-                            touchedIndex = pieTouchResponse
-                                .touchedSection.touchedSectionIndex;
+                            // touchedIndex = pieTouchResponse.touchedSection.touchedSectionIndex;
                           } else {
                             touchedIndex = -1;
                           }

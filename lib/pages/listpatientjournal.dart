@@ -23,18 +23,6 @@ class _ListAllJournalState extends State<ListAllJournalsPatient> {
     setEmail(); // calls getconnect method to check which type if connection it
   }
 
-  Future<bool> deleteDiary(diary) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    this.email = prefs.getString('pemail');
-    await FirebaseFirestore.instance
-        .collection("Users")
-        .doc(email)
-        .collection('Diary')
-        .doc(diary.title)
-        .delete();
-    return true;
-  }
-
   Future<bool> setEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('pemail');
@@ -70,7 +58,7 @@ class _ListAllJournalState extends State<ListAllJournalsPatient> {
           .collection("Users")
           .doc(email)
           .collection('Diary')
-          .orderBy('title', descending: true)
+          .orderBy('timestamp', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
@@ -96,24 +84,6 @@ class _ListAllJournalState extends State<ListAllJournalsPatient> {
     var diarydate =
         diary.timestamp.toDate(); //.difference(DateTime.now()).inDays.abs();
     diarydate = DateFormat.yMMMd().add_jm().format(diarydate);
-
-    Widget yesdelete = FlatButton(
-      child: Text(
-        "Yes delete",
-      ),
-      onPressed: () {
-        Navigator.of(context, rootNavigator: true).pop();
-        deleteDiary(diary);
-      },
-    );
-    Widget nodelete = FlatButton(
-      child: Text(
-        "Cancel",
-      ),
-      onPressed: () {
-        Navigator.of(context, rootNavigator: true).pop();
-      },
-    );
 
 //    MediaQueryData queryData;
     //   queryData = MediaQuery.of(context);

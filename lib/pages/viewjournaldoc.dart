@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:medico/widgets/Journal/editjournal.dart';
@@ -47,11 +48,75 @@ class _ViewJournaldocstate extends State<ViewJournaldoc> {
           ),
           child: new SingleChildScrollView(
               child: Column(children: [
-            EditJournal(this.diary),
+            EditJournalState(this.diary),
           ])),
         ),
       ),
       // ),
+    );
+  }
+
+  Widget EditJournalState(d.Diaries diaryy) {
+    final textcontroller = TextEditingController(text: diaryy.text);
+    final titlecontroller = TextEditingController(text: diaryy.title);
+    final _formKey = GlobalKey<FormState>();
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SingleChildScrollView(
+            child: Container(
+              decoration: BoxDecoration(color: Theme.of(context).accentColor),
+              child: Column(children: <Widget>[
+                Row(children: <Widget>[
+                  Padding(padding: const EdgeInsets.only(left: 180)),
+                ]),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(21.0),
+                      color: const Color(0xffffffff),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0x21329d9c),
+                          offset: Offset(0, 13),
+                          blurRadius: 34,
+                        ),
+                      ],
+                    ),
+                    child: SingleChildScrollView(
+                      child: Container(
+                        width: 400.0,
+                        height: 500.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(21.0),
+                          color: const Color(0xffffffff),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0x21329d9c),
+                              offset: Offset(0, 13),
+                              blurRadius: 34,
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          textcontroller.text,
+                          style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
