@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:medico/models/appointments.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:medico/widgets/appointmentsWidget.dart';
 
 class DoctorBookFirstStep extends StatefulWidget {
   @override
@@ -9,6 +12,18 @@ class DoctorBookFirstStep extends StatefulWidget {
 }
 
 class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
+  var ListAppointments = new appointment();
+
+  Future<appointment> getCurrentDoctor(var docmail) async {
+    DocumentSnapshot variable = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(docmail)
+        .get();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return appointment();
+  }
+
   List<String> morningList = ["08.00", "09.00", "10.00", "11.00", "12.00"];
   List<String> afternoonList = [
     "13.00",
@@ -92,6 +107,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                 children: <Widget>[
                   Stack(
                     children: <Widget>[
+<<<<<<< HEAD
                       Container(
                         height: 40,
                         padding: const EdgeInsets.only(
@@ -102,6 +118,70 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                               bottomRight: Radius.circular(25.0)),
                           color: Theme.of(context).accentColor,
                         ),
+=======
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          // ball(currentDoctor.avatar, Colors.transparent),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                currentDoctor.name,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                width: 200,
+                                child: Text(
+                                  currentDoctor.description,
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 12.0,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.chevron_left),
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              'Tomorrow,9 Dec',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.chevron_right),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15.0,
+>>>>>>> dc1ab36044f2ea8f63488b10912a57a1152143cc
                       ),
                       Container(
                         padding: EdgeInsets.only(

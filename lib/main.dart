@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Mindtime',
-          home: Welcome(), //Welcome(), // AutoLogin(),
+          home: AutoLogin(), //Welcome(), // AutoLogin(),
           initialRoute: '/',
           onGenerateRoute: RouteGenerator.generateRoute,
           debugShowCheckedModeBanner: false,

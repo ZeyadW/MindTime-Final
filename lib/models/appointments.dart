@@ -17,13 +17,7 @@ class appointment {
   var email;
   DocumentReference reference;
   appointment({this.sessionsTimes, this.sessionDate});
-  factory appointment.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data();
-    return appointment(
-      sessionsTimes: data['sessionsTimes'],
-      sessionDate: data['SessionDate'],
-    );
-  }
+
   appointment.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['SessionsTimes'] != null),
         assert(map['SessionDate'] != null),
