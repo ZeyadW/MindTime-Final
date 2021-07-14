@@ -20,6 +20,11 @@ class EditJournal extends StatefulWidget {
 }
 
 DateTime now = new DateTime.now();
+DateTime currentPhoneDate = DateTime.now(); //DateTime
+
+Timestamp myTimeStamp = Timestamp.fromDate(currentPhoneDate); //To TimeStamp
+
+DateTime myDateTime = myTimeStamp.toDate();
 DateTime date = new DateTime(now.year, now.month, now.day);
 
 class EditJournalState extends State<EditJournal> {

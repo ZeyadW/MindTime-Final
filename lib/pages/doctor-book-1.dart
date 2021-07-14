@@ -12,14 +12,31 @@ class DoctorBookFirstStep extends StatefulWidget {
 }
 
 class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
-  var ListAppointments = new appointment();
-
+  var email;
+  var SessionDate;
   Future<appointment> getCurrentDoctor(var docmail) async {
-    DocumentSnapshot variable = await FirebaseFirestore.instance
-        .collection('Therapists')
-        .doc(docmail)
-        .get();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('docemail');
+    QuerySnapshot snap = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(email)
+        .collection('Apointments')
+        .get();
+    for (int i = 0; i < snap.docs.length; i++) {
+      var a = snap.docs[i];
+      print("snap docs[i]" + i.toString() + a.toString());
+
+      DocumentSnapshot variable = await FirebaseFirestore.instance
+          .collection('Therapists')
+          .doc(email)
+          .collection("Appointments")
+          .doc(a.id)
+          .get();
+      SessionDate = variable.get("SessionDate");
+      print("after document snapshot");
+      print(SessionDate.toString());
+      print(variable);
+    }
 
     return appointment();
   }

@@ -48,9 +48,11 @@ class _FoaState extends State<Foa> {
     await _db
         .collection('Users')
         .doc(email)
-        .collection('Foa')
-        .doc()
+        .collection('assesments')
+        .doc('foa')
         .set({'score': score});
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    prefs.setDouble('foa', score);
     return true;
   }
 

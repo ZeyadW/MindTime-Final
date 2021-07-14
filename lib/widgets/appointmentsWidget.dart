@@ -99,7 +99,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                               height: 12,
                             ),
                             Text(
-                              '${date}',
+                              '${myDateTime}',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Poppins',
