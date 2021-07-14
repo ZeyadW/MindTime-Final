@@ -100,7 +100,7 @@ class _AppointmentListviewUserState extends State<AppointmentListviewUser> {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection("Therapists")
-          .doc(email)
+          .doc('zeyad@mindtime.com')
           .collection('Appointments')
           .snapshots(),
       builder: (context, snapshot) {

@@ -18,6 +18,7 @@ class AppointmentsWidget extends StatefulWidget {
 
 class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   User currentUser = new User.init().getCurrentUser();
+  var selectedChoice;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,25 +66,40 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                       children: <Widget>[
                         Container(
                           margin: const EdgeInsets.only(right: 25.0),
-                          child: ball(this.widget.appointment.doctor.avatar),
                         ),
                         Container(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            Container(
+                              padding: const EdgeInsets.all(2.0),
+                              child: ChoiceChip(
+                                label: Text(widget.appointment.date),
+                                selected:
+                                    selectedChoice == widget.appointment.date,
+                                onSelected: (selected) {
+                                  setState(() {
+                                    selectedChoice = false;
+                                  });
+                                },
+                              ),
+                            ),
+                            /*
                             Text(
                               '${widget.appointment.doctor.name}',
+                             Text(
+                              '${widget.appointment.date}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 fontSize: 14.0,
                               ),
-                            ),
+                            ),*/
                             SizedBox(
                               height: 12,
                             ),
                             Text(
-                              '${date}',
+                              '${myDateTime}',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Poppins',

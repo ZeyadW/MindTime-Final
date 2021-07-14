@@ -13,17 +13,18 @@ class DoctorAcount extends StatefulWidget {
 }
 
 class _DoctorAcountState extends State<DoctorAcount> {
-  var docname;
+  var docemail;
   var _isLoading = true;
   var currentDoctor = new Doctor.init();
   User currentUser = new User.init().getCurrentUser();
 
   Future<bool> getDocEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    docname = prefs.getString('docname');
-    if (docname != null) {
-      // currentDoctor = await new Doctor.init().getCurrentDoctor(docname);
-      print("Hamadaa" + docname);
+    docemail = prefs.getString('docemail');
+    if (docemail != null) {
+      currentDoctor = await new Doctor.init().getCurrentDoctor(docemail);
+      print("Hamada Email" + currentDoctor.email);
+      print("Hamada Name" + currentDoctor.name);
 
       setState(() {
         _isLoading = false;
@@ -136,7 +137,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                "${docname}",
+                                "${currentDoctor.name}",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16.0,
@@ -146,7 +147,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                               ),
                               Center(
                                 child: Text(
-                                  "${"currentDoctor.description"}",
+                                  "${currentDoctor.description}",
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -164,14 +165,6 @@ class _DoctorAcountState extends State<DoctorAcount> {
                             children: <Widget>[
                               Text(
                                 "16 yrs.Experience",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14.0,
-                                  color: Theme.of(context).hintColor,
-                                ),
-                              ),
-                              Text(
-                                "89% ( 4356 votes )",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 14.0,
@@ -295,34 +288,12 @@ class _DoctorAcountState extends State<DoctorAcount> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "In clinic : 10\$",
+                        "In clinic :300 EGP",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).hintColor,
-                        ),
-                      ),
-                      Container(
-                        height: 30.0,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1.5,
-                                color: Theme.of(context).accentColor),
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          onPressed: () {},
-                          child: Text(
-                            'Book',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).accentColor,
-                            ),
-                          ),
                         ),
                       ),
                     ],
@@ -339,7 +310,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'Closed To Day',
+                        'Closed Today',
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 10.0,
@@ -355,14 +326,6 @@ class _DoctorAcountState extends State<DoctorAcount> {
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).hintColor,
                         ),
-                      ),
-                      Text(
-                        'All Timing',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).accentColor),
                       ),
                     ],
                   ),
@@ -381,7 +344,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                         color: Theme.of(context).hintColor.withOpacity(0.5),
                       ),
                       Text(
-                        '92/3rd Floor, outer Ring Road,\nChandra Layout',
+                        'Yasmeen 6, Villa 81',
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 12.0,
@@ -476,14 +439,6 @@ class _DoctorAcountState extends State<DoctorAcount> {
                   SizedBox(
                     height: 6.0,
                   ),
-                  Text(
-                    'Cosmetologist',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 12.0,
-                      color: Theme.of(context).hintColor,
-                    ),
-                  ),
                   SizedBox(
                       height: 30.0,
                       child: Center(
@@ -493,7 +448,7 @@ class _DoctorAcountState extends State<DoctorAcount> {
                         ),
                       )),
                   Text(
-                    'ALSO PRACTICES AT',
+                    'Other Doctors',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 14.0,

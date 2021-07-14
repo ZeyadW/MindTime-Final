@@ -146,15 +146,6 @@ class _AcountWidgetState extends State<AcountWidget> {
               children: <Widget>[
                 _dropDownListe(
                     Icon(
-                      Icons.bubble_chart,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    'My Doctors',
-                    1,
-                    '/mydoctors',
-                    context),
-                _dropDownListe(
-                    Icon(
                       Icons.calendar_today,
                       color: Theme.of(context).accentColor,
                     ),

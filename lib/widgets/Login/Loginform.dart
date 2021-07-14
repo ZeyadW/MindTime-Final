@@ -55,16 +55,16 @@ class LoginFormState extends State<LoginForm> {
   Future<bool> checkTherapistexist() async {
     this.u = await users.validateloginTherapist(
         emailcontroller.text, passwordcontroller.text);
-    print("in chekkkkkkk user ");
+    print("in chekkkkkkk therapist ");
     print(u);
     if (u != null) {
-      print("in  checkuser not null user");
+      print("in  checkuser not null therapist" + u.toString());
       print(u.toString());
       print(u.username);
       username = u.username;
       return true;
     } else {
-      print("in  checkuser null user");
+      print("in  checkuser null therapist");
 
       return false;
     }
