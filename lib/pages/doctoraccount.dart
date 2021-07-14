@@ -52,7 +52,7 @@ class _DracountWidgetState extends State<DracountWidget> {
                         children: <Widget>[
                           SizedBox(height: 20),
                           Text(
-                            "${widget.acountInfos[0]}",
+                            "", // "${widget.acountInfos[0]}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Poppins',

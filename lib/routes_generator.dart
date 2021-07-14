@@ -22,6 +22,7 @@ import 'package:medico/pages/doctor_acount.dart';
 import 'package:medico/pages/doctors.dart';
 
 import 'package:medico/pages/login.dart';
+import 'package:medico/pages/patientaccount.dart';
 import 'package:medico/pages/questionairescreen.dart';
 import 'package:medico/pages/signup.dart';
 import 'package:medico/pages/statsscreen.dart';
@@ -36,6 +37,7 @@ import 'package:medico/pages/erq.dart';
 import 'package:medico/pages/bmis.dart';
 import 'package:medico/pages/foal.dart';
 import 'package:medico/pages/viewmypatients.dart';
+import 'package:medico/widgets/mypatientslistview.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -62,11 +64,14 @@ class RouteGenerator {
       /*     case '/chat':
         return MaterialPageRoute(builder: (_) => ChatWidget());*/
       case '/doctors':
-        return MaterialPageRoute(builder: (_) => DoctorsList());
+        return MaterialPageRoute(
+            builder: (_) => Loaddoctors()); //DoctorsList());
       case '/loaddoctors':
         return MaterialPageRoute(builder: (_) => Loaddoctors());
       case '/doctorProfil':
         return MaterialPageRoute(builder: (_) => DoctorAcount());
+      case '/patientProfil':
+        return MaterialPageRoute(builder: (_) => PatientAcount());
       case '/firstDoctorBook':
         return MaterialPageRoute(builder: (_) => DoctorBookFirstStep());
       case '/journals':
@@ -85,7 +90,8 @@ class RouteGenerator {
       case '/mydoctors':
         return MaterialPageRoute(builder: (_) => MyDoctorsList());
       case '/mypatients':
-        return MaterialPageRoute(builder: (_) => Viewmypatients());
+        return MaterialPageRoute(
+            builder: (_) => MypatientListview()); //Viewmypatients());
       case '/AOR':
         return MaterialPageRoute(builder: (_) => AORAppointment());
 

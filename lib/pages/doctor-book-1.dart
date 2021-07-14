@@ -83,240 +83,256 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  height: 40,
-                  padding:
-                      const EdgeInsets.only(left: 0.0, right: 0.0, bottom: 8.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(25.0),
-                        bottomRight: Radius.circular(25.0)),
-                    color: Theme.of(context).accentColor,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: 12.0, right: 12.0, left: 12.0, bottom: 12.0),
-                  margin: EdgeInsets.only(
-                      right: 12.0, left: 12.0, bottom: 12.0, top: 0),
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+      body: _isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Stack(
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          // ball(currentDoctor.avatar, Colors.transparent),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                currentDoctor.name,
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Container(
-                                width: 200,
-                                child: Text(
-                                  " currentDoctor.description",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 12.0,
-                                    color: Colors.grey,
+                      Container(
+                        height: 40,
+                        padding: const EdgeInsets.only(
+                            left: 0.0, right: 0.0, bottom: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(25.0),
+                              bottomRight: Radius.circular(25.0)),
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 12.0, right: 12.0, left: 12.0, bottom: 12.0),
+                        margin: EdgeInsets.only(
+                            right: 12.0, left: 12.0, bottom: 12.0, top: 0),
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                // ball(currentDoctor.avatar, Colors.transparent),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      currentDoctor.name,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 200,
+                                      child: Text(
+                                        " currentDoctor.description",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 12.0,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.chevron_left),
                                   ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.chevron_left),
+                                Container(
+                                  child: Text(
+                                    'Tomorrow,9 Dec',
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.chevron_right),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Container(
-                            child: Text(
-                              'Tomorrow,9 Dec',
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            SizedBox(
+                              height: 15.0,
                             ),
-                          ),
-                          Container(
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.chevron_right),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Container(
-                        child: Stack(
-                          children: <Widget>[
                             Container(
-                              padding: const EdgeInsets.all(12),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.all(12),
+                                    margin: const EdgeInsets.only(top: 14),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      border: Border.all(
+                                          width: 1,
+                                          color: Colors.grey.withOpacity(0.8)),
+                                      color: Colors.grey[100].withOpacity(0.4),
+                                    ),
+                                    child: Wrap(
+                                      children: _buildChoiceList(morningList),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 6,
+                                      bottom: 6,
+                                      left: 16,
+                                      right: 16,
+                                    ),
+                                    margin: const EdgeInsets.only(left: 30),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        //color: Colors.grey,
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.red[200],
+                                            Colors.blue[200]
+                                          ],
+                                          begin:
+                                              const FractionalOffset(0.0, 0.0),
+                                          end: const FractionalOffset(0.5, 0.0),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp,
+                                        )),
+                                    child: Text(
+                                      "Morning",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
                               margin: const EdgeInsets.only(top: 14),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(
-                                    width: 1,
-                                    color: Colors.grey.withOpacity(0.8)),
-                                color: Colors.grey[100].withOpacity(0.4),
-                              ),
-                              child: Wrap(
-                                children: _buildChoiceList(morningList),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.all(12),
+                                    margin: const EdgeInsets.only(top: 14),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      border: Border.all(
+                                          width: 1,
+                                          color: Colors.grey.withOpacity(0.8)),
+                                      color: Colors.grey[100].withOpacity(0.4),
+                                    ),
+                                    child: Wrap(
+                                      children: _buildChoiceList(afternoonList),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 6,
+                                      bottom: 6,
+                                      left: 16,
+                                      right: 16,
+                                    ),
+                                    margin: const EdgeInsets.only(left: 30),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        //color: Colors.grey,
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.lightBlue[200],
+                                            Colors.lightGreen[200]
+                                          ],
+                                          begin:
+                                              const FractionalOffset(0.0, 0.0),
+                                          end: const FractionalOffset(0.5, 0.0),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp,
+                                        )),
+                                    child: Text(
+                                      "Afternoon",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.only(
-                                top: 6,
-                                bottom: 6,
-                                left: 16,
-                                right: 16,
-                              ),
-                              margin: const EdgeInsets.only(left: 30),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  //color: Colors.grey,
-                                  gradient: LinearGradient(
-                                    colors: [Colors.red[200], Colors.blue[200]],
-                                    begin: const FractionalOffset(0.0, 0.0),
-                                    end: const FractionalOffset(0.5, 0.0),
-                                    stops: [0.0, 1.0],
-                                    tileMode: TileMode.clamp,
-                                  )),
-                              child: Text(
-                                "Morning",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 14),
-                        child: Stack(
-                          children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(12),
                               margin: const EdgeInsets.only(top: 14),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(
-                                    width: 1,
-                                    color: Colors.grey.withOpacity(0.8)),
-                                color: Colors.grey[100].withOpacity(0.4),
-                              ),
-                              child: Wrap(
-                                children: _buildChoiceList(afternoonList),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                top: 6,
-                                bottom: 6,
-                                left: 16,
-                                right: 16,
-                              ),
-                              margin: const EdgeInsets.only(left: 30),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  //color: Colors.grey,
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.lightBlue[200],
-                                      Colors.lightGreen[200]
-                                    ],
-                                    begin: const FractionalOffset(0.0, 0.0),
-                                    end: const FractionalOffset(0.5, 0.0),
-                                    stops: [0.0, 1.0],
-                                    tileMode: TileMode.clamp,
-                                  )),
-                              child: Text(
-                                "Afternoon",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 14),
-                        child: Stack(
-                          children: <Widget>[
-                            Container(
-                                padding: const EdgeInsets.all(12),
-                                margin: const EdgeInsets.only(top: 14),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  border: Border.all(
-                                      width: 1,
-                                      color: Colors.grey.withOpacity(0.8)),
-                                  color: Colors.grey[100].withOpacity(0.4),
-                                ),
-                                child: Wrap(
-                                    children: _buildChoiceList(nightList))),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                top: 6,
-                                bottom: 6,
-                                left: 16,
-                                right: 16,
-                              ),
-                              margin: const EdgeInsets.only(left: 30),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  //color: Colors.grey,
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.yellow[100],
-                                      Colors.green[200]
-                                    ],
-                                    begin: const FractionalOffset(0.0, 0.0),
-                                    end: const FractionalOffset(0.5, 0.0),
-                                    stops: [0.0, 1.0],
-                                    tileMode: TileMode.clamp,
-                                  )),
-                              child: Text(
-                                "Evening & Night",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                      padding: const EdgeInsets.all(12),
+                                      margin: const EdgeInsets.only(top: 14),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(
+                                            width: 1,
+                                            color:
+                                                Colors.grey.withOpacity(0.8)),
+                                        color:
+                                            Colors.grey[100].withOpacity(0.4),
+                                      ),
+                                      child: Wrap(
+                                          children:
+                                              _buildChoiceList(nightList))),
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 6,
+                                      bottom: 6,
+                                      left: 16,
+                                      right: 16,
+                                    ),
+                                    margin: const EdgeInsets.only(left: 30),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        //color: Colors.grey,
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.yellow[100],
+                                            Colors.green[200]
+                                          ],
+                                          begin:
+                                              const FractionalOffset(0.0, 0.0),
+                                          end: const FractionalOffset(0.5, 0.0),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp,
+                                        )),
+                                    child: Text(
+                                      "Evening & Night",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -324,12 +340,9 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
         color: Colors.transparent,

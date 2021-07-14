@@ -22,7 +22,7 @@ class _MypatientsWidgetState extends State<MypatientsWidget> {
   bool pressed = false;
   final ZoomIDController = TextEditingController();
   final ZoomPasswordController = TextEditingController();
-  User currentUser = new User.init().getCurrentUser();
+  //User currentUser = new User.init().getCurrentUser();
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -38,36 +38,55 @@ class Patient {
   String username;
   String date;
   String time;
-  Patient({this.username, this.date, this.time});
-  Patient getCurrentPatient() {
-    return Patient(
-        username: "Mohammed Salah", date: "9-6-2021", time: "6:30 PM");
-  }
+  String email;
+  Patient();
+  Patient.p(this.username, this.date, this.time, this.email);
 }
 
-class PatientL {
+/*class PatientL {
   String id = UniqueKey().toString();
   Patient p;
   String date;
 
   PatientL(this.date, this.p);
 }
-
+*/
 class PatientList {
-  Patient currentPatient = new Patient().getCurrentPatient();
-  List<Patient> _PatientsList;
+  List<Patient> _patientList;
 
-  PatientList() {
-    this._PatientsList = [
-      new Patient(
-          username: currentPatient.username,
-          date: currentPatient.date,
-          time: currentPatient.time),
-      new Patient(username: "Emy Mohammed", date: "10-6-2021", time: "4:30 PM"),
-    ];
+  Future<List<Patient>> getarraypatients() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var docemail = prefs.getString('email');
+    print("doc emailllll" + docemail);
+
+    QuerySnapshot snap = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(docemail)
+        .collection("patients")
+        .get();
+
+    _patientList = new List<Patient>();
+    print("snappp list");
+    print(snap.docs.length);
+    var l = snap.docs.length;
+    for (int i = 0; i < l; i++) {
+      var a = snap.docs[i];
+      DocumentSnapshot variable =
+          await FirebaseFirestore.instance.collection('Users').doc(a.id).get();
+      print("variabllee");
+      print(variable.data());
+      print("snap docs[i]" + i.toString() + a.toString());
+      print(a.id);
+      _patientList.insert(
+          i, new Patient.p(variable.get("username"), "", "", a.id));
+      //_patientList.add(new Patient(variable.get("username"), "", "", a.id));
+      print("a.id: " + a.id);
+      print(_patientList.length);
+      print(_patientList[i]);
+    }
+
+    return _patientList;
   }
-
-  List<Patient> get patient => _PatientsList;
 }
 
 class Users {
