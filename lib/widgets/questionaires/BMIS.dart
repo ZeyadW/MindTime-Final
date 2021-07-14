@@ -51,9 +51,11 @@ class _BmisState extends State<Bmis> {
     await _db
         .collection('Users')
         .doc(email)
-        .collection('bmis')
-        .doc()
+        .collection('assesments')
+        .doc('bmis')
         .set({'score': score});
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    prefs.setInt('bmis', score.toInt());
     return true;
   }
 

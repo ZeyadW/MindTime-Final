@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 //import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:medico/models/user.dart';
+import 'package:medico/widgets/assesmentsstat.dart';
 import 'package:medico/widgets/line_chart_sample2.dart';
 import 'package:medico/models/TextAnalysis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,7 +101,7 @@ class _HealthTipsState extends State<HealthTips> {
             items: <Widget>[
               Card(
                 elevation: 1,
-                color: Colors.blueGrey,
+                color: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
@@ -149,7 +150,7 @@ class _HealthTipsState extends State<HealthTips> {
               ),
               Card(
                 elevation: 1,
-                color: Colors.blueGrey,
+                color: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
@@ -199,7 +200,7 @@ class _HealthTipsState extends State<HealthTips> {
               SingleChildScrollView(
                 child: Card(
                   elevation: 1,
-                  color: Colors.blueGrey,
+                  color: Theme.of(context).accentColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16)),
                   child: Container(
@@ -240,7 +241,7 @@ class _HealthTipsState extends State<HealthTips> {
               ),
               Card(
                 elevation: 1,
-                color: Colors.blueGrey,
+                color: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Container(
@@ -283,6 +284,47 @@ class _HealthTipsState extends State<HealthTips> {
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 1,
+                color: Theme.of(context).accentColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        'assesments Analysis',
+                        style: TextStyle(
+                            fontSize: 28.0,
+                            fontFamily: 'Poppins',
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        child: Text(
+                          "Tap to View Analysis",
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontFamily: 'Poppins',
+                              color: y,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            getsharedpref();
+                            y = Colors.transparent;
+
+                            ch = PieChartSample2();
+                            chart = PieChartSample2();
+                          });
+                        },
+                      ),
+                      PieChartSample2(),
                     ],
                   ),
                 ),
