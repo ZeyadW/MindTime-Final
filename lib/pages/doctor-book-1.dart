@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:medico/models/appointments.dart';
 import 'package:medico/models/doctor.dart';
 import 'package:medico/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:medico/widgets/appointmentsWidget.dart';
 
 class DoctorBookFirstStep extends StatefulWidget {
   @override
@@ -9,6 +12,18 @@ class DoctorBookFirstStep extends StatefulWidget {
 }
 
 class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
+  var ListAppointments = new appointment();
+
+  Future<appointment> getCurrentDoctor(var docmail) async {
+    DocumentSnapshot variable = await FirebaseFirestore.instance
+        .collection('Therapists')
+        .doc(docmail)
+        .get();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return appointment();
+  }
+
   List<String> morningList = ["08.00", "09.00", "10.00", "11.00", "12.00"];
   List<String> afternoonList = [
     "13.00",
@@ -130,7 +145,7 @@ class _DoctorBookFirstStepState extends State<DoctorBookFirstStep> {
                               Container(
                                 width: 200,
                                 child: Text(
-                                  " currentDoctor.description",
+                                  currentDoctor.description,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 12.0,
