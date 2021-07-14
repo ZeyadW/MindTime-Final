@@ -59,7 +59,8 @@ class FrameInfo {
     List<FrameInfo> _videoslist;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var email = prefs.getString('email');
+    // var email = prefs.getString('email');
+    var email = prefs.getString('pemail');
     var emotions;
     print(email);
     QuerySnapshot snap = await FirebaseFirestore.instance
